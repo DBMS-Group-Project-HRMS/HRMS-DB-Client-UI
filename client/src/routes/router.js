@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react";
 import { HomeView } from "../views/home/HomeView";
 import { Login } from "../views/login/login";
+import { Register } from "../views/register/register";
 import { Error } from "../views/error/error";
 
 export function Router(){
@@ -10,6 +11,7 @@ export function Router(){
         <Routes>
           <Route path="/" element={<HomeView />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="*" element={<Error/>}/>
         </Routes>
       </BrowserRouter>
