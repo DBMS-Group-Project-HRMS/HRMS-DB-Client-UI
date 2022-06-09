@@ -3,7 +3,7 @@ import "./register.css";
 import { Link } from "react-router-dom";
 //import SubHeader from "../../components/subHeader/subHeader";
 import { useNavigate } from "react-router-dom";
-
+import Axios from "axios";
 
 export function Register() {
   const navigate = useNavigate();
@@ -40,8 +40,9 @@ export function Register() {
 
   const register = (e) => {
     e.preventDefault();
+    const url = 'http://localhost:'+process.env.PORT+'/register'
     console.log("registering a user");
-    Axios.post('http://localhost:3001/register',{
+    Axios.post(url, {
         firstname: firstname,
         lastname: lastname,
         birthday: birthday,
@@ -94,11 +95,11 @@ export function Register() {
 
 
                     <div className="form-group mb-3">
-                      <label className="label" >Firstname</label>
+                      <label className="label" >First Name</label>
                       <input type="text" className="form-control"  value={firstname} onChange={(e) => {setfirstname(e.target.value); }} required/>
                     </div>
                     <div className="form-group mb-3">
-                      <label className="label" >Lastname</label>
+                      <label className="label" >Last Name</label>
                       <input type="text" className="form-control" value={lastname} onChange={(e) => {setlastname(e.target.value); }} required/>
                     </div>
                     <div className="form-group mb-3">
@@ -118,7 +119,7 @@ export function Register() {
                       <input type="date" className="form-control"  value={joined_date} onChange={(e) => {setjoined_date(e.target.value); }} required/>
                     </div>
                     <div className="form-group mb-3">
-                      <label className="label" >nic_number</label>
+                      <label className="label" >NIC Number</label>
                       <input type="text" className="form-control"  value={nic_numbber} onChange={(e) => {setnic_numbber(e.target.value); }} required/>
                     </div>
 

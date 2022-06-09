@@ -1,0 +1,23 @@
+.loginHeading{
+    padding-left: 8vw;
+    padding-top: 20vh;
+  }
+  
+  .loginImage{
+    padding-top: 20vh;
+    
+  }
+
+.login{
+    background-image: url(/public/assets/images/login.jpg);
+    width: 1590.4px;
+    height: 1060.8px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .form_box{
+    align-items: center;
+    align-self: center;
+    align-content: center;
+  }
