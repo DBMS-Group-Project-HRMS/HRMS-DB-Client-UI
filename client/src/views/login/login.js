@@ -2,70 +2,48 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import "../../styles/login.css";
+import Footer from "../footer/footer";
 
 export function Login() {
     return(
-        <div className="login">
-            <div className="">
-                <div className="">
-                <div className="position-absolute top-50 start-50 translate-middle">
-                <h1 className="loginHeading">Human Resource Management System</h1>
-                <br></br>
-                <div className="row">
-                  <Form> 
-                    <FormGroup>
-                      <Label htmlFor="username" size="lg">
-                        Username
-                      </Label>
-                      <Input
-                        type="text"
-                        id="username"
-                        name="username"
-                        // value={formValues.username}
-                        // onChange={handleChange}
-                      />
-                      <p
-                        class="fst-italic fw-bolder"
-                        style={{ color: "#f93154" }}
-                      >
-                        {/* {formErrors.username} */}
-                      </p>
-                    </FormGroup>
+                 
+        <div>
+          <div className="login">
+            <h2 > Human Resource Management System </h2>
+            <div className="row">
+              <div className="col-6">
+                <Form>
+                  <Input type="text" className="text" name="username"/>
+                  <span>username</span>
 
+                  <br/>
+                  <br/>
 
-                    <FormGroup>
-                      <Label htmlFor="password" size="lg">
-                        Password
-                      </Label>
-                      <Input
-                        type="password"
-                        id="password"
-                        name="password"
-                        // value={formValues.password}
-                        // onChange={handleChange}
-                      />
-                      <p
-                        class="fst-italic fw-bolder"
-                        style={{ color: "#f93154" }}>
-                        {/* {formErrors.password} */}
-                      </p>
-                    </FormGroup>
+                  <Input type="password" className="text" name="password"/>
+                  <span>password</span>
 
-                    <br></br>
-                    <div className="d-grid gap-2">
-                      <Button
-                        size="lg"
-                        type="submit"
-                        value="submit"
-                        color="primary">
-                        Login
-                      </Button>
-                    </div>
-                  </Form>
-                </div>
+                  <br/>
+                
+                  <Input type="checkbox" id="checkbox-1-1" className="custom-checkbox" />
+                  <label for="checkbox-1-1">Keep me Signed in</label>
+                  
+                  <button className="signin">
+                    Sign In
+                  </button>
+                </Form>
+              </div>
+              <div className="col-6">
+                <img src="assets/images/vector-1.png" alt="login vector"/>
+              </div>
+              <div className="col-6">
+                <a href="#">Forgot Password?</a>
+              </div>
+              <div className="col-6">
+                <a href="#">Back to Home</a>
               </div>
             </div>
           </div>
+          <Footer />
         </div>
     )
 }
