@@ -43,7 +43,7 @@ export function Register() {
     console.log("registering a user");
     console.log("department: ",department);
     console.log("joined_date",joined_date);
-    Axios.post('http://localhost:3001/register',{
+    Axios.post('http://localhost:3001/hr/register',{
         firstname: firstname,
         lastname: lastname,
         birthday: birthday,
