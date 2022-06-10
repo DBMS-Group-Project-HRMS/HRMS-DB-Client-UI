@@ -150,8 +150,8 @@ export function Register() {
                     <label className="label" >Marital Status</label>
                     <select class="custom-select custom-select-lg mb-3" onChange={(e) => {setmarital_status(e.target.value); }} value={marital_status}>
                     <option selected>Open this select menu</option>
-                    <option value="2">Married</option>
-                    <option value="3">Unmarried</option>
+                    <option value="1">Married</option>
+                    <option value="2">Unmarried</option>
                     </select>
                     </div>
 
@@ -169,10 +169,10 @@ export function Register() {
                     <label className="label" >paygrade</label>
                     <select class="custom-select custom-select-lg mb-3" onChange={(e) => {setpaygrade(e.target.value); }} value={paygrade}>
                     <option selected>Open this select menu</option>
-                    <option value="2">level 1</option>
-                    <option value="3">level 2</option>
-                    <option value="4">level 3</option>
-                    <option value="5">level 4</option>
+                    <option value="1">level 1</option>
+                    <option value="2">level 2</option>
+                    <option value="3">level 3</option>
+                    <option value="4">level 4</option>
                     </select>
                     </div>
 
@@ -180,12 +180,11 @@ export function Register() {
                     <label className="label" >Employee status</label>
                     <select class="custom-select custom-select-lg mb-3" onChange={(e) => {setemp_status(e.target.value); }} value={emp_status}>
                     <option selected>Open this select menu</option>
-                    <option value="2">Intern-fulltime</option>
-                    <option value="3">Intern-parttime</option>
-                    <option value="4">Contract-fulltime</option>
-                    <option value="5">Contract-parttime</option>
-                    <option value="6">permanent</option>
-                    <option value="7">permanent</option>
+                    <option value="1">Intern-fulltime</option>
+                    <option value="2">Intern-parttime</option>
+                    <option value="3">Contract-fulltime</option>
+                    <option value="4">Contract-parttime</option>
+                    <option value="5">permanent</option>
                     </select>
                     </div>
 
