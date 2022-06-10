@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Axios from 'axios';
 import "./register.css";
 import { Link } from "react-router-dom";
 //import SubHeader from "../../components/subHeader/subHeader";
@@ -18,29 +19,30 @@ export function Register() {
   const [nic_numbber, setnic_numbber] = useState(""); 
   const [department, setdepartment] = useState(""); 
   const [marital_status, setmarital_status] = useState("");
-  const [line1, setline1] = useState("");//
-  const [line2, setline2] = useState("");//
-  const [city, setcity] = useState("");//
-  const [district, setdistrict] = useState("");//
-  const [postal_code, setpostal_code] = useState("");//
+  const [line1, setline1] = useState("");
+  const [line2, setline2] = useState("");
+  const [city, setcity] = useState("");
+  const [district, setdistrict] = useState("");
+  const [postal_code, setpostal_code] = useState("");
   const [emp_type, setemp_type] = useState("");
   const [paygrade, setpaygrade] = useState("");
   const [emp_status, setemp_status] = useState("");
-  const [username, setusername] = useState("");//
-  const [password, setpassword] = useState("");//
-  const [con_password, setCon_password] = useState("");//
-  const [EM_name, setEM_name] = useState("");//
-  const [EM_phoneN, setEM_phoneN] = useState("");//
-  const [EM_relation, setEM_relation] = useState("");//
-  const [phoneN1, setphoneN1] = useState("");//
-  const [phoneN2, setphoneN2] = useState("");//
+  const [username, setusername] = useState("");
+  const [password, setpassword] = useState("");
+  const [con_password, setCon_password] = useState("");
+  const [EM_name, setEM_name] = useState("");
+  const [EM_phoneN, setEM_phoneN] = useState("");
+  const [EM_relation, setEM_relation] = useState("");
+  const [phoneN1, setphoneN1] = useState("");
+  const [phoneN2, setphoneN2] = useState("");
   
 
 
 
-  const register = (e) => {
-    e.preventDefault();
+  const register =()=>{
     console.log("registering a user");
+    console.log("department: ",department);
+    console.log("joined_date",joined_date);
     Axios.post('http://localhost:3001/register',{
         firstname: firstname,
         lastname: lastname,
@@ -48,7 +50,7 @@ export function Register() {
         email: email,
         salary: salary,
         joined_date: joined_date,
-        nic_numbber:nic_numbber,
+        nic_number:nic_numbber,
         department:department,
         marital_status:marital_status,
         line1:line1,
