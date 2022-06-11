@@ -63,6 +63,7 @@ export function Register() {
         emp_status:emp_status,
         username:username,
         password:password,
+        con_password:con_password,
         EM_name:EM_name,
         EM_phoneN:EM_phoneN,
         EM_relation:EM_relation,
@@ -159,9 +160,9 @@ export function Register() {
                     <label className="label" >Employee Type</label>
                     <select class="custom-select custom-select-lg mb-3" onChange={(e) => {setemp_type(e.target.value); }} value={emp_type}>
                     <option selected>Open this select menu</option>
-                    <option value="2">Accountant</option>
-                    <option value="3">Software Engineer</option>
-                    <option value="4">QA Engineer</option>
+                    <option value="3">Accountant</option>
+                    <option value="4">Software Engineer</option>
+                    <option value="5">QA Engineer</option>
                     </select>
                     </div>
 
