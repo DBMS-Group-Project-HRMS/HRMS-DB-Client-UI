@@ -35,6 +35,9 @@ export function Register() {
   const [EM_relation, setEM_relation] = useState("");
   const [phoneN1, setphoneN1] = useState("");
   const [phoneN2, setphoneN2] = useState("");
+  const [alertType, setAlertType] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [show, setShow] = useState(false);
   
 
 
@@ -70,13 +73,43 @@ export function Register() {
         phoneN1:phoneN1,
         phoneN2:phoneN2
       }).then( (response)=>{
-        console.log(response);
+        setAlertType("alert alert-success");
+        setAlertMessage(response.data.message);
+        setShow(true);
+        navigate(0);
+      })
+      .catch((err) => {
+        setAlertType("alert alert-danger");
+        setAlertMessage("");
+        switch (err.response.request.status) {
+          case 400:
+            setAlertMessage(err.response.data.message);
+            setShow(true);
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShow(true);
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShow(true);
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShow(true);
+            break;
+          default:
+            break;
+        }
       });
   };
 
   return (
 
 <div className="container">
+  <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
+    {alertMessage}
+  </div>
   <div className="row justify-content-center">
       <div className="col col-md-12 text-center mb-5">
         {/* <SubHeader /> */}
