@@ -13,7 +13,8 @@ export function Supervisor(){
 
 
     useEffect(() => {
-        Axios.get("http://localhost:3001/manager/get_users_list")
+      let token = sessionStorage.getItem("token");
+        Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`}})
       .then((userList) => {
         setUserDetails(userList.data.data);
       })

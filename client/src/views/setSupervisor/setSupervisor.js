@@ -32,6 +32,7 @@ export function SetSupervisor(props){
     const firstname = props.fname;
     const lastname = props.lname;
     const allUsers = props.allU;
+    console.log("fname,lname",firstname,lastname)
 
     const filteredList = allUsers.filter(function(e){ return e.empId != uID});
 
@@ -73,8 +74,8 @@ export function SetSupervisor(props){
     };
 
     return(
-        <div>
-            <a class="btn-one" data-bs-toggle="modal" data-bs-target={`#supervisorSet${uID}`}>{firstname} {lastname}</a>
+        <span>
+            <button className="btn" data-bs-toggle="modal" data-bs-target={`#supervisorSet${uID}`}>{firstname} {lastname}</button>
 
             <div className="modal fade" id={`supervisorSet${uID}`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-scrollable">
@@ -119,7 +120,7 @@ export function SetSupervisor(props){
                 </div>
                 </div>
             </div>
-        </div>
+        </span>
 
     );
 }
