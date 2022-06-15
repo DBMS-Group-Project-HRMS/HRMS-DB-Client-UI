@@ -18,6 +18,24 @@ export function EditUser(props) {
   console.log("initial", initialValues);
   console.log("form", formValues);
 
+  const [depSelect, setDepSelect] = useState([]);
+  const [MsSelect, setMsSelect] = useState([]);
+  const [EtSelect, setEtSelect] = useState([]);
+  const [PgSelect, setPgSelect] = useState([]);
+  const [EsSelect, setEsSelect] = useState([]);
+
+  useEffect( ()=> {
+    Axios.get("http://localhost:3001/getHRMSdetails").then((response)=>{
+      //setUserslist(response.data);
+      const selectDetails = response.data;
+      setDepSelect([...selectDetails[0]]);
+      setMsSelect([...selectDetails[1]]);
+      setEtSelect([...selectDetails[2]]);
+      setPgSelect([...selectDetails[3]]);
+      setEsSelect([...selectDetails[4]]);
+    });
+  },[]);
+
   useEffect(() => { setformValues(initialValues)}, [initialValues] );
 
   const handleChange = (e) => {
@@ -117,48 +135,35 @@ export function EditUser(props) {
                         <div className="form-group mb-3">
                         <label className="label" >Department</label>
                         <select name="dept_id" className="custom-select custom-select-lg mb-3" onChange={handleChange} value={formValues.dept_id}>
-                        <option value="2">Maintenance</option>
-                        <option value="3">IT</option>
-                        <option value="4">PR</option>
-                        <option value="5">Marketing</option>
+                        {depSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                         </div>
 
                         <div className="form-group mb-3">
                         <label className="label" >Marital Status</label>
                         <select name="marital_id" className="custom-select custom-select-lg mb-3" onChange={handleChange} value={formValues.marital_id}>
-                        <option value="1">Married</option>
-                        <option value="2">Unmarried</option>
+                        {MsSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                         </div>
 
                         <div className="form-group mb-3">
                         <label className="label" >Employee Type</label>
                         <select name="emptype_id" className="custom-select custom-select-lg mb-3" onChange={handleChange} value={formValues.emptype_id}>
-                        <option value="3">Accountant</option>
-                        <option value="4">Software Engineer</option>
-                        <option value="5">QA Engineer</option>
+                        {EtSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                         </div>
 
                         <div className="form-group mb-3">
                         <label className="label" >paygrade</label>
                         <select name="paygrade_id" className="custom-select custom-select-lg mb-3" onChange={handleChange} value={formValues.paygrade_id}>
-                        <option value="1">level 1</option>
-                        <option value="2">level 2</option>
-                        <option value="3">level 3</option>
-                        <option value="4">level 4</option>
+                        {PgSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                         </div>
 
                         <div className="form-group mb-3">
                         <label className="label" >Employee status</label>
                         <select name="empstatus_id" className="custom-select custom-select-lg mb-3" onChange={handleChange} value={formValues.empstatus_id}>
-                        <option value="1">Intern-fulltime</option>
-                        <option value="2">Intern-parttime</option>
-                        <option value="3">Contract-fulltime</option>
-                        <option value="4">Contract-parttime</option>
-                        <option value="5">permanent</option>
+                        {EsSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                         </div>
 
