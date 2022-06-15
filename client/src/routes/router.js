@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import React, { useContext, useEffect, useState } from "react";
 import { HomeView } from "../views/home/HomeView";
 import { Login } from "../views/login/login";
+import { Logout } from "../views/login/logout";
 import { Register } from "../views/register/register";
 import { ViewUser } from "../views/viewUser/ViewUser";
 import { ViewUsersList } from "../views/manager/ViewUsersList";
@@ -14,6 +15,7 @@ export function Router(){
         <Routes>
           <Route path="/" element={<HomeView />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/manager/view_user/:user_id" element={<ViewUser />} />
           <Route path="/manager/view_users_list" element={<ViewUsersList />} />
