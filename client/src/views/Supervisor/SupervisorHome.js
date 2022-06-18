@@ -3,6 +3,7 @@ import "./SupervisorHome.css";
 import React, { Component } from "react";
 import SupervisorHomeTable from "./SupervisorHomeTable";
 import NavbarComponent from "../../navbar/navbar";
+import { Link } from "react-router-dom";
 
 class SupervisorHome extends Component {
   constructor(props) {
@@ -37,7 +38,7 @@ class SupervisorHome extends Component {
       <React.Fragment>
         <NavbarComponent/>
         <div className="Container-fluid shadow ">
-          <h2>Supervisor Home</h2>
+        <h2 class="text-center mt-3 mb-0">Supervisor Home</h2>
           <br></br>
         
           <SupervisorHomeTable/>
@@ -50,6 +51,8 @@ class SupervisorHome extends Component {
             {/* <ViewRequest /> */}   //TODO
           </ModalBody>
         </Modal>
+
+        <Link to="/"><button className="btn btn-outline-primary my" >Back Home</button></Link>
       </React.Fragment>
     );
   }

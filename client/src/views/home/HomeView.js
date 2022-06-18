@@ -9,10 +9,11 @@ export function HomeView() {
       <Navbar />
 
       <div>
-      <h1>HRMS HomeView</h1>
+      <h1 class="text-center mt-3 mb-0">HR Management System</h1>
         <Link to="/login"><button className="btn btn-outline-primary my" >Login</button></Link>
         <Link to="/register"><button className="btn btn-outline-primary my" >User Register</button></Link>
         <Link to="/supvisorAllocation"><button className="btn btn-outline-primary my" >Supervisor Allocation</button></Link>
+        <Link to="/supervisorHome"><button className="btn btn-outline-primary my" >Supervisor Home</button></Link>
       </div>
     
     </div>

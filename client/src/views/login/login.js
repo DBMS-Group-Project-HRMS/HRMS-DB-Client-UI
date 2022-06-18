@@ -4,7 +4,8 @@ import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import "../../styles/login.css";
 import Footer from "../footer/footer";
 import { login } from "./loginUtils";
-import NavbarComponent from "../../navbar/navbar"
+import NavbarComponent from "../../navbar/navbar";
+import { Link } from "react-router-dom";
 
 export function Login() {
 
@@ -73,6 +74,9 @@ export function Login() {
     return(
       <body>
         <NavbarComponent/>
+        <div className="col-6">
+          <a><Link to="/">Back Home</Link></a>
+        </div>
           <div className="loginBody"> 
             <div className='login'>
                 <h2 > Human Resource Management System </h2>
@@ -95,11 +99,8 @@ export function Login() {
                       </button>
                     </Form>
                   </div>
-                  <div className="col-6">
+                  <div>
                     <a href="#">Forgot Password?</a>
-                  </div>
-                  <div className="col-6">
-                    <a href="#">Back to Home</a>
                   </div>
                 </div>
               </div>
