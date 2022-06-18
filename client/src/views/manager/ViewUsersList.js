@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
-import Navbar from "../../navbar/navbar"
+import NavbarComponent from "../../navbar/navbar";
+import ReactTable from "react-table";  
 
 export function ViewUsersList() {
     const [userDetails, setUserDetails] = useState([]);
@@ -44,12 +45,44 @@ export function ViewUsersList() {
   }, []);
 
     console.log(userDetails);
+
+    const data = [{  
+      name: 'Ayaan',  
+      age: 26  
+      },{  
+      name: 'Ahana',  
+      age: 22  
+      },{  
+      name: 'Peter',  
+      age: 40   
+      },{  
+      name: 'Virat',  
+      age: 30  
+      },{  
+      name: 'Rohit',  
+      age: 32  
+      },{  
+      name: 'Dhoni',  
+      age: 37  
+    }]  
+
+    const columns = [{  
+        Header: 'Name',  
+        accessor: 'name'  
+       },{  
+       Header: 'Age',  
+       accessor: 'age'  
+    }]  
+
+
+
     return (
 
     <div>
-       <Navbar/>
-      <h1>Displaying Current Users List</h1>
+       <NavbarComponent/>
+      
       <div className="container">
+      <h1 class="text-center mt-3 mb-0">Displaying Current Users List</h1>
           <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
               {alertMessage}
           </div>
@@ -59,18 +92,18 @@ export function ViewUsersList() {
                   <li key={id}>
                   <Link to={`/manager/view_user/${id}`}>{firstname} {lastname}</Link>
                   </li>
-              ))}
-
-              <li key={2}>Danusha Hewagama</li>
-              <li key={3}>Danusha Hewagama</li>
-              <li key={4}>Danusha Hewagama</li>
-              <li key={5}>Danusha Hewagama</li>
-              <li key={6}>Danusha Hewagama</li>      
-              </ul>
-
-
+              ))}   
+              </ul>  
           </div>
       </div>
+      {/* <div>  
+        <ReactTable  
+            data={data}  
+            columns={columns}  
+            defaultPageSize = {2}  
+            pageSizeOptions = {[2,4, 6]}  
+        />  
+      </div>   */}
     </div>
 );
 }
