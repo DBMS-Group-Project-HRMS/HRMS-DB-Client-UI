@@ -9,6 +9,7 @@ import { ViewUser } from "../views/viewUser/ViewUser";
 import { ViewUsersList } from "../views/manager/ViewUsersList";
 import { ApplyLeave } from "../views/user/ApplyLeave";
 import { Error } from "../views/error/error";
+import SupervisorHome from "../views/Supervisor/SupervisorHome";
 
 export function Router(){
     return(
@@ -19,6 +20,7 @@ export function Router(){
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<Register />} />
           <Route path="/supvisorAllocation" element={<Supervisor />} />
+          <Route path="/supervisorHome" element={<SupervisorHome />} />
           <Route path="/manager/view_user/:user_id" element={<ViewUser />} />
           <Route path="/manager/view_users_list" element={<ViewUsersList />} />
           <Route path="/user/apply_leave" element={<ApplyLeave />} />
