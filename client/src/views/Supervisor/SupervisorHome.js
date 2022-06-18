@@ -44,10 +44,10 @@ class SupervisorHome extends Component {
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>
-            <h3>Supervisor HomePage</h3>
+            <h3>Request</h3>
           </ModalHeader>
           <ModalBody>
-            {/* <AddSupplier /> */}
+            {/* <ViewRequest /> */}   //TODO
           </ModalBody>
         </Modal>
       </React.Fragment>

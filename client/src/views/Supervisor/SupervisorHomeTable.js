@@ -8,8 +8,9 @@ import {
   ModalBody,
   Alert,
 } from "reactstrap";
-import axios from "axios";
+import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+// import ViewUserRequest from './ViewUserRequest';
 
 const COLUMNS = [
   {
@@ -21,28 +22,24 @@ const COLUMNS = [
     accessor: "name",
   },
   {
-    Header: "Email",
-    accessor: "email",
-  },
+    Header: "Reason",
+    accessor: "reason",
+  }
+  
+];
+
+const users = [
   {
-    Header: "Contact Number",
-    accessor: "contact",
-  },
-  {
-    Header: "Address",
-    accessor: "address",
-  },
-  {
-    Header: "Joined Date",
-    accessor: "joined_date",
-  },
+  id: 1,
+  name: "Danusha Hewagama",
+  reason: "I cannot come on these following days due to..."
+  }
 ];
 
 export default function SupervisorHomeTable() {
-//   const auth = useAuth();
   const navigate = useNavigate();
 
-  const [users, setUsers] = useState([]);
+  // const [users, setUserDetails] = useState([]);
   const [show, setShow] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
@@ -58,66 +55,41 @@ export default function SupervisorHomeTable() {
     return date.split("T")[0];
   };
 
+
+
 //   useEffect(() => {
-//     axios.defaults.withCredentials = true;
-//     axios
-//       .get("http://localhost:8087/supplier/all", { withCredentials: true })
-//       .then((getSuppliers) => {
-//         let data = [];
-//         getSuppliers.data.data.forEach((m) => {
-//           m.joined_date = dateFormatter(m.joined_date);
-//           data.push(m);
-//         });
-//         setSuppliers(data);
-//         setShowToFalse();
-//       })
-//       .catch((err) => {
-//         setAlertMessage("");
-//         switch (err.response.request.status) {
-//           case 400:
-//             setAlertMessage(err.response.data.message);
-//             setShowToTrue();
-//             break;
-//           case 401:
-//             auth.logout();
-//             auth.setAlert("Session Expired! Login Again");
-//             navigate("/");
-//             break;
-//           case 500:
-//             setAlertMessage("Server Error!");
-//             setShowToTrue();
-//             break;
-//           case 501:
-//             setAlertMessage("Server Error!");
-//             setShowToTrue();
-//             break;
-//           case 502:
-//             setAlertMessage("Server Error!");
-//             setShowToTrue();
-//             break;
-//           default:
-//             break;
-//         }
-//       });
-//   }, []);
+//     let token = sessionStorage.getItem("token");
+//       Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`}})
+//     .then((userList) => {
+//       setUserDetails(userList.data.data);
+//     })
+//     .catch((err) => {
+//       setAlertMessage("");
+//       //setAlertType("alert alert-danger");
+//       switch (err.response.request.status) {
+//         case 400:          
+//           setAlertMessage(err.response.data.message);
+//           setShow (true);
+//           break;
+//         case 500:
+//           setAlertMessage("Server Error!");
+//           setShow (true);
+//           break;
+//         case 501:
+//           setAlertMessage("Server Error!");
+//           setShow (true);
+//           break;
+//         case 502:
+//           setAlertMessage("Server Error!");
+//           setShow (true);
+//           break;
+//         default:
+//           break;
+//       }
+//     });
+// }, []);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [modalId, setModalId] = useState(1);
 
-  const setModalIsOpenToTrue = () => {
-    setModalIsOpen(true);
-  };
-
-  const setModalIsOpenToFalse = () => {
-    setModalIsOpen(false);
-  };
-
-  function viewModal(Id) {
-    setModalIsOpenToTrue();
-    if (modalIsOpen === false) {
-      setModalId(Id);
-    }
-  }
 
   const {
     getTableProps,
@@ -142,8 +114,9 @@ export default function SupervisorHomeTable() {
           {
             id: "edit",
             Cell: ({ row }) => (
-              <Button outline color="dark" onClick={() => viewModal(row.id)}>
-                Edit
+              <Button outline color="dark" >
+                {/* onClick={<ViewUserRequest/>} */}
+                View
               </Button>
             ),
           },
@@ -244,16 +217,6 @@ export default function SupervisorHomeTable() {
             })}
           </tbody>
         </Table>
-        <Modal isOpen={modalIsOpen}>
-          <ModalHeader
-            close={<Button close onClick={setModalIsOpenToFalse}></Button>}
-          >
-            <h3>Edit User</h3>
-          </ModalHeader>
-          <ModalBody>
-            {/* <EditSupplier row={modalId} suppliers={suppliers} /> */}
-          </ModalBody>
-        </Modal>
       </div>
     </React.Fragment>
   );
