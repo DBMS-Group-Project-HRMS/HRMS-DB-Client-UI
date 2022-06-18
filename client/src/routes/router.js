@@ -11,6 +11,7 @@ import { ApplyLeave } from "../views/user/ApplyLeave";
 import { Error } from "../views/error/error";
 import SupervisorHome from "../views/Supervisor/SupervisorHome";
 import HRHome from "../views/HRManager/HRHome";
+import ManagerHome from "../views/manager/ManagerHome";
 
 export function Router(){
     return(
@@ -23,6 +24,7 @@ export function Router(){
           <Route path="/supvisorAllocation" element={<Supervisor />} />
           <Route path="/supervisorHome" element={<SupervisorHome />} />
           <Route path="/hrHome" element={<HRHome />} />
+          <Route path="/managerHome" element={<ManagerHome />} />
           <Route path="/manager/view_user/:user_id" element={<ViewUser />} />
           <Route path="/manager/view_users_list" element={<ViewUsersList />} />
           <Route path="/user/apply_leave" element={<ApplyLeave />} />

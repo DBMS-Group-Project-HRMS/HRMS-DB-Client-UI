@@ -10,49 +10,83 @@ import {
 } from "reactstrap";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
-// import ViewUserRequest from './ViewUserRequest';
 
 const COLUMNS = [
-  {
-    Header: "ID",
-    accessor: "id",
-  },
-  {
-    Header: "Name",
-    accessor: "name",
-  },
-  {
-    Header: "Reason",
-    accessor: "reason",
-  }
-  
+  { Header: "ID", accessor: "id" },
+  { Header: "Name", accessor: "name" },
+  { Header: "Type", accessor: "type" },
+  { Header: "Status", accessor: "status" },
+  { Header: "Birthday", accessor: "birthday" },
+  { Header: "Email", accessor: "email" },
+  { Header: "Joined Date", accessor: "Joined_date" },
+  { Header: "NIC", accessor: "nic_number" },
+  { Header: "Leave Count", accessor: "leave_count" },
 ];
 
 const users = [
   {
-  id: 1,
-  name: "Danusha Hewagama",
-  reason: "I cannot come on these following days due to..."
+    id: 1,
+    name: 'Danusha Hewagama',
+    birthday: '2022-06-14',
+    email: 'danush@gmail.com',
+    Joined_date: '2022-06-14',
+    nic_number: '990991812V',
+    photo: null,
+    leave_count: 0,
+    status: 'contract-fulltime',
+    line1: '8364',
+    line2: 'Galle road',
+    city: 'Galle',
+    district: 'Galle',
+    postal_code: '12321',
+    type: 'Manager',
+    paygrade: 'level 3',
+    phone_number: '0712342353',
+    relationship: 'Single'
   },
   {
     id: 1,
-    name: "Danusha Hewagama",
-    reason: "I cannot come on these following days due to..."
+    name: 'Danusha Hewagama',
+    birthday: '2022-06-14',
+    email: 'danush@gmail.com',
+    Joined_date: '2022-06-14',
+    nic_number: '990991812V',
+    photo: null,
+    leave_count: 0,
+    status: 'contract-fulltime',
+    line1: '8364',
+    line2: 'Galle road',
+    city: 'Galle',
+    district: 'Galle',
+    postal_code: '12321',
+    type: 'Manager',
+    paygrade: 'level 3',
+    phone_number: '0712342353',
+    relationship: 'Single'
   },
   {
     id: 1,
-    name: "Danusha Hewagama",
-    reason: "I cannot come on these following days due to..."
+    name: 'Danusha Hewagama',
+    birthday: '2022-06-14',
+    email: 'danush@gmail.com',
+    Joined_date: '2022-06-14',
+    nic_number: '990991812V',
+    photo: null,
+    leave_count: 0,
+    status: 'contract-fulltime',
+    line1: '8364',
+    line2: 'Galle road',
+    city: 'Galle',
+    district: 'Galle',
+    postal_code: '12321',
+    type: 'Manager',
+    paygrade: 'level 3',
+    phone_number: '0712342353',
+    relationship: 'Single'
   },
-  {
-    id: 1,
-    name: "Danusha Hewagama",
-    reason: "I cannot come on these following days due to..."
-  },  
-
 ];
 
-export default function SupervisorHomeTable() {
+export default function ManagerHomeTable() {
   const navigate = useNavigate();
 
   // const [users, setUserDetails] = useState([]);
@@ -127,16 +161,16 @@ export default function SupervisorHomeTable() {
       hooks.visibleColumns.push((columns) => {
         return [
           ...columns,
-          {
-            id: "edit",
-            Cell: ({ row }) => (
-              <Button outline color="dark" >
-                {/* onClick={<ViewUserRequest/>} */}
-                View
-              </Button>
-            ),
-          },
-        ];
+        //   {
+        //     id: "edit",
+        //     Cell: ({ row }) => (
+        //       <Button outline color="dark" >
+        //         {/* onClick={<ViewUserRequest/>} */}
+        //         View
+        //       </Button>
+        //     ),
+        //   },  
+        ]; //Above is a dependency for a manager. Check Role!
       });
     }
   );

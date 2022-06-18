@@ -86,7 +86,7 @@ const users = [
   },
 ];
 
-export default function SupervisorHomeTable() {
+export default function HRHomeTable() {
   const navigate = useNavigate();
 
   // const [users, setUserDetails] = useState([]);

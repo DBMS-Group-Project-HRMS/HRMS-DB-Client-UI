@@ -10,8 +10,6 @@ export function ViewUsersList() {
     const [show, setShow] = useState(false);
     const [alertType, setAlertType] = useState("");
 
-
-
     useEffect(() => {
       let token = sessionStorage.getItem("token");
         Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`} })
