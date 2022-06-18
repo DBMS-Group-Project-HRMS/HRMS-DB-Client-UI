@@ -4,6 +4,7 @@ import { Button, Form, FormGroup, Label, Input, Alert } from "reactstrap";
 import "../../styles/login.css";
 import Footer from "../footer/footer";
 import { login } from "./loginUtils";
+import NavbarComponent from "../../navbar/navbar"
 
 export function Login() {
 
@@ -70,41 +71,40 @@ export function Login() {
     }, [isSubmit, username, password]);
 
     return(
-                 
-        <div>
-          <div className="login">
-            <h2 > Human Resource Management System </h2>
-            <div className="row">
-              <div className="col-6">
-                <Form onSubmit={handleSubmit}>
-                  <Input type="text"  value={formValues.username} onChange={handleChange} className="text" name="username"/>
-                  <span>username</span>
+      <body>
+        <NavbarComponent/>
+          <div className="loginBody"> 
+            <div className='login'>
+                <h2 > Human Resource Management System </h2>
+                <div className="row">
+                  <div>
+                    <Form onSubmit={handleSubmit}>
+                      <Input type="text"  value={formValues.username} onChange={handleChange} className="text" name="username"/>
+                      <span>username</span>
 
-                  <br/>
-                  <br/>
+                      <br/>
+                      <br/>
 
-                  <Input type="password" value={formValues.password} onChange={handleChange} className="text" name="password"/>
-                  <span>password</span>
+                      <Input type="password" value={formValues.password} onChange={handleChange} className="text" name="password"/>
+                      <span>password</span>
 
-                  <br/>
-                  
-                  <button className="signin">
-                    Sign In
-                  </button>
-                </Form>
+                      <br/>
+                      
+                      <button className="signin">
+                        Sign In
+                      </button>
+                    </Form>
+                  </div>
+                  <div className="col-6">
+                    <a href="#">Forgot Password?</a>
+                  </div>
+                  <div className="col-6">
+                    <a href="#">Back to Home</a>
+                  </div>
+                </div>
               </div>
-              <div className="col-6">
-                <img src="assets/images/vector-1.png" alt="login vector"/>
-              </div>
-              <div className="col-6">
-                <a href="#">Forgot Password?</a>
-              </div>
-              <div className="col-6">
-                <a href="#">Back to Home</a>
-              </div>
+              // <Footer />
             </div>
-          </div>
-          <Footer />
-        </div>
+          </body>
     )
 }

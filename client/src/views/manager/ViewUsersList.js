@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
+import Navbar from "../../navbar/navbar"
 
 export function ViewUsersList() {
     const [userDetails, setUserDetails] = useState([]);
@@ -44,19 +45,32 @@ export function ViewUsersList() {
 
     console.log(userDetails);
     return (
-    <div className="container">
-         <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
-            {alertMessage}
-         </div>
-         <div className="container">
-            <ul>
-            {userDetails.map(({ id, firstname, lastname }) => (
-                <li key={id}>
-                    <Link to={`/manager/view_user/${id}`}>{firstname} {lastname}</Link>
-                </li>
-            ))}
-            </ul>
-         </div>
+
+    <div>
+       <Navbar/>
+      <h1>Displaying Current Users List</h1>
+      <div className="container">
+          <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
+              {alertMessage}
+          </div>
+          <div className="container">
+              <ul>
+              {userDetails.map(({ id, firstname, lastname }) => (
+                  <li key={id}>
+                  <Link to={`/manager/view_user/${id}`}>{firstname} {lastname}</Link>
+                  </li>
+              ))}
+
+              <li key={2}>Danusha Hewagama</li>
+              <li key={3}>Danusha Hewagama</li>
+              <li key={4}>Danusha Hewagama</li>
+              <li key={5}>Danusha Hewagama</li>
+              <li key={6}>Danusha Hewagama</li>      
+              </ul>
+
+
+          </div>
+      </div>
     </div>
 );
 }

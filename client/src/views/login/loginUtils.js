@@ -17,7 +17,9 @@ export const login = ({ username, password }) =>
         if (res.request.status === 200 || res.request.status === 201) {
             // setRole(res.data.role);
             let token = res.data.token;
+            let userId = token.userId;
             sessionStorage.setItem("token", token);
+            sessionStorage.setItem("userId", userId);
             console.log(res.data);
             // setUserName(sessionStorage.getItem("user"));
             // setAlertShow(false);

@@ -22,8 +22,11 @@ export function ApplyLeave(props) {
     useEffect(() => {
         if (isSubmit) {
           console.log(formValues);
+          let token = sessionStorage.getItem("token");
           console.log("Applying for a leave");
-          Axios.post('http://localhost:3001/user/apply_leave', formValues).then( (response)=>{
+          Axios.post('http://localhost:3001/user/apply_leave', 
+          { headers:{Authorization : `Bearer ${token}`}},
+          formValues).then( (response)=>{
               setAlertType("alert alert-success");
               setAlertMessage(response.data.message);
               setShow(true);

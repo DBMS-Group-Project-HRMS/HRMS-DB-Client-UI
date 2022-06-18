@@ -1,17 +1,28 @@
 body,
 .signin {
-  background-color:#000;
+  /* background-color:#000; */
   font-family: 'Montserrat', sans-serif;
   color: rgba(255, 255, 255, 0);
   font-size: 14px;
-  letter-spacing: 1px;   
+  letter-spacing: 1px; 
+  margin-top:5%;
+    
+}
+
+.loginBody {
+  background-image: url("../../public/assets/images/login.jpg");
+  background-color: #FFF;
+  height: 1280px; /* You must set a specified height */
+  background-position: bottom; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover; /* Resize the background image to cover the entire */
 }
 
 .login {
   position: relative;
   height: 800px;
-  width: 900px;
-  margin-top:5%;
+  width: 500px;
+  margin-top:auto;
   margin-left:auto;
   margin-right:auto;
   padding: 60px 60px;
@@ -21,6 +32,7 @@ body,
 
 form {
   padding-top: 80px;
+  
 }
 
 

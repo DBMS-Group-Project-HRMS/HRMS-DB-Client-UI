@@ -1,0 +1,51 @@
+body{
+    background:#eee;
+}
+
+.card{
+    border:none;
+    position:relative;
+    overflow:hidden;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:rgb(212, 195, 195);
+    transform:scaleY(1);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:4px;
+    height:100%;
+    background-color:rgb(139, 88, 88);
+    transform:scaleY(0);
+    transition:all 0.5s;
+    transform-origin: bottom
+}
+
+.card:hover::after{
+    transform:scaleY(1);
+}
+
+.fonts{
+    font-size:11px;
+}
+
+.buttons button:nth-child(1):hover{
+       color:rgb(139, 88, 88);
+       padding:auto;
+       
+}
