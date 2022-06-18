@@ -14,6 +14,7 @@ export function HomeView() {
         <Link to="/register"><button className="btn btn-outline-primary my" >User Register</button></Link>
         <Link to="/supvisorAllocation"><button className="btn btn-outline-primary my" >Supervisor Allocation</button></Link>
         <Link to="/supervisorHome"><button className="btn btn-outline-primary my" >Supervisor Home</button></Link>
+        <Link to="/hrHome"><button className="btn btn-outline-primary my" >HR Manager Home</button></Link>
       </div>
     
     </div>

@@ -1,11 +1,11 @@
 import { Button, Modal, ModalHeader, ModalBody} from "reactstrap";
-import "./SupervisorHome.css";
+import "./HRHome.css";
 import React, { Component } from "react";
-import SupervisorHomeTable from "./SupervisorHomeTable";
+import HRHomeTable from "./HRHomeTable";
 import NavbarComponent from "../../navbar/navbar";
 import { Link } from "react-router-dom";
 
-class SupervisorHome extends Component {
+class HRHome extends Component {
   constructor(props) {
     super(props);
 
@@ -38,10 +38,13 @@ class SupervisorHome extends Component {
       <React.Fragment>
         <NavbarComponent/>
         <div className="Container-fluid shadow ">
-        <h1 class="text-center mt-3 mb-0">Supervisor Home</h1>
+        <h1 class="text-center mt-3 mb-0">HR Manager Home</h1>
           <br></br>
-        
-          <SupervisorHomeTable/>
+          <Button outline color="dark" className="shadow-sm">
+            Add New User
+          </Button>
+
+          <HRHomeTable/>
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>
@@ -58,4 +61,4 @@ class SupervisorHome extends Component {
   }
 }
 
-export default SupervisorHome;
+export default HRHome;

@@ -75,7 +75,7 @@ export function Login() {
       <body>
         <NavbarComponent/>
         <div className="col-6">
-          <a><Link to="/">Back Home</Link></a>
+          <a><Link to="/"><button className="btn btn-outline-primary my" >Home</button></Link></a>
         </div>
           <div className="loginBody"> 
             <div className='login'>

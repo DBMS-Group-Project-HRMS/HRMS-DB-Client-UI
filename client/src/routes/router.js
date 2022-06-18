@@ -10,6 +10,7 @@ import { ViewUsersList } from "../views/manager/ViewUsersList";
 import { ApplyLeave } from "../views/user/ApplyLeave";
 import { Error } from "../views/error/error";
 import SupervisorHome from "../views/Supervisor/SupervisorHome";
+import HRHome from "../views/HRManager/HRHome";
 
 export function Router(){
     return(
@@ -21,6 +22,7 @@ export function Router(){
           <Route path="/register" element={<Register />} />
           <Route path="/supvisorAllocation" element={<Supervisor />} />
           <Route path="/supervisorHome" element={<SupervisorHome />} />
+          <Route path="/hrHome" element={<HRHome />} />
           <Route path="/manager/view_user/:user_id" element={<ViewUser />} />
           <Route path="/manager/view_users_list" element={<ViewUsersList />} />
           <Route path="/user/apply_leave" element={<ApplyLeave />} />
