@@ -16,7 +16,8 @@ export function ViewUser() {
 
 
     useEffect(() => {
-        Axios.get("http://localhost:3001/manager/view_user/" + user_id)
+      let token = sessionStorage.getItem("token");
+        Axios.get("http://localhost:3001/manager/view_user/" + user_id, { headers:{Authorization : `Bearer ${token}`}})
       .then((getUserDetails) => {
         setUserDetails(getUserDetails.data.data);
         console.log(getUserDetails.data.data);

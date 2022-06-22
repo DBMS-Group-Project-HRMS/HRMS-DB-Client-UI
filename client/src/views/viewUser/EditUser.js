@@ -52,7 +52,8 @@ export function EditUser(props) {
   useEffect(() => {
     if (isSubmit) {
         setData(formValues);
-        Axios.post('http://localhost:3001/manager/edit_user/' + formValues.id, data).then( (response)=>{
+        let token = sessionStorage.getItem("token");
+        Axios.post('http://localhost:3001/manager/edit_user/' + formValues.id, data, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
             setAlertType("alert alert-success");
             setAlertMessage(response.data.message);
             setShow(true);

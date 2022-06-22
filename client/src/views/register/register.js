@@ -51,7 +51,8 @@ export function Register() {
     if (isSubmit) {
       console.log(formValues);
       console.log("registering a user");
-      Axios.post('http://localhost:3001/hr/register', formValues).then( (response)=>{
+      let token = sessionStorage.getItem("token");
+      Axios.post('http://localhost:3001/hr/register', formValues, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
           setAlertType("alert alert-success");
           setAlertMessage(response.data.message);
           setShow(true);
@@ -139,12 +140,12 @@ export function Register() {
                       <input type="text" className="form-control"  name="nic_number" id="nic_number" value={formValues.nic_number} onChange={handleChange} required/>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-6">
+                    <div className="form-row">
+                        <div className="form-group col-6">
                         <label className="label" >phone_number1</label>
                         <input type="text" className="form-control"  name="phonenumber1" id="phonenumber1" value={formValues.phonenumber1} onChange={handleChange} required/>
                         </div>
-                        <div class="form-group col-6">
+                        <div className="form-group col-6">
                         <label className="label" >phone_number2</label>
                         <input type="text" className="form-control"  name="phonenumber2" id="phonenumber2" value={formValues.phonenumber2} onChange={handleChange} required/>
                         </div>
@@ -152,7 +153,7 @@ export function Register() {
 
                     <div className="form-group mb-3">
                     <label className="label" >Department</label>
-                    <select class="custom-select custom-select-lg mb-3" name="department" id="department" value={formValues.department} onChange={handleChange} >
+                    <select className="custom-select custom-select-lg mb-3" name="department" id="department" value={formValues.department} onChange={handleChange} >
                     <option >Open this select menu</option>
                     {depSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                     </select>
@@ -160,7 +161,7 @@ export function Register() {
 
                     <div className="form-group mb-3">
                     <label className="label" >Marital Status</label>
-                    <select class="custom-select custom-select-lg mb-3" name="maritalStatus" id="maritalStatus" value={formValues.maritalStatus} onChange={handleChange} >
+                    <select className="custom-select custom-select-lg mb-3" name="maritalStatus" id="maritalStatus" value={formValues.maritalStatus} onChange={handleChange} >
                     <option >Open this select menu</option>
                     {MsSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                     </select>
@@ -168,23 +169,23 @@ export function Register() {
 
                     <div className="form-group mb-3">
                     <label className="label" >Employee Type</label>
-                    <select class="custom-select custom-select-lg mb-3" name="type" id="type" value={formValues.type} onChange={handleChange} >
+                    <select className="custom-select custom-select-lg mb-3" name="type" id="type" value={formValues.type} onChange={handleChange} >
                     <option >Open this select menu</option>
                     {EtSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                     </select>
                     </div>
 
-                    <div className="form-group mb-3">
+                    {/* <div className="form-group mb-3">
                     <label className="label" >paygrade</label>
-                    <select class="custom-select custom-select-lg mb-3" name="paygrade" id="paygrade" value={formValues.paygrade} onChange={handleChange} >
+                    <select className="custom-select custom-select-lg mb-3" name="paygrade" id="paygrade" value={formValues.paygrade} onChange={handleChange} >
                     <option >Open this select menu</option>
                     {PgSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                     </select>
-                    </div>
+                    </div> */}
 
                     <div className="form-group mb-3">
                     <label className="label" >Employee status</label>
-                    <select class="custom-select custom-select-lg mb-3" name="empStatus" id="empStatus" value={formValues.empStatus} onChange={handleChange} >
+                    <select className="custom-select custom-select-lg mb-3" name="empStatus" id="empStatus" value={formValues.empStatus} onChange={handleChange} >
                     <option >Open this select menu</option>
                     {EsSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                     </select>

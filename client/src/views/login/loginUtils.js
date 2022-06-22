@@ -17,20 +17,22 @@ export const login = ({ username, password }) =>
         if (res.request.status === 200 || res.request.status === 201) {
             // setRole(res.data.role);
             let token = res.data.token;
-            let userId = token.userId;
+            let userId = res.data.user_id;
             sessionStorage.setItem("token", token);
             sessionStorage.setItem("userId", userId);
-            console.log(res.data);
+            sessionStorage.setItem("username", res.data.username);
+            sessionStorage.setItem("paygrade", res.data.paygrade);
+            sessionStorage.setItem("type", res.data.type);
             // setUserName(sessionStorage.getItem("user"));
             // setAlertShow(false);
             // setAlertMessage("");
-            resolve(username);
+            resolve(res.data.paygrade);
         } else {
             reject(res.data.message);
         }
         })
         .catch((err) => {
-        switch (err.request.status) {
+        //switch (err.request.status) {
             // case 400:
             // setAlertMessage(err.response.data.message);
             // setAlertShow(true);
@@ -53,7 +55,7 @@ export const login = ({ username, password }) =>
             // break;
             // default:
             // break;
-        }
+        //}
         reject(err);
         });
     }

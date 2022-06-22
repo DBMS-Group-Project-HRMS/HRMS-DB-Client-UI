@@ -37,9 +37,19 @@ export function Login() {
   useEffect(() => {
     if (isSubmit){
       login({ username, password })
-      .then((username) => {
-        console.log(username);
-        navigate("/manager/view_users_list");
+      .then((level) => {
+        //const level = sessionStorage.getItem("paygrade");
+        if (level == 'level 1'){
+          navigate('/employeeHome');
+        } else if(level == 'level 2'){
+          navigate('/supervisorHome');
+        } else if (level == 'level 3'){
+          navigate('/managerHome');
+        } else if (level == 'level 4'){
+          navigate('/hrHome');
+        } else {
+          console.log("Invalid paygrade", level);
+        }
       })
       .catch((err) => {
         switch (err.request.status) {

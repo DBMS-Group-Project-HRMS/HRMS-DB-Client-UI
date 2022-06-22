@@ -42,34 +42,34 @@ export function SetSupervisor(props){
         const supervisorDetails = {Sup_ID:Supervisor_ID,Emp_ID:Employee_ID};
         console.log("empId,SupId: ",Employee_ID,Supervisor_ID);
         console.log("hello im assigning",e.currentTarget.dataset.id)
-
-        Axios.post('http://localhost:3001/hr/setSupervisor', supervisorDetails).then( (response)=>{
-          setAlertType("alert alert-success");
-          setAlertMessage(response.data.message);
+        let token = sessionStorage.getItem("token");
+        Axios.post('http://localhost:3001/hr/setSupervisor', supervisorDetails, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+          //setAlertType("alert alert-success");
+          //setAlertMessage(response.data.message);
         })
         .catch((err) => {
-          setAlertType("alert alert-danger");
-          setAlertMessage("");
-          switch (err.response.request.status) {
-            case 400:
-              setAlertMessage(err.response.data.message);
-              setShow(true);
-              break; 
-            case 500:
-              setAlertMessage("Server Error!");
-              setShow(true);
-              break;
-            case 501:
-              setAlertMessage("Server Error!");
-              setShow(true);
-              break;
-            case 502:
-              setAlertMessage("Server Error!");
-              setShow(true);
-              break;
-            default:
-              break;
-          }
+          // setAlertType("alert alert-danger");
+          // setAlertMessage("");
+          // switch (err.response.request.status) {
+          //   case 400:
+          //     setAlertMessage(err.response.data.message);
+          //     setShow(true);
+          //     break; 
+          //   case 500:
+          //     setAlertMessage("Server Error!");
+          //     setShow(true);
+          //     break;
+          //   case 501:
+          //     setAlertMessage("Server Error!");
+          //     setShow(true);
+          //     break;
+          //   case 502:
+          //     setAlertMessage("Server Error!");
+          //     setShow(true);
+          //     break;
+          //   default:
+          //     break;
+          // }
         });
     };
 
