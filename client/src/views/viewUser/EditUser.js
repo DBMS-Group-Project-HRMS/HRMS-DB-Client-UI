@@ -93,8 +93,8 @@ export function EditUser(props) {
     {alertMessage}
   </div>
                   <form onSubmit={handleSubmit}>
-                        <div class="text-center">
-                          <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"/>
+                        <div className="text-center">
+                          <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" className="rounded-circle"/>
                         </div>
                         <div className="form-group mb-3">
                         <label className="label" >Firstname</label>
