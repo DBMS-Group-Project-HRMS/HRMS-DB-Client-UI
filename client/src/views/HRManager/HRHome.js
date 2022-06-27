@@ -50,12 +50,9 @@ class HRHome extends Component {
             <h3>Request</h3>
           </ModalHeader>
           <ModalBody>
-            {/* <ViewRequest /> */}   //TODO
+            {/* <ViewRequest /> */} 
           </ModalBody>
         </Modal>
-
-        <Link to="/"><button className="btn btn-outline-primary my" >Back Home</button></Link>
-
       </React.Fragment>
     );
   }
