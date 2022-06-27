@@ -2,7 +2,6 @@ import { Button, Modal, ModalHeader, ModalBody} from "reactstrap";
 import "./SupervisorHome.css";
 import React, { Component } from "react";
 import SupervisorHomeTable from "./SupervisorHomeTable";
-import NavbarComponent from "../../navbar/navbar";
 import { Link } from "react-router-dom";
 
 class SupervisorHome extends Component {
@@ -36,7 +35,6 @@ class SupervisorHome extends Component {
 
     return (
       <React.Fragment>
-        <NavbarComponent/>
         <div className="Container-fluid shadow ">
         <h1 class="text-center mt-3 mb-0">Supervisor Home</h1>
           <br></br>

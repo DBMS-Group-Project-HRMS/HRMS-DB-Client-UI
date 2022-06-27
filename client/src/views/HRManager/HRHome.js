@@ -2,7 +2,6 @@ import { Button, Modal, ModalHeader, ModalBody} from "reactstrap";
 import "./HRHome.css";
 import React, { Component } from "react";
 import HRHomeTable from "./HRHomeTable";
-import NavbarComponent from "../../navbar/navbar";
 import { Link } from "react-router-dom";
 import { EditPaygrade } from "./EditPaygrade";
 
@@ -37,7 +36,6 @@ class HRHome extends Component {
 
     return (
       <React.Fragment>
-        <NavbarComponent/>
         <div className="Container-fluid shadow ">
         <h1 className="text-center mt-3 mb-0">HR Manager Home</h1>
           <br></br>

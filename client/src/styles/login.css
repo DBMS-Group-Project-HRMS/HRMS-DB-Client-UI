@@ -164,11 +164,3 @@ hr {
   position: relative;
 }
 
-a {
-  text-align: center;
-  display: block;
-  top: 120px;
-  position: relative;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.2);
-}

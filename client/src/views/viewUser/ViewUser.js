@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import { EditUser } from "./EditUser";
 import './ViewUser.css'
-import NavbarComponent from "../../navbar/navbar";
 
 export function ViewUser() {
     const { user_id } =useParams();
@@ -52,7 +51,6 @@ export function ViewUser() {
     return (
     <body>
 
-      <NavbarComponent/>
       <div className="container mt-5">
           <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
               {alertMessage}

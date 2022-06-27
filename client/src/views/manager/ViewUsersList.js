@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
-import NavbarComponent from "../../navbar/navbar";
 import ReactTable from "react-table";  
 
 export function ViewUsersList() {
@@ -48,9 +47,7 @@ export function ViewUsersList() {
 
     return (
 
-    <div>
-       <NavbarComponent/>
-      
+    <div>      
       <div className="container">
       <h1 class="text-center mt-3 mb-0">Displaying Current Users List</h1>
           <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
