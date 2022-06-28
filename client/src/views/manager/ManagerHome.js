@@ -45,7 +45,7 @@ class ManagerHome extends Component {
             <h3>Request</h3>
           </ModalHeader>
           <ModalBody>
-            {/* <ViewRequest /> */} 
+            {/* <ViewRequest />  */}
           </ModalBody>
         </Modal>
       </React.Fragment>
