@@ -121,15 +121,6 @@ export default function ManagerHomeTable() {
   return (
     <>
       <React.Fragment>
-        {/* <Button
-          color="secondary"
-          outline
-          className="shadow-sm"
-          // onClick={deleteRecords}
-        >
-          Delete Supplier
-        </Button> */}
-        {/* {data = SupplyRecordsTable.selectedrows} */}
         <br></br>
         <Alert isOpen={show} color="danger" toggle={setShowToFalse}>
           <p>{alertMessage}</p>
@@ -196,26 +187,3 @@ export default function ManagerHomeTable() {
     </>
   );
 }
-
-// {
-//     id: 1
-//     firstname: 'sfjkks',
-//     lastname: 'wrgwrg',
-//     birthday: 2022-06-14T18:30:00.000Z,
-//     email: 'wrgrwgrwgwrgt',
-//     Joined_date: 2022-06-14T18:30:00.000Z,
-//     nic_number: '16541371',
-//     photo: null,
-//     leave_count: 0,
-//     name: 'grjbgjk',
-//     status: 'contract-fulltime',
-//     line1: '8364',
-//     line2: 'gjfbgkhgkj',
-//     city: 'wgjbkg',
-//     district: 'grjhrejkghjkr',
-//     postal_code: '1232',
-//     type: 'HR Manager',
-//     paygrade: 'level 3',
-//     phone_number: '1234567890',
-//     relationship: 'w,djfbjkwgf'
-//   }
