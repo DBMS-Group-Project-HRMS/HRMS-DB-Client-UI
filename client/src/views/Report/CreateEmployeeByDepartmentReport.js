@@ -9,50 +9,47 @@ export function CreateEmployeeByDepartmentReport() {
   const [department, setDepartment] = useState("");
   const [parameters, setParameters] = useState(null);
   const [formValues, setformValues] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [show, setShow] = useState(false);
   const [alertType, setAlertType] = useState("");
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isSubmit) {
-      console.log(formValues);
-      console.log("creating a report");
-      let token = sessionStorage.getItem("token");
-      Axios.post("http://localhost:3001/report/create_employee_by_department_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
-        .then( (response)=>{
-          setAlertType("alert alert-success");
-          setAlertMessage(response.data.message);
-        })
-        .catch((err) => {
-          setAlertType("alert alert-danger");
-          setAlertMessage("");
-          switch (err.response.request.status) {
-            case 400:
-              setAlertMessage(err.response.data.message);
-              setShow(true);
-              break;
-            case 500:
-              setAlertMessage("Server Error!");
-              setShow(true);
-              break;
-            case 501:
-              setAlertMessage("Server Error!");
-              setShow(true);
-              break;
-            case 502:
-              setAlertMessage("Server Error!");
-              setShow(true);
-              break;
-            default:
-              break;
-          }
-        });
-      setIsSubmit(false);
-    }
-  },[isSubmit]);
+  // useEffect(() => {
+  //   if (isSubmit) {
+  //     let token = sessionStorage.getItem("token");
+  //     Axios.post("http://localhost:3001/report/create_employee_by_department_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
+  //       .then( (response)=>{
+  //         setAlertType("alert alert-success");
+  //         setAlertMessage(response.data.message);
+  //       })
+  //       .catch((err) => {
+  //         setAlertType("alert alert-danger");
+  //         setAlertMessage("");
+  //         switch (err.response.request.status) {
+  //           case 400:
+  //             setAlertMessage(err.response.data.message);
+  //             setShow(true);
+  //             break;
+  //           case 500:
+  //             setAlertMessage("Server Error!");
+  //             setShow(true);
+  //             break;
+  //           case 501:
+  //             setAlertMessage("Server Error!");
+  //             setShow(true);
+  //             break;
+  //           case 502:
+  //             setAlertMessage("Server Error!");
+  //             setShow(true);
+  //             break;
+  //           default:
+  //             break;
+  //         }
+  //       });
+  //     setIsSubmit(false);
+  //   }
+  // },[isSubmit]);
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
@@ -145,7 +142,6 @@ export function CreateEmployeeByDepartmentReport() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmit(true);
     navigate('/reports/employeeByDepartmentReport',{state:{formValues}});
   }
 
