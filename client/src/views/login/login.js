@@ -83,35 +83,53 @@ export function Login() {
     }, [isSubmit, username, password]);
 
     return(
-      <div>
-        <div className="col-6">
-        </div>
-          <div className="loginBody"> 
-            <div className='login'>
-                <h2 > Human Resource Management System </h2>
-                <div className="row">
-                  <div>
-                    <Form onSubmit={handleSubmit}>
-                      <Input type="text"  value={formValues.username} onChange={handleChange} className="text" name="username"/>
-                      <span>username</span>
+      <div className="loginBody">
+        <div className="container">
+          <div className=" row"> 
+            <div className=" background col-6">
+            </div>
+            <div className="col-6">
+              <div className='login'>
 
-                      <br/>
-                      <br/>
+              <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'/>
 
-                      <Input type="password" value={formValues.password} onChange={handleChange} className="text" name="password"/>
-                      <span>password</span>
+              <h2>WELCOME TO</h2>
+              <br/>
+              <br/>
+                <h1>
+                  <br/>
+                  <em>J</em>
+                  <em >U</em>
+                  <em class="planet left">P</em>
+                  <em>Y</em>
+                  <em class="planet right">T</em>
+                  <em>E</em>
+                  <em>R</em>
+                </h1>
+                  
 
-                      <br/>
-                      
-                      <button className="signin">
-                        Sign In
-                      </button>
-                    </Form>
-                  </div>
-                  <div>
-                    <a href="#">Forgot Password?</a>
+                  <div className="row">
+                    <div>
+                      <Form onSubmit={handleSubmit}>
+                        <Input type="text"  value={formValues.username} onChange={handleChange} className="text" name="username"/>
+                        <span>username</span>
+
+                        <br/>
+                        <br/>
+
+                        <Input type="password" value={formValues.password} onChange={handleChange} className="text" name="password"/>
+                        <span>password</span>
+
+                        <br/>
+                        
+                        <button className="signin">
+                          Sign In
+                        </button>
+                      </Form>
+                    </div>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>

@@ -1,33 +1,28 @@
-body,
-.signin {
-  /* background-color:#000; */
-  font-family: 'Montserrat', sans-serif;
-  color: rgba(255, 255, 255, 0);
-  font-size: 14px;
-  letter-spacing: 1px; 
-  margin-top:5%;
-    
+.loginBody {
+  background-color: rgb(255, 255, 255);
+  height: 700px; /* You must set a specified height */
+  
 }
 
-.loginBody {
-  background-image: url("../../public/assets/images/login.jpg");
-  background-color: #FFF;
-  height: 1280px; /* You must set a specified height */
-  background-position: bottom; /* Center the image */
+.background {
+  background-image: url("../../public/assets/images/vec8.jpg");
+  background-color: rgb(255, 255, 255);
+  height: 700px; /* You must set a specified height */
+  background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire */
 }
 
 .login {
-  position: relative;
-  height: 800px;
-  width: 500px;
+  height: 700px;
+  width: 400px;
   margin-top:auto;
   margin-left:auto;
   margin-right:auto;
   padding: 60px 60px;
   background-size: cover;
-  box-shadow: 0px 30px 60px -5px rgb(196, 182, 182);
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 30px 60px -5px rgb(255, 255, 255);
 }
 
 form {
@@ -35,20 +30,13 @@ form {
   
 }
 
-
 h2 {
-  padding-left: 12px;
   font-size: 22px;
   text-transform: uppercase;
-  padding-bottom: 5px;
   letter-spacing: 2px;
   display: inline-block;
   font-weight: 100;
   text-align: center;
-}
-
-h2:first-child {
-  padding-left: 0px;
 }
 
 span {
@@ -137,12 +125,14 @@ label {
 .signin {
   background-color: #1161ed;
   color: #FFF;
-  width: 100%;
+  width: 60%;
   padding: 10px 20px;
   display: block;
   height: 39px;
   border-radius: 20px;
   margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
   transition: all 0.5s ease-in-out;
   border: none;
   text-transform: uppercase;
@@ -158,9 +148,67 @@ label {
   outline: none;
 }
 
-hr {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  top: 85px;
+
+
+
+
+
+h1 {
+  display: flex;
+  justify-content: center;
   position: relative;
 }
 
+h1::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  border: 1.3vmin solid currentColor;
+  box-sizing: border-box;
+}
+
+em {
+  font-family: 'Josefin Sans', sans-serif;
+  color: currentColor;
+  font-size: 5vmin;
+  position: relative;
+  font-style: normal;
+  width: 5vmin;
+  text-align: center;
+}
+
+em.planet {
+  -webkit-animation: planet-rotate 4s linear infinite;
+  animation: planet-rotate 4s linear infinite;
+  position: relative;
+}
+
+em.planet::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+em.planet.left {
+  -webkit-transform-origin: 6.5vmin 2vmin;
+  transform-origin: 6.5vmin 2vmin;
+}
+
+em.planet.right {
+  -webkit-transform-origin: -2.2vmin 2vmin;
+  transform-origin: -2.2vmin 3vmin;
+}
+
+@-webkit-keyframes planet-rotate {
+  to {
+    -webkit-transform: rotate(1turn);
+  }
+}
+
+@keyframes planet-rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
