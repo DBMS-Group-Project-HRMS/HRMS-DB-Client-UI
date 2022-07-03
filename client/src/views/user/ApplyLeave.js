@@ -24,7 +24,6 @@ export function ApplyLeave() {
       Axios.get("http://localhost:3001/getleavetypes").then((response)=>{
         //setUserslist(response.data);
         const selectDetails = response.data;
-        console.log([...selectDetails[0]])
         setLeaveTypes([...selectDetails[0]]);
       });
     },[]);
