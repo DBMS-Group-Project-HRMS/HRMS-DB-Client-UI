@@ -150,29 +150,29 @@ export default function HRHomeTable() {
             </thead>
             <tbody {...getTableBodyProps()}>
               {users.map(({ id, firstname, lastname , type, status, birthday, email, Joined_date, nic_number, leave_count}) => (
-                    <tr>
-                      <td key={id}>
+                    <tr key={id}>
+                      <td>
                         {id}
                       </td>
-                      <td key={id}>
+                      <td>
                         <Link to={`/manager/view_user/${id}`}>{firstname} {lastname}</Link>
                       </td>
-                      <td key={id}>
+                      <td>
                         {type}
                       </td>
-                      <td key={id}>
+                      <td>
                         {status}
                       </td>
-                      <td key={id}>
+                      <td>
                         {dateFormatter(birthday)} 
                       </td>
-                      <td key={id}>
+                      <td>
                         {email} 
                       </td>
-                      <td key={id}>
+                      <td>
                         {dateFormatter(Joined_date)}
                       </td>
-                      <td key={id}>
+                      <td>
                         {nic_number}
                       </td>
                       <td key={id}>
