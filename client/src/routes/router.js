@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import React, { Redirect } from "react";
-import { HomeView } from "../views/home/HomeView";
 import { Login } from "../views/login/login";
 import { Logout } from "../views/login/logout";
 import { Register } from "../views/register/register";
@@ -21,8 +20,7 @@ export function Router(){
     return(
         <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomeView />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Login />} />
           <Route path="/logout" element={<Logout />} />
           <Route path="/register" element={<LevelAuthRoute levels={['level 4']}> <Register /> </LevelAuthRoute>}/>
           <Route path="/supervisorAllocation" element={<LevelAuthRoute levels={['level 4']}> <Supervisor /> </LevelAuthRoute>} />
