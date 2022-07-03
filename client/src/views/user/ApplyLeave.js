@@ -8,6 +8,7 @@ export function ApplyLeave() {
     const [alertMessage, setAlertMessage] = useState("");
     const [show, setShow] = useState(false);
     const [isSubmit, setIsSubmit] = useState(false);
+    const [leaveTypes, setLeaveTypes] = useState([]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,14 +20,21 @@ export function ApplyLeave() {
         setIsSubmit(true);
     }
 
+    useEffect( ()=> {
+      Axios.get("http://localhost:3001/getleavetypes").then((response)=>{
+        //setUserslist(response.data);
+        const selectDetails = response.data;
+        setLeaveTypes([...selectDetails[0]]);
+      });
+    },[]);
+
     useEffect(() => {
         if (isSubmit) {
           console.log(formValues);
           let token = sessionStorage.getItem("token");
-          console.log("Applying for a leave");
           Axios.post('http://localhost:3001/user/apply_leave', 
-          { headers:{Authorization : `Bearer ${token}`}},
-          formValues).then( (response)=>{
+          formValues, { headers:{Authorization : `Bearer ${token}`}}
+          ).then( (response)=>{
               setAlertType("alert alert-success");
               setAlertMessage(response.data.message);
               setShow(true);
@@ -73,6 +81,15 @@ export function ApplyLeave() {
                     <label className="label" >Reason</label>
                     <textarea className="form-control" name="reason" rows="5" onChange={handleChange} value={formValues.reason}></textarea>
                 </div>
+
+                <div className="form-group mb-3">
+                    <label className="label" >Employee Type</label>
+                    <select className="custom-select custom-select-lg mb-3" name="type" id="type" value={formValues.type} onChange={handleChange} required>
+                    <option >Open this select menu</option>
+                    {leaveTypes.map(category => <option key={category.id} value={category.id}>{category.type}</option>)}
+                    </select>
+                </div>
+
                 <div className="form-group">
                     <button type="submit" className="form-control btn btn-info rounded submit px-3" >
                         Submit
