@@ -49,6 +49,7 @@ export function Login() {
           navigate('/hrHome');
         } else {
           console.log("Invalid paygrade", level);
+          navigate('/');
         }
       })
       .catch((err) => {

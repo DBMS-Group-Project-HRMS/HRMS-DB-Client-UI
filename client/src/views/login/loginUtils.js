@@ -62,5 +62,5 @@ export const login = ({ username, password }) =>
 });
 
 export const logout = () => {
-    sessionStorage.removeItem("token");
+    sessionStorage.clear();
 };

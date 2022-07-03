@@ -1,4 +1,4 @@
-import { Fragment, Navigate, useEffect } from "react";
+import { Fragment, useEffect } from "react";
 import {getUserLevel} from "./getUserLevel";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +9,7 @@ export function LevelAuthRoute({ children, levels}) {
 
     useEffect(() => {
         if (!canAccess){
-            navigate('/login');
+            navigate('/');
         } else {
             
         }
