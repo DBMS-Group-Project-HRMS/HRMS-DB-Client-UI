@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useGlobalFilter, useRowSelect, useTable } from "react-table";
+import {Link} from 'react-router-dom';
+
 import {
   Button,
   Table,
@@ -10,6 +12,7 @@ import {
 } from "reactstrap";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 
 const COLUMNS = [
   { Header: "ID", accessor: "id" },
@@ -23,73 +26,12 @@ const COLUMNS = [
   { Header: "Leave Count", accessor: "leave_count" },
 ];
 
-const users = [
-  {
-    id: 1,
-    name: 'Danusha Hewagama',
-    birthday: '2022-06-14',
-    email: 'danush@gmail.com',
-    Joined_date: '2022-06-14',
-    nic_number: '990991812V',
-    photo: null,
-    leave_count: 0,
-    status: 'contract-fulltime',
-    line1: '8364',
-    line2: 'Galle road',
-    city: 'Galle',
-    district: 'Galle',
-    postal_code: '12321',
-    type: 'Manager',
-    paygrade: 'level 3',
-    phone_number: '0712342353',
-    relationship: 'Single'
-  },
-  {
-    id: 1,
-    name: 'Danusha Hewagama',
-    birthday: '2022-06-14',
-    email: 'danush@gmail.com',
-    Joined_date: '2022-06-14',
-    nic_number: '990991812V',
-    photo: null,
-    leave_count: 0,
-    status: 'contract-fulltime',
-    line1: '8364',
-    line2: 'Galle road',
-    city: 'Galle',
-    district: 'Galle',
-    postal_code: '12321',
-    type: 'Manager',
-    paygrade: 'level 3',
-    phone_number: '0712342353',
-    relationship: 'Single'
-  },
-  {
-    id: 1,
-    name: 'Danusha Hewagama',
-    birthday: '2022-06-14',
-    email: 'danush@gmail.com',
-    Joined_date: '2022-06-14',
-    nic_number: '990991812V',
-    photo: null,
-    leave_count: 0,
-    status: 'contract-fulltime',
-    line1: '8364',
-    line2: 'Galle road',
-    city: 'Galle',
-    district: 'Galle',
-    postal_code: '12321',
-    type: 'Manager',
-    paygrade: 'level 3',
-    phone_number: '0712342353',
-    relationship: 'Single'
-  },
-];
+
 
 export default function HRHomeTable() {
   const navigate = useNavigate();
-
-  // const [users, setUserDetails] = useState([]);
+  const [users, setUserDetails] = useState([]);
+  const [alertType, setAlertType] = useState("");
   const [show, setShow] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
@@ -106,39 +48,37 @@ export default function HRHomeTable() {
   };
 
 
-
-//   useEffect(() => {
-//     let token = sessionStorage.getItem("token");
-//       Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`}})
-//     .then((userList) => {
-//       setUserDetails(userList.data.data);
-//     })
-//     .catch((err) => {
-//       setAlertMessage("");
-//       //setAlertType("alert alert-danger");
-//       switch (err.response.request.status) {
-//         case 400:          
-//           setAlertMessage(err.response.data.message);
-//           setShow (true);
-//           break;
-//         case 500:
-//           setAlertMessage("Server Error!");
-//           setShow (true);
-//           break;
-//         case 501:
-//           setAlertMessage("Server Error!");
-//           setShow (true);
-//           break;
-//         case 502:
-//           setAlertMessage("Server Error!");
-//           setShow (true);
-//           break;
-//         default:
-//           break;
-//       }
-//     });
-// }, []);
-
+  useEffect(() => {
+    let token = sessionStorage.getItem("token");
+      Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`} })
+    .then((userList) => {
+      setUserDetails(userList.data.data);
+    })
+    .catch((err) => {
+      setAlertMessage("");
+      setAlertType("alert alert-danger");
+      switch (err.response.request.status) {
+        case 400:          
+          setAlertMessage(err.response.data.message);
+          setShow (true);
+          break;
+        case 500:
+          setAlertMessage("Server Error!");
+          setShow (true);
+          break;
+        case 501:
+          setAlertMessage("Server Error!");
+          setShow (true);
+          break;
+        case 502:
+          setAlertMessage("Server Error!");
+          setShow (true);
+          break;
+        default:
+          break;
+      }
+    });
+}, []);
 
 
   const {
@@ -161,136 +101,89 @@ export default function HRHomeTable() {
       hooks.visibleColumns.push((columns) => {
         return [
           ...columns,
-          {
-            id: "edit",
-            Cell: ({ row }) => (
-              <Button outline color="dark" >
-                {/* onClick={<ViewUserRequest/>} */}
-                View
-              </Button>
-            ),
-          },
-        ];
+        //   {
+        //     id: "edit",
+        //     Cell: ({ row }) => (
+        //       <Button outline color="dark" >
+        //         {/* onClick={<ViewUserRequest/>} */}
+        //         View
+        //       </Button>
+        //     ),
+        //   },  
+        ]; //Above is a dependency for a manager. Check Role!
       });
     }
   );
 
 
-  // const deleteRecords = () => {
-  //   const url = "http://localhost:8087/supplier/remove";
-  //   axios
-  //     .post(url, selectedrows)
-  //     .then((res) => {
-  //       setShowToFalse();
-  //       navigate(0);
-  //     })
-  //     .catch((err) => {
-  //       setAlertMessage("");
-  //       switch (err.response.request.status) {
-  //         case 400:
-  //           setAlertMessage(err.response.data.message);
-  //           setShowToTrue();
-  //           break;
-  //         case 401:
-  //           // auth.logout();
-  //           // auth.setAlert("Session Expired! Login Again");
-  //           navigate("/");
-  //           break;
-  //         case 500:
-  //           setAlertMessage("Server Error!");
-  //           setShowToTrue();
-  //           break;
-  //         case 501:
-  //           setAlertMessage("Server Error!");
-  //           setShowToTrue();
-  //           break;
-  //         case 502:
-  //           setAlertMessage("Server Error!");
-  //           setShowToTrue();
-  //           break;
-  //         default:
-  //           break;
-  //       }
-  //     });
-  // };
+
 
   return (
-    <React.Fragment>
-      {/* <Button
-        color="secondary"
-        outline
-        className="shadow-sm"
-        // onClick={deleteRecords}
-      >
-        Delete Supplier
-      </Button> */}
-      {/* {data = SupplyRecordsTable.selectedrows} */}
-      <br></br>
-      <Alert isOpen={show} color="danger" toggle={setShowToFalse}>
-        <p>{alertMessage}</p>
-      </Alert>
-      <br></br>
-      {/* <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} /> */}
-      <br></br>
-      <div>
-        <Table
-          responsive
-          striped
-          bordered
-          hover
-          className="Mytable table-striped shadow-sm"
-          {...getTableProps()}
-        >
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
-              prepareRow(row);
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
-                  })}
+    <>
+      <React.Fragment>
+        <br></br>
+        <Alert isOpen={show} color="danger" toggle={setShowToFalse}>
+          <p>{alertMessage}</p>
+        </Alert>
+        <br></br>
+        {/* <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} /> */}
+        <br></br>
+        <div>
+          <Table
+            responsive
+            striped
+            bordered
+            hover
+            className="Mytable table-striped shadow-sm"
+            {...getTableProps()}
+          >
+            <thead>
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th {...column.getHeaderProps()}>
+                      {column.render("Header")}
+                    </th>
+                  ))}
                 </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-      </div>
-    </React.Fragment>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {users.map(({ id, firstname, lastname , type, status, birthday, email, Joined_date, nic_number, leave_count}) => (
+                    <tr>
+                      <td key={id}>
+                        {id}
+                      </td>
+                      <td key={id}>
+                        <Link to={`/manager/view_user/${id}`}>{firstname} {lastname}</Link>
+                      </td>
+                      <td key={id}>
+                        {type}
+                      </td>
+                      <td key={id}>
+                        {status}
+                      </td>
+                      <td key={id}>
+                        {dateFormatter(birthday)} 
+                      </td>
+                      <td key={id}>
+                        {email} 
+                      </td>
+                      <td key={id}>
+                        {dateFormatter(Joined_date)}
+                      </td>
+                      <td key={id}>
+                        {nic_number}
+                      </td>
+                      <td key={id}>
+                        {leave_count}
+                      </td>
+                    </tr> 
+                ))}
+            </tbody>
+          </Table>
+        </div>
+      </React.Fragment>
+    </>
   );
 }
-
-// {
-//     id: 1
-//     firstname: 'sfjkks',
-//     lastname: 'wrgwrg',
-//     birthday: 2022-06-14T18:30:00.000Z,
-//     email: 'wrgrwgrwgwrgt',
-//     Joined_date: 2022-06-14T18:30:00.000Z,
-//     nic_number: '16541371',
-//     photo: null,
-//     leave_count: 0,
-//     name: 'grjbgjk',
-//     status: 'contract-fulltime',
-//     line1: '8364',
-//     line2: 'gjfbgkhgkj',
-//     city: 'wgjbkg',
-//     district: 'grjhrejkghjkr',
-//     postal_code: '1232',
-//     type: 'HR Manager',
-//     paygrade: 'level 3',
-//     phone_number: '1234567890',
-//     relationship: 'w,djfbjkwgf'
-//   }

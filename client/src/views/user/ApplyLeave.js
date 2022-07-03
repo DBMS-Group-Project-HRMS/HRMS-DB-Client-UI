@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 
-export function ApplyLeave(props) {
+export function ApplyLeave() {
 
     const [formValues, setformValues] = useState({});
     const [alertType, setAlertType] = useState("");
@@ -66,7 +66,7 @@ export function ApplyLeave(props) {
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="form-group mb-3">
-                    <label className="label" >Joined_date</label>
+                    <label className="label" >Absent Date?</label>
                     <input type="date" className="form-control"  name="leave_date" value={formValues.leave_date} onChange={handleChange} required/>
                 </div>
                 <div className="form-group mb-3">

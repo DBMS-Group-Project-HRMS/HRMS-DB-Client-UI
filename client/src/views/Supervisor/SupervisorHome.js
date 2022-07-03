@@ -50,7 +50,6 @@ class SupervisorHome extends Component {
           </ModalBody>
         </Modal>
 
-        <Link to="/"><button className="btn btn-outline-primary my" >Back Home</button></Link>
       </React.Fragment>
     );
   }

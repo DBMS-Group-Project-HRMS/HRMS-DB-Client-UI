@@ -39,9 +39,7 @@ class HRHome extends Component {
         <div className="Container-fluid shadow ">
         <h1 className="text-center mt-3 mb-0">HR Manager Home</h1>
           <br></br>
-          <Button outline color="dark" className="shadow-sm">
-            Add New User
-          </Button>
+          <Link to="/register"><button className="btn btn-outline-primary my" >User Register</button></Link>
 
           <HRHomeTable/>
         </div>

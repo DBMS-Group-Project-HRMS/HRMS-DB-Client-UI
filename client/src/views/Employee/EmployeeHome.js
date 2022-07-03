@@ -3,6 +3,7 @@ import "./EmployeeHome.css";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+
 class EmployeeHome extends Component {
   constructor(props) {
     super(props);
@@ -38,9 +39,14 @@ class EmployeeHome extends Component {
         <h1 class="text-center mt-3 mb-0">Employee Home</h1>
           <br></br>
             <div className='row'>
-                <Button outline color="dark" className="shadow-sm col-6">
-                    Apply Leave
-                </Button>
+                <Link to={'/user/apply_leave'}>
+                  <Button 
+                  outline color="dark" 
+                  className="shadow-sm col-6"
+                  >
+                      Apply Leave
+                  </Button>
+                </Link>
 
                 <br></br>
                 <br></br>
