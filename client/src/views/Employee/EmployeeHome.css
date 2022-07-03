@@ -1,13 +1,4 @@
-.Container-fluid {
-    border: 2px solid #d3d3d3;
-    border-radius: .5em;
-    margin: 1em;
-    padding: 1em;
-    text-align: left;
-    background-color: #C9DDEC;
-    /* margin-left: 100px; */
-  }
-  
+
   .form {
     padding: 1em;
   }
