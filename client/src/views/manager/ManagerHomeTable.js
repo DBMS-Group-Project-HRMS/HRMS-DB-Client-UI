@@ -27,7 +27,6 @@ const COLUMNS = [
 ];
 
 
-
 export default function ManagerHomeTable() {
   const navigate = useNavigate();
   const [users, setUserDetails] = useState([]);
@@ -52,6 +51,7 @@ export default function ManagerHomeTable() {
     let token = sessionStorage.getItem("token");
       Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`} })
     .then((userList) => {
+      console.log(userList.data.data)
       setUserDetails(userList.data.data);
     })
     .catch((err) => {
@@ -101,15 +101,6 @@ export default function ManagerHomeTable() {
       hooks.visibleColumns.push((columns) => {
         return [
           ...columns,
-        //   {
-        //     id: "edit",
-        //     Cell: ({ row }) => (
-        //       <Button outline color="dark" >
-        //         {/* onClick={<ViewUserRequest/>} */}
-        //         View
-        //       </Button>
-        //     ),
-        //   },  
         ]; //Above is a dependency for a manager. Check Role!
       });
     }
@@ -126,7 +117,6 @@ export default function ManagerHomeTable() {
           <p>{alertMessage}</p>
         </Alert>
         <br></br>
-        {/* <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} /> */}
         <br></br>
         <div>
           <Table

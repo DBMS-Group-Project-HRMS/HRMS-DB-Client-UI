@@ -13,8 +13,9 @@ import SupervisorHome from "../views/Supervisor/SupervisorHome";
 import HRHome from "../views/HRManager/HRHome";
 import ManagerHome from "../views/manager/ManagerHome";
 import EmployeeHome from "../views/Employee/EmployeeHome";
-import {LevelAuthRoute} from "../auth/LevelAuthRoute"
-import {ViewPaygrades} from "../views/HRManager/ViewPaygrades"
+import {LevelAuthRoute} from "../auth/LevelAuthRoute";
+import {ViewPaygrades} from "../views/HRManager/ViewPaygrades";
+import {ViewUserRequest} from "../views/Supervisor/ViewUserRequest";
 import {VieJobTitles} from "../views/HRManager/ViewJobTitles"
 
 export function Router(){
@@ -26,6 +27,7 @@ export function Router(){
           <Route path="/register" element={<LevelAuthRoute levels={['level 4']}> <Register /> </LevelAuthRoute>}/>
           <Route path="/supervisorAllocation" element={<LevelAuthRoute levels={['level 4']}> <Supervisor /> </LevelAuthRoute>} />
           <Route path="/supervisorHome" element={<LevelAuthRoute levels={['level 2']}> <SupervisorHome /></LevelAuthRoute>}/>
+          <Route path="/viewRequest/:user_id" element={<LevelAuthRoute levels={['level 2']}> <ViewUserRequest /></LevelAuthRoute>}/>
           <Route path="/hrHome" element={<LevelAuthRoute levels={['level 4']}> <HRHome /> </LevelAuthRoute>} />
           <Route path="/managerHome" element={<LevelAuthRoute levels={['level 3']}> <ManagerHome /> </LevelAuthRoute>}/>
           <Route path="/employeeHome" element={<LevelAuthRoute levels={['level 1']}> <EmployeeHome /> </LevelAuthRoute>} />
