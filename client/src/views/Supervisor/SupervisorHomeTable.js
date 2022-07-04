@@ -77,7 +77,7 @@ export default function SupervisorHomeTable() {
           break;
       }
     });
-}, []);
+});
 
 
   const {

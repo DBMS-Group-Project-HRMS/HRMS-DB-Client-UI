@@ -49,7 +49,6 @@ export function ViewUser() {
 
     
     return (
-    <body>
 
       <div className="container mt-5">
           <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
@@ -97,6 +96,5 @@ export function ViewUser() {
               </div>
             </div>
       </div>
-    </body>
 );
 }

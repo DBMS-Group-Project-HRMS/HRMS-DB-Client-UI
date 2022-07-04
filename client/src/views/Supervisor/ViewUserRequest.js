@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
-
+import Button from 'react-bootstrap/Button';
+import "./ViewUserRequest.css";
 
 export function ViewUserRequest(props) {
   
@@ -19,9 +20,8 @@ export function ViewUserRequest(props) {
     let token = sessionStorage.getItem("token");
     Axios.get(`http://localhost:3001/supervisor/getLeaveData/${leave_id}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
         setformValues(response.data.data[0]);
-
     });
-  },[]);
+  });
 
 
   const dateFormatter = (date) => {
@@ -114,77 +114,66 @@ export function ViewUserRequest(props) {
   }, [isAccept]);
 
   return (
-
-        <div className="container">
+          <div className="container">
             <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
                 {alertMessage}
             </div>
+            <div className="row d-flex justify-content-center">
+              <div className="col-md-12">
+                <div className="card p-3 py-4 bg-viewleave">
+                  <div className="text-center">
+                    <label className="label" >Leave Request Id:</label>
+                    <p className="bg-secondary p-1 px-4 rounded text-white">{formValues.id}</p>
+                  </div>
 
-            <form>
-                {/* <div className="form-group mb-3">
-                    <label className="label" >Employee ID</label>
-                    <input name="emp_ID" type="text" value={emp_ID} readOnly/>
-                </div> */}
+                  <div className="text-center">
+                    <label className="label" >Leave Status:</label>
+                    <p className="bg-primary p-1 px-4 rounded text-white">{formValues.status}</p>
+                  </div>
 
-                <div className="form-group mb-3">
-                    <label className="label" >Leave ID</label>
-                    <input name="name" type="text" value={formValues.id} readOnly/>
+                <br/>
+                  <div className="text-center mt-2">
+                    <label className="label" >Name:</label>
+                    <h5 className="mt-2 mb-0">{formValues.firstname} {formValues.lastname}</h5>
+                    <br/>
+    
+                    <div className="px-4 mt-1">
+                      <label className="label" >Leave Type:</label>
+                      <p className="fonts">{formValues.type}</p>
+                    </div>
+
+                    <div className="px-4 mt-1">
+                      <label className="label" >Date:</label>
+                      <p className="fonts">{dateFormatter(formValues.Date)}</p>
+                    </div>
+
+                    <div className="px-4 mt-1">
+                      <label className="label" >Reason:</label>
+                      <p className="fonts">{formValues.reason}</p>
+                    </div>
+
+                    <br/>
+                    <div>
+                      <button 
+                      className="btn btn-outline-primary"
+                      onClick={handleAccept} >
+                          Accept
+                      </button>
+                    </div>
+
+                    <br/>  
+                    <div>
+                      <button 
+                      className="btn btn-outline-danger" 
+                      onClick={handleReject}>
+                          Reject
+                      </button>
+                    </div>
+                    <br/>
+                  </div>
                 </div>
-
-                <div className="form-group mb-3">
-                    <label className="label" >First Name</label>
-                    <input name="name" type="text" value={formValues.firstname} readOnly/>
-                </div>
-
-                <div className="form-group mb-3">
-                    <label className="label" >Last Name</label>
-                    <input name="name" type="text" value={formValues.lastname} readOnly/>
-                </div>
-
-                <div className="form-group mb-3">
-                    <label className="label" >Leave Type</label>
-                    <input name="type" type="text" value={formValues.type} readOnly/>
-                </div>
-
-                <div className="form-group mb-3">
-                    <label className="label" >Date</label>
-                    <input name="date" type="text" value={dateFormatter(formValues.Date)} readOnly/>
-                </div>
-
-                <div className="form-group mb-3">
-                    <label className="label" >Status</label>
-                    <input name="status" type="text" value={formValues.status} readOnly/>
-                </div>
-
-                <div className="form-group mb-3">
-                    <label className="label" >Reason</label>
-                    <input name="reason" type="text" value={formValues.reason} readOnly/>
-                </div>
-
-                <div className="form-group">
-                    <button 
-                    className="form-control btn btn-info rounded px-3"
-                    onClick={handleAccept} >
-                        Accept
-                    </button>
-                </div>
-
-                <div className="form-group">
-                    <button 
-                    className="form-control btn btn-info rounded px-3" 
-                    onClick={handleReject}>
-                        Reject
-                    </button>
-                </div>
-
-                <div className="form-group">
-                    <button 
-                    className="form-control btn btn-info rounded px-3"
-                    onClick={"/supervisorHome"} >
-                        Cancel
-                    </button>
-                </div>
-            </form>
+              </div>
+            </div>
         </div>
   );
 }
