@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useGlobalFilter, useRowSelect, useTable } from "react-table";
 import {Link} from 'react-router-dom';
+import { ViewUserRequest } from "./ViewUserRequest";
 
 import {
   Button,
@@ -154,11 +155,9 @@ export default function SupervisorHomeTable() {
                         {reason}
                       </td>
                       <td key={id}>
-                        <Link to={`/viewRequest/${emp_ID}`}>
-                          <Button outline color="dark" >
-                            View
-                          </Button>
-                        </Link>
+                        {/* <Button outline color="dark" data-bs-toggle="modal" data-bs-target="#editUser" >
+                          View
+                        </Button> */}
                       </td>
                     </tr> 
                 ))}
@@ -166,6 +165,22 @@ export default function SupervisorHomeTable() {
           </Table>
         </div>
       </React.Fragment>
+
+      <div className="modal fade" id="editUser" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-scrollable">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="staticBackdropLabel">Edit User Details</h5>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">
+              {/* <ViewUserRequest/> */}
+            </div>
+            <div className="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -223,28 +223,3 @@ export function EditUser(props) {
 
   );
 }
-
-//{
-//     id: 36,
-//     empId: 33,
-//     firstname: 'sgsg',
-//     lastname: 'sgdh',
-//     birthday: '2022-06-16',
-//     email: 'shtdhtd@gmail.com',
-//     salary: 12414,
-//     Joined_date: '2022-06-15',
-//     nic_number: '131435',
-//     photo: null,
-//     leave_count: 0,
-//     name: 'fsgsg',
-//     status: 'contract-fulltime',
-//     line1: 'asgsrg',
-//     line2: 'shtd',
-//     city: 'djhtdj',
-//     district: 'tdjsdt',
-//     postal_code: '2344',
-//     type: 'Software Engineer',
-//     paygrade: 'level 2',
-//     phone_number: '1234567890',
-//     relationship: 'srhs'
-//   }
