@@ -18,15 +18,14 @@ export function ViewUserRequest(props) {
   useEffect( ()=> {
     let token = sessionStorage.getItem("token");
     Axios.get(`http://localhost:3001/supervisor/getLeaveData/${emp_ID}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
-      const data = response.data.data[0];
-
+        setformValues(response.data.data[0]);
     });
-  },[emp_ID]);
+  },[]);
 
 
-  // const dateFormatter = (date) => {
-  //   return date.split("T")[0];
-  // };
+  const dateFormatter = (date) => {
+    return date.split("T")[0];
+  };
 
   const handleAccept = (e) => {
     e.preventDefault();
@@ -106,7 +105,7 @@ export function ViewUserRequest(props) {
 
                 <div className="form-group mb-3">
                     <label className="label" >Date</label>
-                    <input name="date" type="text" value={(formValues.date)} readOnly/>
+                    <input name="date" type="text" value={dateFormatter(formValues.Date)} readOnly/>
                 </div>
 
                 <div className="form-group mb-3">

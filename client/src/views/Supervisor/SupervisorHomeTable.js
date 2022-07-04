@@ -32,7 +32,7 @@ export default function SupervisorHomeTable() {
   const [alertType, setAlertType] = useState("");
   const [show, setShow] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-  const [emp_ID, setEmpID] = useState(null);
+  const [emp_ID, setEmpID] = useState("");
 
   const setShowToTrue = () => {
     setShow(true);
@@ -156,7 +156,7 @@ export default function SupervisorHomeTable() {
                         {reason}
                       </td>
                       <td key={id}>
-                        <Button outline color="dark" data-bs-toggle="modal" data-bs-target="viewDetails" onClick={setEmpID(emp_ID)}>
+                        <Button outline color="dark" data-bs-toggle="modal" data-bs-target="#viewDetails">
                           View
                         </Button>
                       </td>
