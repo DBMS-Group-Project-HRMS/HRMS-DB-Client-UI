@@ -103,12 +103,6 @@ export function EmployeeByDepartmentReport() {
       });
   },[]);
 
-  // const parameterObject = parameterList.map((str) => ({ Header: str, accessor: str }));
-
-  // console.log(employeeList);
-  // console.log(parameterList);
-  // console.log(COLUMNS);
-
   const {
     getTableProps,
     getTableBodyProps,

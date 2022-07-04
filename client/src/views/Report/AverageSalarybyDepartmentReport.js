@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import Navbar from "../../navbar/navbar";
-import  { useLocation, Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useGlobalFilter, useRowSelect, useTable } from "react-table";
 import { Table } from "reactstrap";
 
 const COLUMNS = [
   { Header: "Department", accessor: "department" },
-  { Header: "Total leaves", accessor: "total_leaves" },
+  { Header: "Total Employee Number", accessor: "total_employees" },
+  { Header: "Average Salary", accessor: "avg_salary" },
 ];
 
-export function LeavesInPeriodByDepartmentReport() {
+export function AverageSalarybyDepartmentReport() {
   const [currentUsername, setCurrentUsername] = useState("");
-  const [leavesByDepartmentList, setLeavesByDepartmentList] = useState([]);
+  const [averageSalartList, setAverageSalartList] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [show, setShow] = useState(false);
   const [alertType, setAlertType] = useState("");
-
-  const location = useLocation();
-
-  const formValues = location.state.formValues;
 
   const user_id = sessionStorage.getItem("userId");
   const current = new Date();
@@ -35,7 +32,7 @@ export function LeavesInPeriodByDepartmentReport() {
       setAlertMessage("");
       setAlertType("alert alert-danger");
       switch (err.response.request.status) {
-        case 400:
+        case 400:          
           setAlertMessage(err.response.data.message);
           setShow (true);
           break;
@@ -59,9 +56,9 @@ export function LeavesInPeriodByDepartmentReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.post("http://localhost:3001/report/create_leaves_by_department_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
+    Axios.get("http://localhost:3001/report/create_average_salary_of_departments_report", { headers:{Authorization : `Bearer ${token}`} })
       .then( (response)=>{
-        setLeavesByDepartmentList(response.data.data);
+        setAverageSalartList(response.data.data);
       })
       .catch((err) => {
         setAlertType("alert alert-danger");
@@ -98,7 +95,7 @@ export function LeavesInPeriodByDepartmentReport() {
   } = useTable(
     {
       columns: COLUMNS,
-      data: leavesByDepartmentList,
+      data: averageSalartList,
     },
     useRowSelect,
     useGlobalFilter,
@@ -110,15 +107,15 @@ export function LeavesInPeriodByDepartmentReport() {
       });
     }
   );
-  
+
   return (
-    <div className="LeavesInPeriodByDepartmentReport">
+    <div className="ViewEmployeeByDepartmentReport">
 
       <Navbar/>
       
       <div className="Container-fluid shadow ">
         <h1 class="text-center mt-3 mb-3">Jupiter (Pvt) Limited</h1>
-        <h1 class="text-center mx-0 mb-3 p-0">Leaves taken from {formValues.from} to {formValues.to} by each Department</h1>
+        <h1 class="text-center mx-0 mb-3 p-0">Average Salary and Employee Count of Departments</h1>
         <h1 class="text-center mx-0 mb-3 p-0">Report</h1>
         
         <div class="d-flex">
@@ -164,10 +161,8 @@ export function LeavesInPeriodByDepartmentReport() {
 
       </div>
 
-      <Link to="/reports/createLeavesInPeriodByDepartmentReport"><button className="btn btn-outline-primary my" >Back</button></Link>
+      <Link to="/reports"><button className="btn btn-outline-primary my" >Back</button></Link>
 
     </div>
-  )
+  );
 }
-
-export default LeavesInPeriodByDepartmentReport;

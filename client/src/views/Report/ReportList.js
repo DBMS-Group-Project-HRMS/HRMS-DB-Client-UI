@@ -22,7 +22,7 @@ class ReportList extends Component {
         this.props.navigate("/reports/createEmployeeDetailsReport");
         return;
       case "4":
-        this.props.navigate("/reports/createCustomReport1");
+        this.props.navigate("/reports/averageSalarybyDepartmentReport");
         return;
       case "5":
         this.props.navigate("/reports/createCustomReport2");
@@ -70,8 +70,8 @@ class ReportList extends Component {
           </div>
           <div class="card mx-auto rounded-3 border-0 shadow my-3">
             <div class="card-body">
-              <h5 class="card-title">Custom Report 1</h5>
-              <p class="card-text mb-0">Custom Employee report 1</p>
+              <h5 class="card-title">Average Salary by Department Report</h5>
+              <p class="card-text mb-0">Average employee salary and number of employees of each Department Report</p>
               <div class="text-right">
                 <button id="4" class="btn btn-primary" onClick={this.gotoCreateReport} >Create Report</button>
               </div>

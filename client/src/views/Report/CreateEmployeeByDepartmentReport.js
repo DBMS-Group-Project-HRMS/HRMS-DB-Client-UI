@@ -15,42 +15,6 @@ export function CreateEmployeeByDepartmentReport() {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (isSubmit) {
-  //     let token = sessionStorage.getItem("token");
-  //     Axios.post("http://localhost:3001/report/create_employee_by_department_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
-  //       .then( (response)=>{
-  //         setAlertType("alert alert-success");
-  //         setAlertMessage(response.data.message);
-  //       })
-  //       .catch((err) => {
-  //         setAlertType("alert alert-danger");
-  //         setAlertMessage("");
-  //         switch (err.response.request.status) {
-  //           case 400:
-  //             setAlertMessage(err.response.data.message);
-  //             setShow(true);
-  //             break;
-  //           case 500:
-  //             setAlertMessage("Server Error!");
-  //             setShow(true);
-  //             break;
-  //           case 501:
-  //             setAlertMessage("Server Error!");
-  //             setShow(true);
-  //             break;
-  //           case 502:
-  //             setAlertMessage("Server Error!");
-  //             setShow(true);
-  //             break;
-  //           default:
-  //             break;
-  //         }
-  //       });
-  //     setIsSubmit(false);
-  //   }
-  // },[isSubmit]);
-
   useEffect(() => {
     let token = sessionStorage.getItem("token");
     Axios.get("http://localhost:3001/report/get_department_list", { headers:{Authorization : `Bearer ${token}`} })

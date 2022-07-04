@@ -13,10 +13,10 @@ import { ViewProfile } from "../views/user/ViewProfile";
 import { CreateEmployeeByDepartmentReport } from "../views/Report/CreateEmployeeByDepartmentReport";
 import { CreateLeavesInPeriodByDepartmentReport } from "../views/Report/CreateLeavesInPeriodByDepartmentReport";
 import { CreateEmployeeDetailsReport } from "../views/Report/CreateEmployeeDetailsReport";
-import { CreateCustomReport1 } from "../views/Report/CreateCustomReport1";
 import { CreateCustomReport2 } from "../views/Report/CreateCustomReport2";
 import { EmployeeByDepartmentReport } from "../views/Report/EmployeeByDepartmentReport";
 import { LeavesInPeriodByDepartmentReport } from "../views/Report/LeavesInPeriodByDepartmentReport";
+import { AverageSalarybyDepartmentReport } from "../views/Report/AverageSalarybyDepartmentReport";
 import SupervisorHome from "../views/Supervisor/SupervisorHome";
 import HRHome from "../views/HRManager/HRHome";
 import ManagerHome from "../views/manager/ManagerHome";
@@ -40,7 +40,7 @@ export function Router(){
         <Route path="/reports/createEmployeeByDepartmentReport" element={<LevelAuthRoute levels={['level 3']}> <CreateEmployeeByDepartmentReport /> </LevelAuthRoute>}/>
         <Route path="/reports/createLeavesInPeriodByDepartmentReport" element={<LevelAuthRoute levels={['level 3']}> <CreateLeavesInPeriodByDepartmentReport /> </LevelAuthRoute>}/>
         <Route path="/reports/createEmployeeDetailsReport" element={<LevelAuthRoute levels={['level 3']}> <CreateEmployeeDetailsReport /> </LevelAuthRoute>}/>
-        <Route path="/reports/createCustomReport1" element={<LevelAuthRoute levels={['level 3']}> <CreateCustomReport1 /> </LevelAuthRoute>}/>
+        <Route path="/reports/averageSalarybyDepartmentReport" element={<LevelAuthRoute levels={['level 3']}> <AverageSalarybyDepartmentReport /> </LevelAuthRoute>}/>
         <Route path="/reports/createCustomReport2" element={<LevelAuthRoute levels={['level 3']}> <CreateCustomReport2 /> </LevelAuthRoute>}/>
         <Route path="/reports/employeeByDepartmentReport" element={<LevelAuthRoute levels={['level 3']}> <EmployeeByDepartmentReport /> </LevelAuthRoute>}/>
         <Route path="/reports/leavesInPeriodByDepartmentReport" element={<LevelAuthRoute levels={['level 3']}> <LeavesInPeriodByDepartmentReport /> </LevelAuthRoute>}/>
