@@ -153,7 +153,7 @@ export function CreateEmployeeByDepartmentReport() {
       <div className="Container-fluid shadow ">
         <h1 class="text-center mt-3 mb-0">Create Employee By Department Report</h1>
 
-        <form method="post" className="signin-form" onSubmit={handleSubmit}>
+        <form method="post" className="create-employee-by-department-report-form" onSubmit={handleSubmit}>
 
           <div className="form-group mb-3">
             <label className="label" class="h3">Department</label>
