@@ -32,6 +32,7 @@ export default function SupervisorHomeTable() {
   const [alertType, setAlertType] = useState("");
   const [show, setShow] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [emp_ID, setEmpID] = useState(null);
 
   const setShowToTrue = () => {
     setShow(true);
@@ -155,9 +156,9 @@ export default function SupervisorHomeTable() {
                         {reason}
                       </td>
                       <td key={id}>
-                        {/* <Button outline color="dark" data-bs-toggle="modal" data-bs-target="#editUser" >
+                        <Button outline color="dark" data-bs-toggle="modal" data-bs-target="viewDetails" onClick={setEmpID(emp_ID)}>
                           View
-                        </Button> */}
+                        </Button>
                       </td>
                     </tr> 
                 ))}
@@ -166,15 +167,15 @@ export default function SupervisorHomeTable() {
         </div>
       </React.Fragment>
 
-      <div className="modal fade" id="editUser" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div className="modal fade" id="viewDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div className="modal-dialog modal-dialog-scrollable">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">Edit User Details</h5>
+              <h5 className="modal-title" id="staticBackdropLabel">View Leave Details</h5>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              {/* <ViewUserRequest/> */}
+              <ViewUserRequest emp_ID='37'/>
             </div>
             <div className="modal-footer">
             </div>

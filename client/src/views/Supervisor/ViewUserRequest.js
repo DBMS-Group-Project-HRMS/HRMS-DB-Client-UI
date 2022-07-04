@@ -1,78 +1,80 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
-import { Link } from "react-router-dom";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
-export function ViewUserRequest() {
+export function ViewUserRequest(props) {
   
   const navigate = useNavigate();
-  const { emp_ID } =useParams();
+
+  const emp_ID = props.emp_ID;
   const [formValues, setformValues] = useState([]);
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
   const [alertType, setAlertType] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [show, setShow] = useState(false);
-  const [isSubmit, setIsSubmit] = useState(false);
+  const [isAccept, setIsAccept] = useState(false);
 
   useEffect( ()=> {
-    Axios.get(`http://localhost:3001/supervisor/getLeaveData/${emp_ID}`).then((response)=>{
-      setformValues(response.data.data);
+    let token = sessionStorage.getItem("token");
+    Axios.get(`http://localhost:3001/supervisor/getLeaveData/${emp_ID}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
+      const data = response.data.data[0];
+
     });
-  },[]);
+  },[emp_ID]);
 
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setformValues({ ...formValues, [name]: value });
-  };
+  // const dateFormatter = (date) => {
+  //   return date.split("T")[0];
+  // };
 
-  const dateFormatter = (date) => {
-    return date.split("T")[0];
-  };
-
-  const handleSubmit = (e) => {
+  const handleAccept = (e) => {
     e.preventDefault();
-    setData(formValues);
-    setIsSubmit(true);
+    setIsAccept(true);
   };
 
-  useEffect(() => {
-    if (isSubmit) {
-        setData(formValues);
-        let token = sessionStorage.getItem("token");
-        Axios.post('http://localhost:3001/manager/edit_user/' + formValues.id, data, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
-            setAlertType("alert alert-success");
-            setAlertMessage(response.data.message);
-            setShow(true);
-          })
-          .catch((err) => {
-            setAlertType("alert alert-danger");
-            setAlertMessage("");
-            switch (err.response.request.status) {
-              case 400:
-                setAlertMessage(err.response.data.message);
-                setShow(true);
-                break;
-              case 500:
-                setAlertMessage("Server Error!");
-                setShow(true);
-                break;
-              case 501:
-                setAlertMessage("Server Error!");
-                setShow(true);
-                break;
-              case 502:
-                setAlertMessage("Server Error!");
-                setShow(true);
-                break;
-              default:
-                break;
-            }
-            });
-    }
-    setIsSubmit(false);
-  }, [isSubmit, formValues, data]);
+  const handleReject = (e) => {
+    e.preventDefault();
+    setIsAccept(false);
+  };
+
+
+  // useEffect(() => {
+  //   if (isAccept) {
+  //       setData(formValues);
+  //       let token = sessionStorage.getItem("token");
+  //       Axios.post('http://localhost:3001/manager/edit_user/' + formValues.id, data, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+  //           setAlertType("alert alert-success");
+  //           setAlertMessage(response.data.message);
+  //           setShow(true);
+  //         })
+  //         .catch((err) => {
+  //           setAlertType("alert alert-danger");
+  //           setAlertMessage("");
+  //           switch (err.response.request.status) {
+  //             case 400:
+  //               setAlertMessage(err.response.data.message);
+  //               setShow(true);
+  //               break;
+  //             case 500:
+  //               setAlertMessage("Server Error!");
+  //               setShow(true);
+  //               break;
+  //             case 501:
+  //               setAlertMessage("Server Error!");
+  //               setShow(true);
+  //               break;
+  //             case 502:
+  //               setAlertMessage("Server Error!");
+  //               setShow(true);
+  //               break;
+  //             default:
+  //               break;
+  //           }
+  //           });
+  //   }
+  //   setIsSubmit(false);
+  // }, [isSubmit, formValues, data]);
 
   return (
 
@@ -84,38 +86,43 @@ export function ViewUserRequest() {
             <form>
                 <div className="form-group mb-3">
                     <label className="label" >Employee ID</label>
-                    <input name="emp_ID" type="text" value={emp_ID}/>
+                    <input name="emp_ID" type="text" value={emp_ID} readOnly/>
                 </div>
 
                 <div className="form-group mb-3">
-                    <label className="label" >Name</label>
-                    <input name="name" type="text" value={formValues.firstname}/>
+                    <label className="label" >First Name</label>
+                    <input name="name" type="text" value={formValues.firstname} readOnly/>
+                </div>
+
+                <div className="form-group mb-3">
+                    <label className="label" >Last Name</label>
+                    <input name="name" type="text" value={formValues.lastname} readOnly/>
                 </div>
 
                 <div className="form-group mb-3">
                     <label className="label" >Leave Type</label>
-                    <input name="type" type="text" value={formValues.type}/>
+                    <input name="type" type="text" value={formValues.type} readOnly/>
                 </div>
 
                 <div className="form-group mb-3">
                     <label className="label" >Date</label>
-                    <input name="date" type="text" value={dateFormatter(formValues.date)}/>
+                    <input name="date" type="text" value={(formValues.date)} readOnly/>
                 </div>
 
                 <div className="form-group mb-3">
                     <label className="label" >Status</label>
-                    <input name="status" type="text" value={formValues.status}/>
+                    <input name="status" type="text" value={formValues.status} readOnly/>
                 </div>
 
                 <div className="form-group mb-3">
                     <label className="label" >Reason</label>
-                    <input name="reason" type="text" value={formValues.reason}/>
+                    <input name="reason" type="text" value={formValues.reason} readOnly/>
                 </div>
 
                 <div className="form-group">
                     <button 
                     className="form-control btn btn-info rounded px-3"
-                    onClick={handleSubmit} >
+                    onClick={handleAccept} >
                         Accept
                     </button>
                 </div>
@@ -123,7 +130,7 @@ export function ViewUserRequest() {
                 <div className="form-group">
                     <button 
                     className="form-control btn btn-info rounded px-3" 
-                    onClick={handleSubmit}>
+                    onClick={handleReject}>
                         Reject
                     </button>
                 </div>
