@@ -2,7 +2,6 @@ import React, { useState,useEffect } from "react";
 import Axios from 'axios';
 import "./register.css";
 import { Link } from "react-router-dom";
-//import SubHeader from "../../components/subHeader/subHeader";
 import { useNavigate } from "react-router-dom";
 import { dataJson } from "./data";
 
@@ -94,7 +93,7 @@ export function Register() {
            
             <div className="Container-fluid ">
               <div className="row justify-content-center ">
-                <div className=" text-center m-4"><h2>User Registration</h2> </div>
+                <h1 className="text-center mt-3 mb-0">User Registration</h1>
 
                 <form method="post" className="signin-form" onSubmit={handleSubmit}>
 
@@ -102,79 +101,86 @@ export function Register() {
                     <p className="text-danger">{errmsg}</p>
                   </div>
 
+                  <div className="row">
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >Firstname</label>
+                      <input type="text" className="form-control" name="firstname" id="firstname" value={formValues.firstname} onChange={handleChange} required/>
+                    </div>
 
-                  <div className="form-group mb-3">
-                    <label className="label" >Firstname</label>
-                    <input type="text" className="form-control" name="firstname" id="firstname" value={formValues.firstname} onChange={handleChange} required/>
-                  </div>
-
-                  <div className="form-group mb-3">
+                    <div className="form-group mb-3 col-6">
                     <label className="label" >Lastname</label>
                     <input type="text" className="form-control" name="lastname" id="lastname" value={formValues.lastname} onChange={handleChange} required/>
+                    </div>
                   </div>
 
-                  <div className="form-group mb-3">
-                    <label className="label" >Birthday</label>
-                    <input type="date" className="form-control"  name="birthday" id="birthday" value={formValues.birthday} onChange={handleChange} required/>
+                  <div className="row">
+
+                    <div className="form-group mb-3 col-4">
+                      <label className="label" >Birthday</label>
+                      <input type="date" className="form-control"  name="birthday" id="birthday" value={formValues.birthday} onChange={handleChange} required/>
+                    </div>
+                    <div className="form-group mb-3 col-4">
+                      <label className="label" >Salary</label>
+                      <input type="text" className="form-control"  name="salary" id="salary" value={formValues.salary} onChange={handleChange} required/>
+                    </div>
+                    <div className="form-group mb-3 col-4">
+                      <label className="label" >Joined_date</label>
+                      <input type="date" className="form-control"  name="Joined_date" id="Joined_date" value={formValues.Joined_date} onChange={handleChange} required/>
+                    </div>
+
                   </div>
 
-                  <div className="form-group mb-3">
-                      <label className="label" >Email</label>
-                      <input type="email" className="form-control"  name="email" id="email" value={formValues.email} onChange={handleChange} required/>
+                  <div className="row">
+                    <div className="form-group mb-3 col-6">
+                          <label className="label" >Email</label>
+                          <input type="email" className="form-control"  name="email" id="email" value={formValues.email} onChange={handleChange} required/>
+                      </div>
+
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >nic_number</label>
+                      <input type="text" className="form-control"  name="nic_number" id="nic_number" value={formValues.nic_number} onChange={handleChange} required/>
+                    </div>
                   </div>
 
-                  <div className="form-group mb-3">
-                    <label className="label" >Salary</label>
-                    <input type="text" className="form-control"  name="salary" id="salary" value={formValues.salary} onChange={handleChange} required/>
-                  </div>
-
-                  <div className="form-group mb-3">
-                    <label className="label" >Joined_date</label>
-                    <input type="date" className="form-control"  name="Joined_date" id="Joined_date" value={formValues.Joined_date} onChange={handleChange} required/>
-                  </div>
-
-                  <div className="form-group mb-3">
-                    <label className="label" >nic_number</label>
-                    <input type="text" className="form-control"  name="nic_number" id="nic_number" value={formValues.nic_number} onChange={handleChange} required/>
-                  </div>
-
-                  <div className="form-row">
-
+                  <div className="row">
                       <div className="form-group col-6">
-                      <label className="label" >phone_number1</label>
-                      <input type="text" className="form-control"  name="phonenumber1" id="phonenumber1" value={formValues.phonenumber1} onChange={handleChange} required/>
+                        <label className="label" >phone_number1</label>
+                        <input type="text" className="form-control"  name="phonenumber1" id="phonenumber1" value={formValues.phonenumber1} onChange={handleChange} required/>
                       </div>
 
                       <div className="form-group col-6">
-                      <label className="label" >phone_number2</label>
-                      <input type="text" className="form-control"  name="phonenumber2" id="phonenumber2" value={formValues.phonenumber2} onChange={handleChange} required/>
+                        <label className="label" >phone_number2</label>
+                        <input type="text" className="form-control"  name="phonenumber2" id="phonenumber2" value={formValues.phonenumber2} onChange={handleChange} required/>
                       </div>
+                  </div>
+                  
+                  <br/>
+                  <div className="row">
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >Department</label><br/>
+                      <select className="custom-select custom-select-lg mb-3" name="department" id="department" value={formValues.department} onChange={handleChange} >
+                        <option >Open this select menu</option>
+                        {depSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                      </select>
+                    </div>
 
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >Marital Status </label><br/>
+                      <select className="custom-select custom-select-lg mb-3" name="maritalStatus" id="maritalStatus" value={formValues.maritalStatus} onChange={handleChange} >
+                        <option >Open this select menu</option>
+                        {MsSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                      </select>
+                    </div>
                   </div>
 
-                  <div className="form-group mb-3">
-                    <label className="label" >Department</label>
-                    <select className="custom-select custom-select-lg mb-3" name="department" id="department" value={formValues.department} onChange={handleChange} >
-                      <option >Open this select menu</option>
-                      {depSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                    </select>
-                  </div>
-
-                  <div className="form-group mb-3">
-                    <label className="label" >Marital Status</label>
-                    <select className="custom-select custom-select-lg mb-3" name="maritalStatus" id="maritalStatus" value={formValues.maritalStatus} onChange={handleChange} >
-                      <option >Open this select menu</option>
-                      {MsSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                    </select>
-                  </div>
-
-                  <div className="form-group mb-3">
-                    <label className="label" >Employee Type</label>
-                    <select className="custom-select custom-select-lg mb-3" name="type" id="type" value={formValues.type} onChange={handleChange} >
-                      <option >Open this select menu</option>
-                      {EtSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                    </select>
-                  </div>
+                  <div className="row">
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >Employee Type </label><br/>
+                      <select className="custom-select custom-select-lg mb-3" name="type" id="type" value={formValues.type} onChange={handleChange} >
+                        <option >Open this select menu</option>
+                        {EtSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                      </select>
+                    </div>
 
                   {/* <div className="form-group mb-3">
                   <label className="label" >paygrade</label>
@@ -184,44 +190,50 @@ export function Register() {
                   </select>
                   </div> */}
 
-                  <div className="form-group mb-3">
-                    <label className="label" >Employee status</label>
-                    <select className="custom-select custom-select-lg mb-3" name="empStatus" id="empStatus" value={formValues.empStatus} onChange={handleChange} >
-                      <option >Open this select menu</option>
-                      {EsSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                    </select>
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >Employee status </label><br/>
+                      <select className="custom-select custom-select-lg mb-3" name="empStatus" id="empStatus" value={formValues.empStatus} onChange={handleChange} >
+                        <option >Open this select menu</option>
+                        {EsSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                      </select>
+                    </div>
                   </div>
 
-                  <br></br><br></br><br></br>
+                  <br/><br/>
 
                   <h3>Address</h3>
 
-                  <div className="form-group mb-3">
-                    <label className="label" >Line 1</label>
-                    <input type="text" className="form-control"  name="Line1" id="Line1" value={formValues.Line1} onChange={handleChange} required/>
+
+                  <div className="row">
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >Line 1</label>
+                      <input type="text" className="form-control"  name="Line1" id="Line1" value={formValues.Line1} onChange={handleChange} required/>
+                    </div>
+
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >Line 2</label>
+                      <input type="text" className="form-control"  name="Line2" id="Line2" value={formValues.Line2} onChange={handleChange} required/>
+                    </div>
                   </div>
 
-                  <div className="form-group mb-3">
-                    <label className="label" >Line 2</label>
-                    <input type="text" className="form-control"  name="Line2" id="Line2" value={formValues.Line2} onChange={handleChange} required/>
+                  <div className="row">
+                    <div className="form-group mb-3 col-4">
+                      <label className="label" >city</label>
+                      <input type="text" className="form-control"  name="City" id="City" value={formValues.City} onChange={handleChange}/>
+                    </div>
+
+                    <div className="form-group mb-3 col-4">
+                      <label className="label" >District</label>
+                      <input type="text" className="form-control"  name="District" id="District" value={formValues.District} onChange={handleChange} required/>
+                    </div>
+
+                    <div className="form-group mb-3 col-4">
+                      <label className="label" >Postal code</label>
+                      <input type="text" className="form-control"  name="Postal_Code" id="Postal_Code" value={formValues.Postal_Code} onChange={handleChange} required/>
+                    </div>
                   </div>
 
-                  <div className="form-group mb-3">
-                    <label className="label" >city</label>
-                    <input type="text" className="form-control"  name="City" id="City" value={formValues.City} onChange={handleChange}/>
-                  </div>
-
-                  <div className="form-group mb-3">
-                    <label className="label" >District</label>
-                    <input type="text" className="form-control"  name="District" id="District" value={formValues.District} onChange={handleChange} required/>
-                  </div>
-
-                  <div className="form-group mb-3">
-                    <label className="label" >Postal code</label>
-                    <input type="text" className="form-control"  name="Postal_Code" id="Postal_Code" value={formValues.Postal_Code} onChange={handleChange} required/>
-                  </div>
-
-                  <br></br><br></br><br></br>
+                  <br/><br/>
 
                   <h3>Emergency Contact Number Details</h3>
 
@@ -230,18 +242,21 @@ export function Register() {
                     <input type="text" className="form-control"  name="Name" id="Name" value={formValues.Name} onChange={handleChange} required/>
                   </div>
 
-                  <div className="form-group mb-3">
-                    <label className="label" >Phone Number</label>
-                    <input type="text" className="form-control"  name="phone_number" id="phone_number" value={formValues.phone_number} onChange={handleChange} required/>
+                  <div className="row">
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >Phone Number</label>
+                      <input type="text" className="form-control"  name="phone_number" id="phone_number" value={formValues.phone_number} onChange={handleChange} required/>
+                    </div>
+
+                    <div className="form-group mb-3 col-6">
+                      <label className="label" >Relation</label>
+                      <input type="text" className="form-control"  name="Relationship" id="Relationship" value={formValues.Relationship} onChange={handleChange}  required/>
+                    </div>
                   </div>
 
-                  <div className="form-group mb-3">
-                    <label className="label" >Relation</label>
-                    <input type="text" className="form-control"  name="Relationship" id="Relationship" value={formValues.Relationship} onChange={handleChange}  required/>
-                  </div>
+                  <br/><br/>
 
-                  <br></br><br></br><br></br>
-
+                  <h3>Credentials</h3>
                   <div className="form-group mb-3">
                     <label className="label" >username</label>
                     <input type="text" className="form-control"  name="username" id="username" value={formValues.username} onChange={handleChange} required/>
@@ -258,11 +273,10 @@ export function Register() {
                   </div>
 
                   <div className="form-group">
-                    <button type="submit" className="form-control btn btn-info rounded submit px-3" >
+                    <button type="submit" className="form-control btn btn-info rounded submit mb-3 px-3" >
                     Register
                     </button>
                   </div>
-                  
                 </form>
               </div>
             </div>
