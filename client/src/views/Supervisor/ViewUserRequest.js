@@ -121,10 +121,10 @@ export function ViewUserRequest(props) {
             </div>
 
             <form>
-                <div className="form-group mb-3">
+                {/* <div className="form-group mb-3">
                     <label className="label" >Employee ID</label>
                     <input name="emp_ID" type="text" value={emp_ID} readOnly/>
-                </div>
+                </div> */}
 
                 <div className="form-group mb-3">
                     <label className="label" >Leave ID</label>
