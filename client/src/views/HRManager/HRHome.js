@@ -36,7 +36,7 @@ class HRHome extends Component {
 
     return (
       <React.Fragment>
-        <div className="Container-fluid shadow ">
+        <div className="Container-fluid shadow background-HR">
         <h1 className="text-center mt-3 mb-0">HR Manager Home</h1>
           <br></br>
           <Link to="/register"><button className="btn btn-outline-primary my" >User Register</button></Link>

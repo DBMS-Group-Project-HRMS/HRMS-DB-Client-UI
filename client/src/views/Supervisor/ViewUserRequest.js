@@ -7,7 +7,7 @@ export function ViewUserRequest(props) {
   
   const navigate = useNavigate();
 
-  const emp_ID = props.emp_ID;
+  const leave_id = props.id;
   const [formValues, setformValues] = useState([]);
   // const [data, setData] = useState(null);
   const [alertType, setAlertType] = useState("");
@@ -17,7 +17,7 @@ export function ViewUserRequest(props) {
 
   useEffect( ()=> {
     let token = sessionStorage.getItem("token");
-    Axios.get(`http://localhost:3001/supervisor/getLeaveData/${emp_ID}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
+    Axios.get(`http://localhost:3001/supervisor/getLeaveData/${leave_id}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
         setformValues(response.data.data[0]);
 
     });

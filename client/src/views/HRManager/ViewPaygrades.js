@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import { EditPaygrade } from "./EditPaygrade";
+import "./ViewPaygrades.css"
 
 export function ViewPaygrades() {
   const [alertType, setAlertType] = useState("");
@@ -41,32 +42,34 @@ export function ViewPaygrades() {
   },[]);
 
   return (
-
-<div className="container">
+<div className="background-viewpay">
+<div className="container ">
   <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
       {alertMessage}
   </div>
 
-  <table className="table" id="myTable">
-    <thead>
-        <tr>
-        <th scope="col">Paygrade</th>
-        <th scope="col">Salary</th>
-        <th scope="col">No. of Leaves</th>
-        <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-      {paygradeDetails.map(({ ID, paygrade, salary, num_leaves }) => (
-          <tr  key={ID}>
-          <td scope="row">{paygrade}</td>
-          <td>{salary}</td>
-          <td>{num_leaves}</td>
-          <td><button className="btn btn-outline-primary px-4" data-bs-toggle="modal" data-bs-target={'#editPaygrade' + ID}>Edit Details</button></td>
-          </tr>   
-      ))}
-    </tbody>
-    </table>
+    <div>
+      <table className="table my-5" id="myTable">
+        <thead>
+            <tr>
+            <th scope="col">Paygrade</th>
+            <th scope="col">Salary</th>
+            <th scope="col">No. of Leaves</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+          {paygradeDetails.map(({ ID, paygrade, salary, num_leaves }) => (
+              <tr key={ID}>
+              <td scope="row">{paygrade}</td>
+              <td>{salary}</td>
+              <td>{num_leaves}</td>
+              <td><button className="btn btn-outline-primary px-4" data-bs-toggle="modal" data-bs-target={'#editPaygrade' + ID}>Edit Details</button></td>
+              </tr>   
+          ))}
+        </tbody>
+      </table>
+    </div>
 
     {paygradeDetails.map((paygrade) => (
     <div className="modal fade" id={'editPaygrade' + paygrade.ID} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -86,6 +89,7 @@ export function ViewPaygrades() {
     </div>
     ))};
 
+</div>
 </div>
 
   );

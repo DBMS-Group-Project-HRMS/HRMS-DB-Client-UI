@@ -86,12 +86,12 @@ export function Register() {
   },[isSubmit,formValues]);
 
   return (
-          <div className="container">
+          <div className="container ">
             <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
               {alertMessage}
             </div>
            
-            <div className="Container-fluid ">
+            <div className="Container-fluid background-reg">
               <div className="row justify-content-center ">
                 <h1 className="text-center mt-3 mb-0">User Registration</h1>
 
