@@ -85,8 +85,8 @@ export function ApplyLeave() {
                 <div className="form-group mb-3">
                     <label className="label" >Employee Type</label>
                     <select className="custom-select custom-select-lg mb-3" name="type" id="type" value={formValues.type} onChange={handleChange} required>
-                    <option >Open this select menu</option>
-                    {leaveTypes.map(category => <option key={category.id} value={category.id}>{category.type}</option>)}
+                      <option >Open this select menu</option>
+                      {leaveTypes.map(category => <option key={category.id} value={category.id}>{category.type}</option>)}
                     </select>
                 </div>
 

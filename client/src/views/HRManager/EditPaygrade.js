@@ -70,7 +70,7 @@ export function EditPaygrade(props) {
   <form onSubmit={handleSubmit}>
     <div className="form-group mb-3">
       <label className="label" >Paygrade</label>
-     <p> {formValues.paygrade}</p>
+     <p className="form-control"> {formValues.paygrade}</p>
     </div>
 
     <div className="form-group mb-3">
