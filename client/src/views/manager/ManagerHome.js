@@ -35,7 +35,7 @@ class ManagerHome extends Component {
 
     return (
       <React.Fragment>
-        <div className="Container-fluid shadow ">
+        <div className="Container-fluid shadow bg-manager">
         <h1 class="text-center mt-3 mb-0">Manager Home</h1>
           <br></br>
           <ManagerHomeTable/>

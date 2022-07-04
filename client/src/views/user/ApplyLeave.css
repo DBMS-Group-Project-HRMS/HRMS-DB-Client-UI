@@ -1,18 +1,4 @@
-
-  .form {
-    padding: 1em;
-  }
-  
-  label {
-    font-weight: 600;
-  }
-
-  a{
-    cursor: pointer;
-  }
-
-
-  .bg-employee {
+.leave {
     background: linear-gradient(0deg, rgba(250, 248, 248, 0.86), rgba(223, 238, 243, 0.86)), url(/public/assets/images/vec3.jpg);
     background-size:contain;
     color: rgb(0, 0, 0);
@@ -20,4 +6,4 @@
     position:relative;
     /* background-repeat: no-repeat; */
     background-position: center;
-  }
+}

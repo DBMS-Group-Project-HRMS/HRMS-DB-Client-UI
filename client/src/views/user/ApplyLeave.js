@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
+import "./ApplyLeave.css";
 
 export function ApplyLeave() {
 
@@ -68,7 +69,7 @@ export function ApplyLeave() {
       },[isSubmit,formValues]);
 
     return (
-        <div className="container">
+        <div className="container leave mb-3 mt-3">
             <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
                 {alertMessage}
             </div>
@@ -91,8 +92,9 @@ export function ApplyLeave() {
                 </div>
 
                 <div className="form-group">
-                    <button type="submit" className="form-control btn btn-info rounded submit px-3" >
-                        Submit
+                
+                    <button type="submit" className="form-control btn btn-info rounded submit px-3 mb-" >
+                      Submit
                     </button>
                 </div>
             </form>

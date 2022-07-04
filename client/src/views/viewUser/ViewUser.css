@@ -1,6 +1,3 @@
-body{
-    background:#eee;
-}
 
 .card{
     border:none;
@@ -15,7 +12,7 @@ body{
     position:absolute;
     left:0;
     top:0;
-    width:4px;
+    width:auto;
     height:100%;
     background-color:rgb(212, 195, 195);
     transform:scaleY(1);
@@ -28,9 +25,9 @@ body{
     position:absolute;
     left:0;
     top:0;
-    width:4px;
+    width:auto;
     height:100%;
-    background-color:rgb(139, 88, 88);
+    background-color:rgb(135, 164, 207);
     transform:scaleY(0);
     transition:all 0.5s;
     transform-origin: bottom
@@ -41,11 +38,16 @@ body{
 }
 
 .fonts{
-    font-size:11px;
+    font-size:13px;
 }
 
-.buttons button:nth-child(1):hover{
-       color:rgb(139, 88, 88);
-       padding:auto;
-       
+
+.bg-viewuser {
+    background: linear-gradient(0deg, rgba(250, 248, 248, 0.86), rgba(223, 238, 243, 0.86)), url(/public/assets/images/vec3.jpg);
+    background-size:contain;
+    color: rgb(0, 0, 0);
+    overflow: auto;
+    position:relative;
+    /* background-repeat: no-repeat; */
+    background-position: center;
 }
