@@ -13,18 +13,26 @@ export function ViewUserRequest(props) {
   const [alertType, setAlertType] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [show, setShow] = useState(false);
-  const [isAccept, setIsAccept] = useState(false);
+  const [isAccept, setIsAccept] = useState(null);
 
   useEffect( ()=> {
     let token = sessionStorage.getItem("token");
     Axios.get(`http://localhost:3001/supervisor/getLeaveData/${emp_ID}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
         setformValues(response.data.data[0]);
+
     });
   },[]);
 
 
   const dateFormatter = (date) => {
-    return date.split("T")[0];
+    if ((date) != null) {
+        return date.split("T")[0];
+    }
+
+    else {
+        return date
+    }
+    
   };
 
   const handleAccept = (e) => {
@@ -38,42 +46,72 @@ export function ViewUserRequest(props) {
   };
 
 
-  // useEffect(() => {
-  //   if (isAccept) {
-  //       setData(formValues);
-  //       let token = sessionStorage.getItem("token");
-  //       Axios.post('http://localhost:3001/manager/edit_user/' + formValues.id, data, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
-  //           setAlertType("alert alert-success");
-  //           setAlertMessage(response.data.message);
-  //           setShow(true);
-  //         })
-  //         .catch((err) => {
-  //           setAlertType("alert alert-danger");
-  //           setAlertMessage("");
-  //           switch (err.response.request.status) {
-  //             case 400:
-  //               setAlertMessage(err.response.data.message);
-  //               setShow(true);
-  //               break;
-  //             case 500:
-  //               setAlertMessage("Server Error!");
-  //               setShow(true);
-  //               break;
-  //             case 501:
-  //               setAlertMessage("Server Error!");
-  //               setShow(true);
-  //               break;
-  //             case 502:
-  //               setAlertMessage("Server Error!");
-  //               setShow(true);
-  //               break;
-  //             default:
-  //               break;
-  //           }
-  //           });
-  //   }
-  //   setIsSubmit(false);
-  // }, [isSubmit, formValues, data]);
+  useEffect(() => {
+    let token = sessionStorage.getItem("token");
+    if (isAccept) {
+        Axios.post(`http://localhost:3001/supervisor/accept_leave/${formValues.id}`, [], { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+            setAlertType("alert alert-success");
+            setAlertMessage(response.data.message);
+            setShow(true);
+          })
+          .catch((err) => {
+            setAlertType("alert alert-danger");
+            setAlertMessage("");
+            switch (err.response.request.status) {
+              case 400:
+                setAlertMessage(err.response.data.message);
+                setShow(true);
+                break;
+              case 500:
+                setAlertMessage("Server Error!");
+                setShow(true);
+                break;
+              case 501:
+                setAlertMessage("Server Error!");
+                setShow(true);
+                break;
+              case 502:
+                setAlertMessage("Server Error!");
+                setShow(true);
+                break;
+              default:
+                break;
+            }
+            })
+    } else if (isAccept === false) {
+        
+        Axios.post(`http://localhost:3001/supervisor/reject_leave/${formValues.id}`, [], { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+            setAlertType("alert alert-success");
+            setAlertMessage(response.data.message);
+            setShow(true);
+          })
+          .catch((err) => {
+            setAlertType("alert alert-danger");
+            setAlertMessage("");
+            switch (err.response.request.status) {
+              case 400:
+                setAlertMessage(err.response.data.message);
+                setShow(true);
+                break;
+              case 500:
+                setAlertMessage("Server Error!");
+                setShow(true);
+                break;
+              case 501:
+                setAlertMessage("Server Error!");
+                setShow(true);
+                break;
+              case 502:
+                setAlertMessage("Server Error!");
+                setShow(true);
+                break;
+              default:
+                break;
+            }
+            })
+    }
+    setIsAccept(null);
+  }, [isAccept]);
 
   return (
 
@@ -86,6 +124,11 @@ export function ViewUserRequest(props) {
                 <div className="form-group mb-3">
                     <label className="label" >Employee ID</label>
                     <input name="emp_ID" type="text" value={emp_ID} readOnly/>
+                </div>
+
+                <div className="form-group mb-3">
+                    <label className="label" >Leave ID</label>
+                    <input name="name" type="text" value={formValues.id} readOnly/>
                 </div>
 
                 <div className="form-group mb-3">
