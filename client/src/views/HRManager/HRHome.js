@@ -42,6 +42,7 @@ class HRHome extends Component {
           <Link to="/register"><button className="btn btn-outline-primary my" >User Register</button></Link>
           <Link to="/hr/view_paygrades"><button className="btn btn-outline-primary mx-3" >View Paygrades</button></Link>
           <Link to="/hr/view_jobTitles"><button className="btn btn-outline-primary mx-3" >View Job Titles</button></Link>
+          <Link to="/supervisorAllocation"><button className="btn btn-outline-primary mx-3" >Supervisor Allocation</button></Link>
           <HRHomeTable/>
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>

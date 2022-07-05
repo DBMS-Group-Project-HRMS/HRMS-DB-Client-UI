@@ -5,22 +5,18 @@
   width: 250px;
   cursor: pointer;
 }
-
-/* 
-========================
-      BUTTON ONE
-========================
-*/
-.cardSize{
-  width: 12rem;
-}
 .btn-sm {
   padding-top: 0px;
   padding-bottom: 50px;
   font-size: 15px;
   border-radius: 10px;
-  width:100%;
+  width:60px;
+  height: 52px;
 }
+.cardSize{
+  width: 12rem;
+}
+
 .btnSize{
   width: 6rem;
   height: 0rem;
@@ -29,11 +25,25 @@
   padding-bottom: 50px;
 }
 
+/* 
+========================
+      BUTTON ONE
+========================
+*/
+
+
 .btn-one {
   color: rgb(0, 0, 0);
   transition: all 0.3s;
   position: relative;
+  
+  line-height: 50px;
+  height: 50px;
+  text-align: center;
+  width: 250px;
+  cursor: pointer;
 }
+
 .btn-one span {
   transition: all 0.3s;
 }

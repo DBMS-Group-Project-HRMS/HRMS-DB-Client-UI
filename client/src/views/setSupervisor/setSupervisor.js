@@ -5,43 +5,40 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./button.css";
 
-function getSearch() {
-    // Declare variables
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("searhResult");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-  
-    // Loop through all table rows, and hide those who don't match the search query
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-          tr[i].style.display = "";
-        } else {
-          tr[i].style.display = "none";
-        }
-      }
+function notInList(element,list){
+  for(let x=0;x<list.length;x++){
+    if(element==list[x]){
+      return false;
     }
   }
+  return true;
+}
+
+  //Emp_Id: 35
+//Sup_Id: 34
 
 export function SetSupervisor(props){
     const uID = props.userID;
-    const firstname = props.fname;
-    const lastname = props.lname;
+    const Emfirstname = props.fname;
+    const Emlastname = props.lname;
     const allUsers = props.allU;
-    console.log("fname,lname",firstname,lastname)
+    const Supervisor_list = props.supList;
+    const users_supList=[];
+    const [searchedVal, setSearchedVal] = useState("");
 
-    const filteredList = allUsers.filter(function(e){ return e.empId != uID});
+    for(let x=0;x<Supervisor_list.length;x++){
+      if(Supervisor_list[x].Emp_Id==uID){
+        users_supList.push(Supervisor_list[x].Sup_Id);
+      }
+    }
+
+    const filteredList = allUsers.filter(function(e){ return e.empId != uID && notInList(e.empId,users_supList) });
 
     const assign = (e)=>{
         const Employee_ID = uID;
         const Supervisor_ID = e.currentTarget.dataset.id;
         const supervisorDetails = {Sup_ID:Supervisor_ID,Emp_ID:Employee_ID};
-        console.log("empId,SupId: ",Employee_ID,Supervisor_ID);
-        console.log("hello im assigning",e.currentTarget.dataset.id)
+        console.log("assigned empId,SupId: ",Employee_ID,Supervisor_ID);
         let token = sessionStorage.getItem("token");
         Axios.post('http://localhost:3001/hr/setSupervisor', supervisorDetails, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
           //setAlertType("alert alert-success");
@@ -74,23 +71,23 @@ export function SetSupervisor(props){
     };
 
     return(
-        <span>
-            <button className="btn" data-bs-toggle="modal" data-bs-target={`#supervisorSet${uID}`}>{firstname} {lastname}</button>
+        <div>
+            <button className="btn btn-one" data-bs-toggle="modal" data-bs-target={`#supervisorSet${uID}`}>{Emfirstname} {Emlastname}</button>
 
             <div className="modal fade" id={`supervisorSet${uID}`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-scrollable">
                 <div className="modal-content">
                     <div className="modal-header">
-                    <h5 className="modal-title" id="staticBackdropLabel">Assign a Supervisor for {uID}</h5>
+                    <h5 className="modal-title" id="staticBackdropLabel">Assign a Supervisor for {Emfirstname} {Emlastname}</h5>
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
 
-                    <div class="input-group rounded">
-                    <input type="search" id="searhResult" class="form-control rounded" onKeyUp={getSearch} placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                    <div className="input-group rounded">
+                    <input type="search" id="searhResult" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" onChange={(e) => setSearchedVal(e.target.value)}  />
                     </div>
 
-                    <table class="table" id="myTable">
+                    <table className="table" id="myTable">
                     <thead>
                         <tr>
                         <th scope="col">Name</th>
@@ -101,13 +98,19 @@ export function SetSupervisor(props){
                     </thead>
                     <tbody>
 
-
-                    {filteredList.map(({ empId, firstname, lastname,dept_name,paygrade }) => (
+                    {filteredList
+                    .filter((row) =>
+                    !searchedVal.length || row.firstname
+                      .toString()
+                      .toLowerCase()
+                      .includes(searchedVal.toString().toLowerCase()) 
+                    )
+                    .map(({ empId, firstname, lastname,dept_name,paygrade }) => (
                         <tr  key={empId}>
                         <td scope="row">{firstname} {lastname}</td>
                         <td>{dept_name}</td>
                         <td>{paygrade}</td>
-                        <td><button onClick={assign} data-id={empId} class="btn btn-info btn-sm">assign</button></td>
+                        <td><button onClick={assign} data-id={empId} class="btn btn-info btn-sm" data-bs-dismiss="modal">assign</button></td>
                         </tr>
                     ))}
 
@@ -120,7 +123,7 @@ export function SetSupervisor(props){
                 </div>
                 </div>
             </div>
-        </span>
+        </div>
 
     );
 }
