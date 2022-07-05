@@ -16,7 +16,8 @@ import { useNavigate } from "react-router-dom";
 
 
 const COLUMNS = [
-  { Header: "Leave Id", accessor: "emp_ID" },
+  { Header: "Leave ID", accessor: "id" },
+  { Header: "Type", accessor: "type" },
   { Header: "Date", accessor: "Date" },
   { Header: "status", accessor: "status" },
   { Header: "reason", accessor: "reason" },
@@ -30,6 +31,8 @@ export default function EmployeeHomeTable() {
   const [show, setShow] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
   const [emp_ID, setEmpID] = useState("");
+
+  const user_id = sessionStorage.getItem('userId')
 
   const setShowToTrue = () => {
     setShow(true);
@@ -46,9 +49,10 @@ export default function EmployeeHomeTable() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-      Axios.get("http://localhost:3001/supervisor/get_leave_requests", { headers:{Authorization : `Bearer ${token}`} })
+      Axios.get(`http://localhost:3001/user/get_leaves/${user_id}`, { headers:{Authorization : `Bearer ${token}`} })
     .then((leaves) => {
       setLeaves(leaves.data.data);
+      console.log(leaves)
     })
     .catch((err) => {
       setAlertMessage("");
@@ -132,10 +136,10 @@ export default function EmployeeHomeTable() {
               ))}
             </thead>
             <tbody {...getTableBodyProps()}>
-              {leaves.map(({ id, emp_ID, type , Date, status, reason}) => (
+            {leaves.map(({ id, type , Date, status, reason}) => (
                     <tr>
                       <td key={id}>
-                        {emp_ID}
+                        {id}
                       </td>
                       <td key={id}>
                         {type}
@@ -148,11 +152,6 @@ export default function EmployeeHomeTable() {
                       </td>
                       <td key={id}>
                         {reason}
-                      </td>
-                      <td key={id}>
-                        <Button outline color="dark" data-bs-toggle="modal" data-bs-target="#viewDetails">
-                          View
-                        </Button>
                       </td>
                     </tr> 
                 ))}
