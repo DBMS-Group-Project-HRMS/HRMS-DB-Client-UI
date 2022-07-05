@@ -3,11 +3,11 @@ import {Navbar, Container, Nav} from 'react-bootstrap';
 
 function Header() {
 
-    const level = sessionStorage.getItem("paygrade");
+    let level = sessionStorage.getItem("paygrade");
     const [url, setURL] = useState(level);
 
     useEffect(() => {
-        console.log(level);
+        level = sessionStorage.getItem("paygrade");
         if (level == 'level 1'){
             setURL('/employeeHome');
         } else if(level == 'level 2'){
@@ -19,7 +19,7 @@ function Header() {
         } else {
             setURL('/');
         }
-    }, [level]);
+    });
 
     return(
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">

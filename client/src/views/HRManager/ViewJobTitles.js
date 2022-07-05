@@ -47,13 +47,13 @@ export function VieJobTitles() {
       {alertMessage}
   </div>
 
-  <button className="btn btn-outline-primary px-4" data-bs-toggle="modal" data-bs-target="#addTitle">Add Job Title</button>
+  <button className="btn btn-outline-primary px-4 my-3" data-bs-toggle="modal" data-bs-target="#addTitle">Add Job Title</button>
     <ul>
     {jobTitles.map(({ID, type}) => (
         <li key={ID}>
             {type}
         </li>
-    ))};
+    ))}
     </ul>
     
     <div className="modal fade" id="addTitle" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

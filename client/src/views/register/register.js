@@ -16,7 +16,6 @@ export function Register() {
   
   const [formValues, setformValues] = useState(dataJson);
   const [isSubmit, setIsSubmit] = useState(false);
-  //const [data, setData] = useState(null);
 
   const [depSelect, setDepSelect] = useState([]);
   const [MsSelect, setMsSelect] = useState([]);
@@ -87,11 +86,11 @@ export function Register() {
 
   return (
           <div className="container ">
-            <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
-              {alertMessage}
-            </div>
            
             <div className="Container-fluid background-reg">
+              <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
+                {alertMessage}
+              </div>
               <div className="row justify-content-center ">
                 <h1 className="text-center mt-3 mb-0">User Registration</h1>
 
@@ -145,12 +144,12 @@ export function Register() {
                   <div className="row">
                       <div className="form-group col-6">
                         <label className="label" >phone_number1</label>
-                        <input type="text" className="form-control"  name="phonenumber1" id="phonenumber1" value={formValues.phonenumber1} onChange={handleChange} required/>
+                        <input type="text" maxlength="10" className="form-control"  name="phonenumber1" id="phonenumber1" value={formValues.phonenumber1} onChange={handleChange} required/>
                       </div>
 
                       <div className="form-group col-6">
                         <label className="label" >phone_number2</label>
-                        <input type="text" className="form-control"  name="phonenumber2" id="phonenumber2" value={formValues.phonenumber2} onChange={handleChange} required/>
+                        <input type="text" maxlength="10" className="form-control"  name="phonenumber2" id="phonenumber2" value={formValues.phonenumber2} onChange={handleChange} required/>
                       </div>
                   </div>
                   
@@ -181,14 +180,6 @@ export function Register() {
                         {EtSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                       </select>
                     </div>
-
-                  {/* <div className="form-group mb-3">
-                  <label className="label" >paygrade</label>
-                  <select className="custom-select custom-select-lg mb-3" name="paygrade" id="paygrade" value={formValues.paygrade} onChange={handleChange} >
-                  <option >Open this select menu</option>
-                  {PgSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                  </select>
-                  </div> */}
 
                     <div className="form-group mb-3 col-6">
                       <label className="label" >Employee status </label><br/>
@@ -245,7 +236,7 @@ export function Register() {
                   <div className="row">
                     <div className="form-group mb-3 col-6">
                       <label className="label" >Phone Number</label>
-                      <input type="text" className="form-control"  name="phone_number" id="phone_number" value={formValues.phone_number} onChange={handleChange} required/>
+                      <input type="text" maxlength="10" className="form-control"  name="phone_number" id="phone_number" value={formValues.phone_number} onChange={handleChange} required/>
                     </div>
 
                     <div className="form-group mb-3 col-6">

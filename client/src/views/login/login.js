@@ -16,6 +16,7 @@ export function Login() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [show, setShow] = useState(false);
   const [alertMessage, setAlertMessage] = useState('')
+  const [alertType, setAlertType] = useState("");
 
   const navigate = useNavigate();
 
@@ -53,9 +54,10 @@ export function Login() {
         }
       })
       .catch((err) => {
+        setAlertType("alert alert-danger");
         switch (err.request.status) {
           case 400:
-              setAlertMessage(err.response.data.message);
+            setAlertMessage("Incorrect username or password");
             setShow(true);
             break;
           case 401:
@@ -85,6 +87,9 @@ export function Login() {
     return(
       <div className="loginBody">
         <div className="container">
+            <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
+                {alertMessage}
+            </div>
           <div className=" row"> 
             <div className=" background col-6">
             </div>
