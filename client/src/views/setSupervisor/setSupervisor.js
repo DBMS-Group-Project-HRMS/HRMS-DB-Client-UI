@@ -76,7 +76,7 @@ export function SetSupervisor(props){
 
             <div className="modal fade" id={`supervisorSet${uID}`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-scrollable">
-                <div className="modal-content">
+                <div className="modal-content bg-setsupervisor2">
                     <div className="modal-header">
                     <h5 className="modal-title" id="staticBackdropLabel">Assign a Supervisor for {Emfirstname} {Emlastname}</h5>
                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -110,7 +110,7 @@ export function SetSupervisor(props){
                         <td scope="row">{firstname} {lastname}</td>
                         <td>{dept_name}</td>
                         <td>{paygrade}</td>
-                        <td><button onClick={assign} data-id={empId} class="btn btn-info btn-sm" data-bs-dismiss="modal">assign</button></td>
+                        <td><button onClick={assign} data-id={empId} className="btn btn-info btn-sm" data-bs-dismiss="modal">assign</button></td>
                         </tr>
                     ))}
 

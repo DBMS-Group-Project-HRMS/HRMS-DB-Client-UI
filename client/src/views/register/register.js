@@ -144,12 +144,12 @@ export function Register() {
                   <div className="row">
                       <div className="form-group col-6">
                         <label className="label" >phone_number1</label>
-                        <input type="text" maxlength="10" className="form-control"  name="phonenumber1" id="phonenumber1" value={formValues.phonenumber1} onChange={handleChange} required/>
+                        <input type="text" maxLength="10" className="form-control"  name="phonenumber1" id="phonenumber1" value={formValues.phonenumber1} onChange={handleChange} required/>
                       </div>
 
                       <div className="form-group col-6">
                         <label className="label" >phone_number2</label>
-                        <input type="text" maxlength="10" className="form-control"  name="phonenumber2" id="phonenumber2" value={formValues.phonenumber2} onChange={handleChange} required/>
+                        <input type="text" maxLength="10" className="form-control"  name="phonenumber2" id="phonenumber2" value={formValues.phonenumber2} onChange={handleChange} required/>
                       </div>
                   </div>
                   
@@ -236,7 +236,7 @@ export function Register() {
                   <div className="row">
                     <div className="form-group mb-3 col-6">
                       <label className="label" >Phone Number</label>
-                      <input type="text" maxlength="10" className="form-control"  name="phone_number" id="phone_number" value={formValues.phone_number} onChange={handleChange} required/>
+                      <input type="text" maxLength="10" className="form-control"  name="phone_number" id="phone_number" value={formValues.phone_number} onChange={handleChange} required/>
                     </div>
 
                     <div className="form-group mb-3 col-6">

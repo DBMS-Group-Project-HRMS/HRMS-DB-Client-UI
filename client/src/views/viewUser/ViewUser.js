@@ -54,23 +54,23 @@ export function ViewUser() {
         <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
             {alertMessage}
         </div>
-        <div class="row d-flex mb-5 justify-content-center">
-          <div class="col-md-12">
-            <div class="card p-3 py-4 bg-viewuser">
-              <div class="text-center">
+        <div className="row d-flex mb-5 justify-content-center">
+          <div className="col-md-12">
+            <div className="card p-3 py-4 bg-viewuser">
+              <div className="text-center">
                 <label className="label" >Employee Id:</label>
-                <h5 class="bg-primary p-1 px-4 rounded text-white">{userDetails.empId}</h5>
+                <h5 className="bg-primary p-1 px-4 rounded text-white">{userDetails.empId}</h5>
                 <label className="label" >Name:</label>
-                <h5 class="mt-2 mb-0">{userDetails.firstname} {userDetails.lastname}</h5>
+                <h5 className="mt-2 mb-0">{userDetails.firstname} {userDetails.lastname}</h5>
               </div>
 
             <br/>
-              <div class="text-center mt-3">
+              <div className="text-center mt-3">
                 <label className="label" >User Type:</label>
-                <p class="bg-secondary p-1 px-4 rounded text-white">{userDetails.type}</p>
+                <p className="bg-secondary p-1 px-4 rounded text-white">{userDetails.type}</p>
                 <h5>{userDetails.dept_name} Department</h5>
 
-                <div class="px-4 mt-1">
+                <div className="px-4 mt-1">
                   <h6 className="fonts">Employee Status: {userDetails.status}</h6><br/>
                   <label className="fonts">Mobile Number (Primary): {userDetails.phone1}</label><br/>
                   <label className="fonts">Mobile Number (Secondary): {userDetails.phone2}</label><br/>

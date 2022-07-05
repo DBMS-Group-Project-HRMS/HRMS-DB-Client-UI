@@ -98,13 +98,13 @@ export function Supervisor(){
          <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
             {alertMessage}
          </div>
-         <div className="container"> 
+         <div className="Container-fluid bg-setsupervisor1"> 
             <ul className="list-group">
             {filteredList.map(({  empId, firstname, lastname }) => (
-                <li key={empId} className="list-group-item d-flex justify-content-between align-items-center">
+                <li key={empId} className="d-flex justify-content-between align-items-center">
                     {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#supervisorSet">{firstname} {lastname}</button> */}
                     {/* <Link to={`/manager/view_user/${id}`}>{firstname} {lastname}</Link>
-                    <a class="btn-one" data-bs-toggle="modal" data-bs-target="#supervisorSet">{firstname} {lastname}</a> */}
+                    <a className="btn-one" data-bs-toggle="modal" data-bs-target="#supervisorSet">{firstname} {lastname}</a> */}
 
                     <SetSupervisor userID={empId} fname={firstname} lname={lastname} allU={userDetails} supList={SupervisorList} />
                     <h4 className={`badge bg-${checkAllocate(empId,SupervisorList).color}`}>{checkAllocate(empId,SupervisorList).status}</h4>

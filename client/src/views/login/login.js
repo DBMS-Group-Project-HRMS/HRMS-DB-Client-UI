@@ -105,9 +105,9 @@ export function Login() {
                   <br/>
                   <em>J</em>
                   <em >U</em>
-                  <em class="planet left">P</em>
+                  <em className="planet left">P</em>
                   <em>Y</em>
-                  <em class="planet right">T</em>
+                  <em className="planet right">T</em>
                   <em>E</em>
                   <em>R</em>
                 </h1>
