@@ -3,10 +3,8 @@ import Axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../../navbar/navbar";
 
-export function CreateEmployeeByDepartmentReport() {
-  const [departmentList, setDepartmentList] = useState([]);
+export function CreateEmployeeAndSupervisorReport() {
   const [parameterList, setParameterList] = useState([]);
-  const [department, setDepartment] = useState("");
   const [parameters, setParameters] = useState(null);
   const [formValues, setformValues] = useState({});
   const [alertMessage, setAlertMessage] = useState("");
@@ -17,39 +15,7 @@ export function CreateEmployeeByDepartmentReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.get("http://localhost:3001/report/get_department_list", { headers:{Authorization : `Bearer ${token}`} })
-    .then((resDepartmentList) => {
-      setDepartmentList(resDepartmentList.data.data);
-    })
-    .catch((err) => {
-      setAlertMessage("");
-      setAlertType("alert alert-danger");
-      switch (err.response.request.status) {
-        case 400:          
-          setAlertMessage(err.response.data.message);
-          setShow (true);
-          break;
-        case 500:
-          setAlertMessage("Server Error!");
-          setShow (true);
-          break;
-        case 501:
-          setAlertMessage("Server Error!");
-          setShow (true);
-          break;
-        case 502:
-          setAlertMessage("Server Error!");
-          setShow (true);
-          break;
-        default:
-          break;
-      }
-    });
-  },[]);
-
-  useEffect(() => {
-    let token = sessionStorage.getItem("token");
-    Axios.get("http://localhost:3001/report/get_employee_by_department_report_parameters", { headers:{Authorization : `Bearer ${token}`} })
+    Axios.get("http://localhost:3001/report/get_employee_and_supervisor_report_parameters", { headers:{Authorization : `Bearer ${token}`} })
     .then((resParameterList) => {
       setParameterList(resParameterList.data.data);
     })
@@ -84,17 +50,8 @@ export function CreateEmployeeByDepartmentReport() {
   },[parameterList]);
 
   useEffect(() => {
-    setformValues({ ...formValues, "department":department });
-  }, [department]);
-
-  useEffect(() => {
     setformValues({ ...formValues, "parameters":parameters });
   }, [parameters]);
-
-  const handleDepartmentChange = (e) => {
-    const { name, value } = e.target;
-    setDepartment(value);
-  };
 
   const handleParameterChange = (position) => {
     const updatedCheckedParameters = parameters.map((parameter, index) =>
@@ -106,11 +63,11 @@ export function CreateEmployeeByDepartmentReport() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/reports/employeeByDepartmentReport',{state:{formValues}});
+    navigate('/reports/employeeAndSupervisorReport',{state:{formValues}});
   }
 
   const isRequired = (parameter) => {
-    let requiredParametrs = ["user_Id", "firstname", "lastname"];
+    let requiredParametrs = ["employee_firstname", "employee_lastname", "supervisor_firstname", "supervisor_lastname"];
 
     if (requiredParametrs.includes(parameter))
       return true;
@@ -125,20 +82,12 @@ export function CreateEmployeeByDepartmentReport() {
       <Navbar/>
       
       <div className="Container-fluid shadow ">
-        <h1 class="text-center mt-3 mb-0">Create Employee By Department Report</h1>
+        <h1 class="text-center mt-3 mb-0">Create Employee And Supervisor Report</h1>
 
-        <form method="post" className="create-employee-by-department-report-form" onSubmit={handleSubmit}>
-
-          <div className="form-group mb-3">
-            <label className="label" class="h3">Department</label>
-            <select className="custom-select custom-select-lg mb-3 ml-4 w-25" name="department" id="department" value={formValues.department} onChange={handleDepartmentChange} required>
-              <option disabled selected value="" >Select Department</option>
-              {departmentList.map((department) => <option key={department.Name} value={department.Name}>{department.Name}</option>)}
-            </select>
-          </div>
+        <form method="post" className="create-employee-and-supervisor-report-form" onSubmit={handleSubmit}>
 
           <div className="form-group mb-3">
-            <label className="label" class="h3">Report Parameters</label>
+            <label className="label" class="h3">Select Report Parameters</label>
             <ul className="parameter-list w-25 pl-5 m-0">
               {parameterList.map((name, index) => {
                 return (
@@ -166,16 +115,16 @@ export function CreateEmployeeByDepartmentReport() {
               Generate Report
             </button>
           </div>
-        
+
         </form>
 
       </div>
 
-      <Link to="/reports"><button className="btn btn-outline-primary my" >Back</button></Link>
-      <Link to="/"><button className="btn btn-outline-primary my" >Back Home</button></Link>
+    <Link to="/reports"><button className="btn btn-outline-primary my" >Back</button></Link>
+    <Link to="/"><button className="btn btn-outline-primary my" >Back Home</button></Link>
 
     </div>
   );
 }
 
-export default CreateEmployeeByDepartmentReport;
+export default CreateEmployeeAndSupervisorReport;

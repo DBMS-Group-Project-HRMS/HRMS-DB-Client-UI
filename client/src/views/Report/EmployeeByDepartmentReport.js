@@ -28,7 +28,6 @@ export function EmployeeByDepartmentReport() {
 
   const formValues = location.state.formValues;
   const department = formValues.department;
-  const parameters = formValues.parameters;
 
   const user_id = sessionStorage.getItem("userId");
   const current = new Date();
@@ -101,7 +100,7 @@ export function EmployeeByDepartmentReport() {
             break;
         }
       });
-  },[]);
+  },[formValues]);
 
   const {
     getTableProps,
@@ -176,6 +175,8 @@ export function EmployeeByDepartmentReport() {
                         <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
                       );                        
                     }
+                    else
+                      return null
                   })}
                 </tr>
               );

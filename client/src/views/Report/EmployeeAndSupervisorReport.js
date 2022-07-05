@@ -6,13 +6,22 @@ import { useGlobalFilter, useRowSelect, useTable } from "react-table";
 import { Table } from "reactstrap";
 
 const COLUMNS = [
-  { Header: "Department", accessor: "department" },
-  { Header: "Total leaves", accessor: "total_leaves" },
+  { Header: "Employee ID", accessor: "employee_id" },
+  { Header: "Employee Firstname", accessor: "employee_firstname" },
+  { Header: "Employee Lastname", accessor: "employee_lastname" },
+  { Header: "Employee Department", accessor: "employee_department" },
+  { Header: "Employee Type", accessor: "employee_type" },
+  { Header: "Supervisor ID", accessor: "supervisor_id" },
+  { Header: "Supervisor Firstname", accessor: "supervisor_firstname" },
+  { Header: "Supervisor Lastname", accessor: "supervisor_lastname" },
+  { Header: "Supervisor Department", accessor: "supervisor_department" },
+  { Header: "Supervisor Type", accessor: "supervisor_type" },
 ];
 
-export function LeavesInPeriodByDepartmentReport() {
+export function EmployeeAndSupervisorReport() {
   const [currentUsername, setCurrentUsername] = useState("");
-  const [leavesByDepartmentList, setLeavesByDepartmentList] = useState([]);
+  const [employeeList, setEmployeeList] = useState([]);
+  const [parameterList, setParameterList] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [show, setShow] = useState(false);
   const [alertType, setAlertType] = useState("");
@@ -20,6 +29,7 @@ export function LeavesInPeriodByDepartmentReport() {
   const location = useLocation();
 
   const formValues = location.state.formValues;
+  const department = formValues.department;
 
   const user_id = sessionStorage.getItem("userId");
   const current = new Date();
@@ -35,7 +45,7 @@ export function LeavesInPeriodByDepartmentReport() {
       setAlertMessage("");
       setAlertType("alert alert-danger");
       switch (err.response.request.status) {
-        case 400:
+        case 400:          
           setAlertMessage(err.response.data.message);
           setShow (true);
           break;
@@ -59,9 +69,10 @@ export function LeavesInPeriodByDepartmentReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.post("http://localhost:3001/report/create_leaves_by_department_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
+    Axios.post("http://localhost:3001/report/create_employee_and_supervisor_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
       .then( (response)=>{
-        setLeavesByDepartmentList(response.data.data);
+        setParameterList(response.data.data[0])
+        setEmployeeList(response.data.data[1]);
       })
       .catch((err) => {
         setAlertType("alert alert-danger");
@@ -98,7 +109,7 @@ export function LeavesInPeriodByDepartmentReport() {
   } = useTable(
     {
       columns: COLUMNS,
-      data: leavesByDepartmentList,
+      data: employeeList,
     },
     useRowSelect,
     useGlobalFilter,
@@ -112,13 +123,13 @@ export function LeavesInPeriodByDepartmentReport() {
   );
   
   return (
-    <div className="LeavesInPeriodByDepartmentReport">
+    <div className="ViewEmployeeByDepartmentReport">
 
       <Navbar/>
       
       <div className="Container-fluid shadow ">
         <h1 class="text-center mt-3 mb-3">Jupiter (Pvt) Limited</h1>
-        <h1 class="text-center mx-0 mb-3 p-0">Leaves taken from {formValues.from} to {formValues.to} by each Department</h1>
+        <h1 class="text-center mx-0 mb-3 p-0">Employees of {department} Department</h1>
         <h1 class="text-center mx-0 mb-3 p-0">Report</h1>
         
         <div class="d-flex">
@@ -132,17 +143,20 @@ export function LeavesInPeriodByDepartmentReport() {
           striped
           bordered
           hover
-          className="Mytable table-striped shadow-sm"
+          className="Employee_details_table table-striped shadow-sm"
           {...getTableProps()}
         >
           <thead>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                  </th>
-                ))}
+                {headerGroup.headers.map((column) => {
+                  if (parameterList.includes(column.id))
+                    return (
+                      <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+                    )
+                  else
+                    return (null)
+                })}
               </tr>
             ))}
           </thead>
@@ -152,9 +166,13 @@ export function LeavesInPeriodByDepartmentReport() {
               return (
                 <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    );
+                    if (parameterList.includes(cell.column.id)){
+                      return (
+                        <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                      );                        
+                    }
+                    else
+                      return null
                   })}
                 </tr>
               );
@@ -164,10 +182,10 @@ export function LeavesInPeriodByDepartmentReport() {
 
       </div>
 
-      <Link to="/reports/createLeavesInPeriodByDepartmentReport"><button className="btn btn-outline-primary my" >Back</button></Link>
+      <Link to="/reports/createEmployeeAndSupervisorReport"><button className="btn btn-outline-primary my" >Back</button></Link>
 
     </div>
   )
 }
 
-export default LeavesInPeriodByDepartmentReport;
+export default EmployeeAndSupervisorReport;
