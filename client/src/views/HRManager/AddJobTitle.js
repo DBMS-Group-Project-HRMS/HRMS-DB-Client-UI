@@ -52,7 +52,7 @@ export function AddTitle() {
             });
     }
     setIsSubmit(false);
-  }, [isSubmit, formValues]);
+  });
 
   return (
 
@@ -63,7 +63,7 @@ export function AddTitle() {
 
   <form onSubmit={handleSubmit}>
 
-    <div className="form-group mb-3">
+    <div className="form-group mb-3 mx-3">
       <label className="label" >Job Title</label>
       <input name="title" type="text" className="form-control" onChange={handleChange} required/>
     </div>

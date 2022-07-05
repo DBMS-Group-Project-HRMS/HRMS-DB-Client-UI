@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 import { EditUser } from "./EditUser";
 import './ViewUser.css'
+import { CheckIf } from "./buttonComponent";
+
 
 export function ViewUser() {
     const { user_id } =useParams();
@@ -11,7 +12,6 @@ export function ViewUser() {
     const [alertMessage, setAlertMessage] = useState("");
     const [show, setShow] = useState(false);
     const [alertType, setAlertType] = useState("");
-
 
 
     useEffect(() => {
@@ -92,9 +92,7 @@ export function ViewUser() {
                   <label className="fonts">Contact Number: {userDetails.phone_number}</label><br/>
                 </div>
                 <br/><br/>
-                <div>
-                  <button class="btn btn-outline-primary px-4" data-bs-toggle="modal" data-bs-target="#editUser">Edit Details</button>
-                </div>
+                <CheckIf/>
                 <br/>
                 <br/>
               </div>
@@ -110,6 +108,8 @@ export function ViewUser() {
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">
+
+               
                 <EditUser userDetails={userDetails}/>
               </div>
               <div className="modal-footer">

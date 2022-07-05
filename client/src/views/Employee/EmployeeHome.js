@@ -7,8 +7,9 @@ import EmployeeHomeTable from "./EmployeeHomeTable";
 
 class EmployeeHome extends Component {
   constructor(props) {
-    super(props);
-
+    super(props)
+    this.user_id = sessionStorage.getItem('userId')
+    console.log(this.user_id)
     this.toggleModal = this.toggleModal.bind(this);
 
     this.toggleSelectAll = this.toggleSelectAll.bind(this);
@@ -42,7 +43,7 @@ class EmployeeHome extends Component {
 
 
           <div className="row">
-            <div className="col-3">
+            <div className="row">
               <Link to={'/user/apply_leave'}>
                 <Button 
                 outline color="dark" 
@@ -52,10 +53,10 @@ class EmployeeHome extends Component {
                 </Button>
               </Link>
             </div>
-
-            <div className="col-1"></div>      
-            <div className="col-3">
-              <Link to={`/manager/view_user/34`}>
+            <br/><br/><br/>
+                 
+            <div className="row">
+              <Link to={`/manager/view_user/${this.user_id}`}>
                 <Button outline color="dark" className="shadow-sm col-6">
                   View Profile
                 </Button>
@@ -73,7 +74,6 @@ class EmployeeHome extends Component {
             <h3>Request</h3>
           </ModalHeader>
           <ModalBody>
-            {/* <ViewRequest /> */}
           </ModalBody>
         </Modal>
       </React.Fragment>

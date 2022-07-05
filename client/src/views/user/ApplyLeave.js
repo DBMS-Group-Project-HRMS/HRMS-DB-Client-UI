@@ -73,9 +73,11 @@ export function ApplyLeave() {
             <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
                 {alertMessage}
             </div>
+            <h1 className="text-center mt-5 mb-0">Apply for a Leave</h1>
             <form onSubmit={handleSubmit}>
+              
                 <div className="form-group mb-3">
-                    <label className="label" >Absent Date?</label>
+                    <label className="label" >Absent Date</label>
                     <input type="date" className="form-control"  name="leave_date" value={formValues.leave_date} onChange={handleChange} required/>
                 </div>
                 <div className="form-group mb-3">
@@ -84,18 +86,17 @@ export function ApplyLeave() {
                 </div>
 
                 <div className="form-group mb-3">
-                    <label className="label" >Employee Type</label>
+                    <label className="label" >Leave Type:</label><br/>
                     <select className="custom-select custom-select-lg mb-3" name="type" id="type" value={formValues.type} onChange={handleChange} required>
                     <option >Open this select menu</option>
                     {leaveTypes.map(category => <option key={category.ID} value={category.ID}>{category.type}</option>)}
                     </select>
                 </div>
 
-                <div className="form-group">
-                
-                    <button type="submit" className="form-control btn btn-info rounded submit px-3 mb-" >
-                      Submit
-                    </button>
+                <div className="text-center mb-4">
+                  <button type="submit" className="btn btn-outline-primary mx-3" >
+                    Submit
+                  </button>
                 </div>
             </form>
         </div>

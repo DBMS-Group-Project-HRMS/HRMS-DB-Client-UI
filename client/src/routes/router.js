@@ -33,7 +33,7 @@ export function Router(){
           <Route path="/employeeHome" element={<LevelAuthRoute levels={['level 1']}> <EmployeeHome /> </LevelAuthRoute>} />
           <Route path="/hr/view_paygrades" element={<LevelAuthRoute levels={['level 4']}> <ViewPaygrades /> </LevelAuthRoute>} />
           <Route path="/hr/view_jobTitles" element={<LevelAuthRoute levels={['level 4']}> <VieJobTitles /> </LevelAuthRoute>} />
-          <Route path="/manager/view_user/:user_id"element={<LevelAuthRoute levels={['level 4', 'level 3']}> <ViewUser /> </LevelAuthRoute>}/>
+          <Route path="/manager/view_user/:user_id"element={<LevelAuthRoute levels={['level 4', 'level 3', 'level 1']}> <ViewUser /> </LevelAuthRoute>}/>
           <Route path="/manager/view_users_list" element={<LevelAuthRoute levels={['level 4', 'level 3']}> <ViewUsersList /> </LevelAuthRoute>} />
           <Route path="/user/apply_leave" element={<LevelAuthRoute levels={['level 1']}> <ApplyLeave /> </LevelAuthRoute>}/>
           <Route path="/user/view_profile" element={<LevelAuthRoute levels={['level 1', 'level 2', 'level 3', 'level 4']}> <ViewProfile /> </LevelAuthRoute>}/>

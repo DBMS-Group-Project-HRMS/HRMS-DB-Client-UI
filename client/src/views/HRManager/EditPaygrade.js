@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
+import "./ViewPaygrades.css"
 
 export function EditPaygrade(props) {
   const paygrade = props.paygrade;
@@ -62,7 +63,7 @@ export function EditPaygrade(props) {
 
   return (
 
-<div className="container">
+<div className="container background-viewpay">
   <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
       {alertMessage}
   </div>
