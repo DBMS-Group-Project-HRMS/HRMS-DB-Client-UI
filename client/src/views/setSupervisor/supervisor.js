@@ -33,7 +33,7 @@ export function Supervisor(){
         Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`}})
       .then((userList) => {
         setUserDetails(userList.data.data);
-        setfilteredList(userList.data.data.filter(function(e){ return e.type != "Admin" && e.type != "HR Manager" }));
+        setfilteredList(userList.data.data.filter(function(e){ return e.type != "Admin" && e.type != "HR Manager" && e.type != "Manager" }));
       })
       .catch((err) => {
         setAlertMessage("");
@@ -106,7 +106,7 @@ export function Supervisor(){
                     {/* <Link to={`/manager/view_user/${id}`}>{firstname} {lastname}</Link>
                     <a className="btn-one" data-bs-toggle="modal" data-bs-target="#supervisorSet">{firstname} {lastname}</a> */}
 
-                    <SetSupervisor userID={empId} fname={firstname} lname={lastname} allU={userDetails} supList={SupervisorList} />
+                    <SetSupervisor userID={empId} fname={firstname} lname={lastname} allU={filteredList} supList={SupervisorList} />
                     <h4 className={`badge bg-${checkAllocate(empId,SupervisorList).color}`}>{checkAllocate(empId,SupervisorList).status}</h4>
                 </li>
             ))}
