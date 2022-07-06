@@ -40,7 +40,7 @@ class SupervisorHome extends Component {
     return (
       <React.Fragment>
         <div className="Container-fluid shadow background-supervisor">
-        <h1 class="text-center mt-3 mb-0">Supervisor Home</h1>
+        <h1 className="text-center mt-3 mb-0">Supervisor Home</h1>
           <br></br>
 
           <SupervisorHomeTable/>

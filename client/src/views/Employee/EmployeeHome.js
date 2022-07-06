@@ -38,7 +38,7 @@ class EmployeeHome extends Component {
     return (
       <React.Fragment>
         <div className="Container-fluid bg-employee">
-          <h1 class="text-center mt-3 mb-0">Employee Home</h1>
+          <h1 className="text-center mt-3 mb-0">Employee Home</h1>
           <br></br>
 
 

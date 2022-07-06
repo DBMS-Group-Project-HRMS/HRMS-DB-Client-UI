@@ -78,7 +78,7 @@ export default function EmployeeHomeTable() {
           break;
       }
     });
-});
+}, []);
 
 
   const {

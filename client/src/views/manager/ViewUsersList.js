@@ -49,7 +49,7 @@ export function ViewUsersList() {
 
     <div>      
       <div className="container">
-      <h1 class="text-center mt-3 mb-0">Displaying Current Users List</h1>
+      <h1 className="text-center mt-3 mb-0">Displaying Current Users List</h1>
           <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
               {alertMessage}
           </div>

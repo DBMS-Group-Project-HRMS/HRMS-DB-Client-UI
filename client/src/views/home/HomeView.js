@@ -6,7 +6,7 @@ export function HomeView() {
     <div className="homeView">
 
       <div>
-      <h1 class="text-center mt-3 mb-0">HR Management System</h1>
+      <h1 className="text-center mt-3 mb-0">HR Management System</h1>
         <Link to="/login"><button className="btn btn-outline-primary my" >Login</button></Link>
       </div>
     </div>
