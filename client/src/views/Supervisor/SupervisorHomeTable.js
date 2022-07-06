@@ -51,7 +51,8 @@ export default function SupervisorHomeTable() {
     let token = sessionStorage.getItem("token");
       Axios.get("http://localhost:3001/supervisor/get_leave_requests", { headers:{Authorization : `Bearer ${token}`} })
     .then((leaves) => {
-      setLeaves(leaves.data.data);
+      const filteredLeaveList = leaves.data.data.filter((e)=>{return e.status == 'pending'});
+      setLeaves(filteredLeaveList);
     })
     .catch((err) => {
       setAlertMessage("");
