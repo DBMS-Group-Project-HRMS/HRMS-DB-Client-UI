@@ -110,7 +110,7 @@ export function CreateEmployeeByDepartmentReport() {
   }
 
   const isRequired = (parameter) => {
-    let requiredParametrs = ["user_Id", "firstname", "lastname"];
+    let requiredParametrs = ["ID", "Employee Name"];
 
     if (requiredParametrs.includes(parameter))
       return true;

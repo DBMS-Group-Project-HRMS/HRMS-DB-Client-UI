@@ -67,7 +67,7 @@ export function CreateEmployeeAndSupervisorReport() {
   }
 
   const isRequired = (parameter) => {
-    let requiredParametrs = ["employee_firstname", "employee_lastname", "supervisor_firstname", "supervisor_lastname"];
+    let requiredParametrs = ["Employee Name", "Supervisor Name"];
 
     if (requiredParametrs.includes(parameter))
       return true;

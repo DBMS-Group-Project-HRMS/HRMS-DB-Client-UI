@@ -5,20 +5,20 @@ import  { useLocation, Link } from 'react-router-dom';
 import { useGlobalFilter, useRowSelect, useTable } from "react-table";
 import { Table } from "reactstrap";
 
-const COLUMNS = [
-  { Header: "ID", accessor: "ID" },
-  { Header: "Employee Name", accessor: "Employee Name" },
-  { Header: "Email", accessor: "Email" },
-  { Header: "Joined Date", accessor: "Joined Date" },
-  { Header: "Employee Type", accessor: "Employee Type" },
-  { Header: "Employee Status", accessor: "Employee Status" },
-  { Header: "Paygrade", accessor: "Paygrade" },
-];
+// const COLUMNS = [
+//   { Header: "ID", accessor: "user_Id" },
+//   { Header: "Firstname", accessor: "firstname" },
+//   { Header: "Lastname", accessor: "lastname" },
+//   { Header: "Email", accessor: "email" },
+//   { Header: "Joined Date", accessor: "joined_date" },
+//   { Header: "Employee Type", accessor: "emp_type" },
+//   { Header: "Employee Status", accessor: "emp_status" },
+//   { Header: "Paygrade", accessor: "paygrade" },
+// ];
 
-export function EmployeeByDepartmentReport() {
+export function GroupedEmployeesReport() {
   const [currentUsername, setCurrentUsername] = useState("");
-  const [employeeList, setEmployeeList] = useState([]);
-  const [parameterList, setParameterList] = useState([]);
+  const [employeeCountList, setEmployeeCountList] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [show, setShow] = useState(false);
   const [alertType, setAlertType] = useState("");
@@ -26,7 +26,6 @@ export function EmployeeByDepartmentReport() {
   const location = useLocation();
 
   const formValues = location.state.formValues;
-  const department = formValues.department;
 
   const user_id = sessionStorage.getItem("userId");
   const current = new Date();
@@ -70,10 +69,9 @@ export function EmployeeByDepartmentReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.post("http://localhost:3001/report/create_employee_by_department_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
+    Axios.post("http://localhost:3001/report/create_grouped_employee_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
       .then( (response)=>{
-        setParameterList(response.data.data[0])
-        setEmployeeList(response.data.data[1]);
+        setEmployeeCountList(response.data.data)
       })
       .catch((err) => {
         setAlertType("alert alert-danger");
@@ -101,28 +99,30 @@ export function EmployeeByDepartmentReport() {
       });
   },[formValues]);
 
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable(
-    {
-      columns: COLUMNS,
-      data: employeeList,
-    },
-    useRowSelect,
-    useGlobalFilter,
-    (hooks) => {
-      hooks.visibleColumns.push((columns) => {
-        return [
-          ...columns,
-        ];
-      });
-    }
-  );
+  console.log(employeeCountList);
 
+//   const {
+//     getTableProps,
+//     getTableBodyProps,
+//     headerGroups,
+//     rows,
+//     prepareRow,
+//   } = useTable(
+//     {
+//       columns: COLUMNS,
+//       data: employeeList,
+//     },
+//     useRowSelect,
+//     useGlobalFilter,
+//     (hooks) => {
+//       hooks.visibleColumns.push((columns) => {
+//         return [
+//           ...columns,
+//         ];
+//       });
+//     }
+//   );
+  
   return (
     <div className="ViewEmployeeByDepartmentReport">
 
@@ -130,7 +130,7 @@ export function EmployeeByDepartmentReport() {
       
       <div className="Container-fluid shadow ">
         <h1 class="text-center mt-3 mb-3">Jupiter (Pvt) Limited</h1>
-        <h1 class="text-center mx-0 mb-3 p-0">Employees of {department} Department</h1>
+        {/* <h1 class="text-center mx-0 mb-3 p-0">Employees of {department} Department</h1> */}
         <h1 class="text-center mx-0 mb-3 p-0">Report</h1>
         
         <div class="d-flex">
@@ -139,7 +139,7 @@ export function EmployeeByDepartmentReport() {
         </div>
         <br></br>
 
-        <Table
+        {/* <Table
           responsive
           striped
           bordered
@@ -181,14 +181,14 @@ export function EmployeeByDepartmentReport() {
               );
             })}
           </tbody>
-        </Table>
+        </Table> */}
 
       </div>
 
-      <Link to="/reports/createEmployeeByDepartmentReport"><button className="btn btn-outline-primary my" >Back</button></Link>
+      <Link to="/reports/createGroupedEmployeesReport"><button className="btn btn-outline-primary my" >Back</button></Link>
 
     </div>
   )
 }
 
-export default EmployeeByDepartmentReport;
+export default GroupedEmployeesReport;

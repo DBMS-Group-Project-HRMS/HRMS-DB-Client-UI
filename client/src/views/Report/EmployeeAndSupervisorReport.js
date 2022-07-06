@@ -6,16 +6,14 @@ import { useGlobalFilter, useRowSelect, useTable } from "react-table";
 import { Table } from "reactstrap";
 
 const COLUMNS = [
-  { Header: "Employee ID", accessor: "employee_id" },
-  { Header: "Employee Firstname", accessor: "employee_firstname" },
-  { Header: "Employee Lastname", accessor: "employee_lastname" },
-  { Header: "Employee Department", accessor: "employee_department" },
-  { Header: "Employee Type", accessor: "employee_type" },
-  { Header: "Supervisor ID", accessor: "supervisor_id" },
-  { Header: "Supervisor Firstname", accessor: "supervisor_firstname" },
-  { Header: "Supervisor Lastname", accessor: "supervisor_lastname" },
-  { Header: "Supervisor Department", accessor: "supervisor_department" },
-  { Header: "Supervisor Type", accessor: "supervisor_type" },
+  { Header: "Employee ID", accessor: "Employee ID" },
+  { Header: "Employee Name", accessor: "Employee Name" },
+  { Header: "Employee Department", accessor: "Employee Department" },
+  { Header: "Employee Type", accessor: "Employee Type" },
+  { Header: "Supervisor ID", accessor: "Supervisor ID" },
+  { Header: "Supervisor Name", accessor: "Supervisor Name" },
+  { Header: "Supervisor Department", accessor: "Supervisor Department" },
+  { Header: "Supervisor Type", accessor: "Supervisor Type" },
 ];
 
 export function EmployeeAndSupervisorReport() {
