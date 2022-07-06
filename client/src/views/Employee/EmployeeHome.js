@@ -9,7 +9,6 @@ class EmployeeHome extends Component {
   constructor(props) {
     super(props)
     this.user_id = sessionStorage.getItem('userId')
-    console.log(this.user_id)
     this.toggleModal = this.toggleModal.bind(this);
 
     this.toggleSelectAll = this.toggleSelectAll.bind(this);

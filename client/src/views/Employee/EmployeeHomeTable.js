@@ -52,7 +52,6 @@ export default function EmployeeHomeTable() {
       Axios.get(`http://localhost:3001/user/get_leaves/${user_id}`, { headers:{Authorization : `Bearer ${token}`} })
     .then((leaves) => {
       setLeaves(leaves.data.data);
-      console.log(leaves)
     })
     .catch((err) => {
       setAlertMessage("");

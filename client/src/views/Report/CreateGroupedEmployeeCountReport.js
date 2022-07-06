@@ -46,8 +46,6 @@ export function CreateGroupedEmployeesReport() {
     });
   },[]);
 
-  // console.log(parameter);
-
   useEffect(() => {
     setformValues({ ...formValues, "parameter":parameter });
   }, [parameter]);

@@ -98,30 +98,6 @@ export function GroupedEmployeesReport() {
         }
       });
   },[formValues]);
-
-  console.log(employeeCountList);
-
-//   const {
-//     getTableProps,
-//     getTableBodyProps,
-//     headerGroups,
-//     rows,
-//     prepareRow,
-//   } = useTable(
-//     {
-//       columns: COLUMNS,
-//       data: employeeList,
-//     },
-//     useRowSelect,
-//     useGlobalFilter,
-//     (hooks) => {
-//       hooks.visibleColumns.push((columns) => {
-//         return [
-//           ...columns,
-//         ];
-//       });
-//     }
-//   );
   
   return (
     <div className="ViewEmployeeByDepartmentReport">

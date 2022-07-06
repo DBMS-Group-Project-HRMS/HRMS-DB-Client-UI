@@ -15,8 +15,6 @@ export function EditUser(props) {
   const [alertMessage, setAlertMessage] = useState("");
   const [show, setShow] = useState(false);
   const [isSubmit, setIsSubmit] = useState(false);
-  console.log("initial", initialValues);
-  console.log("form", formValues);
 
   const [depSelect, setDepSelect] = useState([]);
   const [MsSelect, setMsSelect] = useState([]);

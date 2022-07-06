@@ -31,7 +31,6 @@ export function ApplyLeave() {
 
     useEffect(() => {
         if (isSubmit) {
-          console.log(formValues);
           let token = sessionStorage.getItem("token");
           Axios.post('http://localhost:3001/user/apply_leave', 
           formValues, { headers:{Authorization : `Bearer ${token}`}}

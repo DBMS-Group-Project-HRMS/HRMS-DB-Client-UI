@@ -39,8 +39,6 @@ export function ViewProfile () {
       });
   }, []);
 
-
-    //console.log(userDetails);
     return (
     <div className="container">
          <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
