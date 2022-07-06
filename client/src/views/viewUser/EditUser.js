@@ -156,13 +156,6 @@ export function EditUser(props) {
               </div>
 
               <div className="form-group mb-3">
-              <label className="label" >paygrade</label>
-              <select name="paygrade_id" className="custom-select custom-select-lg mb-3" onChange={handleChange} value={formValues.paygrade_id}>
-              {PgSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-              </select>
-              </div>
-
-              <div className="form-group mb-3">
               <label className="label" >Employee status</label>
               <select name="empstatus_id" className="custom-select custom-select-lg mb-3" onChange={handleChange} value={formValues.empstatus_id}>
               {EsSelect.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
@@ -212,7 +205,7 @@ export function EditUser(props) {
               </div>
 
               <div className="form-group">
-                <button type="submit" className="form-control btn btn-info rounded submit px-3" >
+                <button type="submit" className="form-control btn btn-info rounded submit px-3"  data-bs-dismiss="modal">
                     Save
                 </button>
               </div>

@@ -172,7 +172,7 @@ export default function SupervisorHomeTable() {
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
-              <ViewUserRequest id='5'/>
+              <ViewUserRequest id='2'/>
             </div>
             <div className="modal-footer">
             </div>

@@ -19,9 +19,10 @@ export function ViewUserRequest(props) {
   useEffect( ()=> {
     let token = sessionStorage.getItem("token");
     Axios.get(`http://localhost:3001/supervisor/getLeaveData/${leave_id}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
+      console.log(response.data.data);
         setformValues(response.data.data[0]);
     });
-  });
+  },[]);
 
 
   const dateFormatter = (date) => {
@@ -156,6 +157,7 @@ export function ViewUserRequest(props) {
                     <div>
                       <button 
                       className="btn btn-outline-primary"
+                      data-bs-dismiss="modal"
                       onClick={handleAccept} >
                           Accept
                       </button>
@@ -165,6 +167,7 @@ export function ViewUserRequest(props) {
                     <div>
                       <button 
                       className="btn btn-outline-danger" 
+                      data-bs-dismiss="modal"
                       onClick={handleReject}>
                           Reject
                       </button>

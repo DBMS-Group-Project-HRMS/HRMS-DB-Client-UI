@@ -39,7 +39,7 @@ export function VieJobTitles() {
           break;
       };
     })
-  },[]);
+  });
 
   return (
 

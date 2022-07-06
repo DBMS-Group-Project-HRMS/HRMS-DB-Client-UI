@@ -1,5 +1,6 @@
 import React ,{ useState, useEffect }from 'react';
 import {Navbar, Container, Nav} from 'react-bootstrap';
+import {LogoutLink} from "./LogoutLink"
 
 function Header() {
 
@@ -41,7 +42,7 @@ function Header() {
                     <Nav>
                     <Nav.Link href="#">About</Nav.Link>
                     <Nav.Link href="#">Contact Us</Nav.Link>
-                    <Nav.Link href="/logout">Logout</Nav.Link>
+                    <LogoutLink/>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

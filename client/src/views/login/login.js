@@ -116,14 +116,11 @@ export function Login() {
                   <div className="row">
                     <div>
                       <Form onSubmit={handleSubmit}>
-                        <Input type="text"  value={formValues.username} onChange={handleChange} className="text" name="username"/>
-                        <span>username</span>
-
-                        <br/>
-                        <br/>
-
-                        <Input type="password" value={formValues.password} onChange={handleChange} className="text" name="password"/>
-                        <span>password</span>
+                        <Label for="username">Username</Label>
+                        <Input id="username" type="text"  value={formValues.username} onChange={handleChange} className="text border shadow-sm mt-0" name="username"/>
+                        
+                        <Label for="password">Password</Label>
+                        <Input id="password" type="password" value={formValues.password} onChange={handleChange} className="text border shadow-sm mt-0" name="password"/>
 
                         <br/>
                         

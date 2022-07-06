@@ -51,8 +51,8 @@ export default function ManagerHomeTable() {
     let token = sessionStorage.getItem("token");
       Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`} })
     .then((userList) => {
-      console.log(userList.data.data)
-      setUserDetails(userList.data.data);
+      const filteredUsersList = userList.data.data.filter((e)=>{return e.type != 'HR Manager' && e.type != 'Admin'});
+      setUserDetails(filteredUsersList);
     })
     .catch((err) => {
       setAlertMessage("");
