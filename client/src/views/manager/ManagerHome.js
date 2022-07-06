@@ -38,6 +38,7 @@ class ManagerHome extends Component {
         <div className="Container-fluid shadow bg-manager">
         <h1 className="text-center mt-3 mb-0">Manager Home</h1>
           <br></br>
+          <Link to="/reports"><button className="btn btn-outline-primary mx-3" >Reports</button></Link>
           <ManagerHomeTable/>
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>

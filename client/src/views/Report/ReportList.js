@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
-import Navbar from "../../navbar/navbar";
+// import Navbar from "../../navbar/navbar";
 import { Link } from "react-router-dom";
 
 class ReportList extends Component {
@@ -37,7 +37,7 @@ class ReportList extends Component {
     return (
       <React.Fragment>
 
-        <Navbar/>
+        {/* <Navbar/> */}
 
         <div className="Container-fluid shadow ">
           <h1 class="text-center mt-3 mb-0">Choose Report</h1>

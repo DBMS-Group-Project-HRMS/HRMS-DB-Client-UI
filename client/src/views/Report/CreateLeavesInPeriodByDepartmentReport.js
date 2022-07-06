@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../../navbar/navbar";
+// import Navbar from "../../navbar/navbar";
 import { useNavigate, Link } from "react-router-dom";
 import "./report.css";
 
@@ -26,7 +26,7 @@ export function CreateLeavesInPeriodByDepartmentReport() {
   return (
     <div className="createReport">
 
-      <Navbar/>
+      {/* <Navbar/> */}
       
       <div className="Container-fluid shadow ">
         <h1 class="text-center mt-3 mb-0">Create Leaves In Period By Department Report</h1>

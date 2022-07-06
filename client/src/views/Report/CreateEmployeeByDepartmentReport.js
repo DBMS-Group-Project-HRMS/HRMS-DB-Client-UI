@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 import { useNavigate, Link } from "react-router-dom";
-import Navbar from "../../navbar/navbar";
+// import Navbar from "../../navbar/navbar";
 
 export function CreateEmployeeByDepartmentReport() {
   const [departmentList, setDepartmentList] = useState([]);
@@ -122,7 +122,7 @@ export function CreateEmployeeByDepartmentReport() {
   return (
     <div className="createReport">
 
-      <Navbar/>
+      {/* <Navbar/> */}
       
       <div className="Container-fluid shadow ">
         <h1 class="text-center mt-3 mb-0">Create Employee By Department Report</h1>

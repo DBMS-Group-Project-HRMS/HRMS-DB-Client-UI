@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
-import Navbar from "../../navbar/navbar";
+// import Navbar from "../../navbar/navbar";
 import  { useLocation, Link } from 'react-router-dom';
 import { useGlobalFilter, useRowSelect, useTable } from "react-table";
 import { Table } from "reactstrap";
@@ -126,7 +126,7 @@ export function GroupedEmployeesReport() {
   return (
     <div className="ViewEmployeeByDepartmentReport">
 
-      <Navbar/>
+      {/* <Navbar/> */}
       
       <div className="Container-fluid shadow ">
         <h1 class="text-center mt-3 mb-3">Jupiter (Pvt) Limited</h1>
