@@ -19,7 +19,6 @@ export function ViewUser() {
         Axios.get("http://localhost:3001/manager/view_user/" + user_id, { headers:{Authorization : `Bearer ${token}`}})
       .then((getUserDetails) => {
         setUserDetails(getUserDetails.data.data);
-        console.log(getUserDetails.data.data);
       })
       .catch((err) => {
         setAlertMessage("");

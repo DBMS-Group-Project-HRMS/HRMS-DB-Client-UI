@@ -19,7 +19,6 @@ export function ViewUserRequest(props) {
   useEffect( ()=> {
     let token = sessionStorage.getItem("token");
     Axios.get(`http://localhost:3001/supervisor/getLeaveData/${leave_id}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
-      console.log(response.data.data);
         setformValues(response.data.data[0]);
     });
   },[]);

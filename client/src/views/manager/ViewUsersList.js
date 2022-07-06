@@ -41,10 +41,6 @@ export function ViewUsersList() {
       });
   }, []);
 
-    console.log(userDetails);
-
-
-
     return (
 
     <div>      

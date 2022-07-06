@@ -47,7 +47,6 @@ export function Register() {
   
   useEffect(() => {
     if (isSubmit) {
-      console.log(formValues);
       console.log("registering a user");
       let token = sessionStorage.getItem("token");
       Axios.post('http://localhost:3001/hr/register', formValues, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
