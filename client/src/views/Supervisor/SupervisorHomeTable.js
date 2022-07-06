@@ -154,7 +154,7 @@ export default function SupervisorHomeTable() {
                         {reason}
                       </td>
                       <td key={id}>
-                        <Button outline color="dark" data-bs-toggle="modal" data-bs-target="#viewDetails">
+                        <Button outline color="dark" data-bs-toggle="modal" data-bs-target={"#viewDetails" + id}>
                           View
                         </Button>
                       </td>
@@ -164,22 +164,24 @@ export default function SupervisorHomeTable() {
           </Table>
         </div>
       </React.Fragment>
-
-      <div className="modal fade" id="viewDetails" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-scrollable">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="staticBackdropLabel">View Leave Details</h5>
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div className="modal-body">
-              <ViewUserRequest id='2'/>
-            </div>
-            <div className="modal-footer">
+      
+      {leaves.map(({id}) => (
+            <div className="modal fade" id={"viewDetails" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-scrollable">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="staticBackdropLabel">View Leave Details</h5>
+                  <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div className="modal-body">
+                  <ViewUserRequest id={id}/>
+                </div>
+                <div className="modal-footer">
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+      ))}   
     </>
   );
 }
