@@ -192,13 +192,13 @@ em.planet::before {
 }
 
 em.planet.left {
-  -webkit-transform-origin: 6.5vmin 2vmin;
-  transform-origin: 6.5vmin 2vmin;
+  -webkit-transform-origin: 6.5vmin 3vmin;
+  transform-origin: 7.5vmin 3vmin;
 }
 
 em.planet.right {
   -webkit-transform-origin: -2.2vmin 2vmin;
-  transform-origin: -2.2vmin 3vmin;
+  transform-origin: -2.2vmin 2vmin;
 }
 
 @-webkit-keyframes planet-rotate {
