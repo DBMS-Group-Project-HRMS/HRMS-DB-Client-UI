@@ -94,11 +94,12 @@ export function Supervisor(){
   }, []);
 
     return (
-    <div className="container">
+    <div className="container col-md-5">
          <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
             {alertMessage}
          </div>
-         <div className="Container-fluid bg-setsupervisor1"> 
+         
+         <div className="Container-fluid bg-setsupervisor1  "> 
             <ul className="list-group">
             {filteredList.map(({  empId, firstname, lastname }) => (
                 <li key={empId} className="d-flex justify-content-between align-items-center">
