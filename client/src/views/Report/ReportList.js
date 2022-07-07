@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
-// import Navbar from "../../navbar/navbar";
-import { Link } from "react-router-dom";
+import "./report.css";
 
 class ReportList extends Component {
 
@@ -37,15 +36,13 @@ class ReportList extends Component {
     return (
       <React.Fragment>
 
-        {/* <Navbar/> */}
-
-        <div className="Container-fluid shadow ">
-          <h1 class="text-center mt-3 mb-0">Choose Report</h1>
+        <div className="Container-fluid shadow background-Report">
+          <h1 class="text-center mt-3 mb-5">Choose Report</h1>
           <div class="card mx-auto rounded-3 border-0 shadow my-3">
             <div class="card-body">
               <h5 class="card-title">Employee by Department Report</h5>
-              <p class="card-text mb-0">With supporting text below as a natural lead-in to additional content.</p>
-              <div class="text-right">
+              <p class="card-text mb-0">Report containing the employees of the selected department along with details of your choice.</p>
+              <div align="right">
                 <button id="1" class="btn btn-primary" onClick={this.gotoCreateReport} >Create Report</button>
               </div>
             </div>
@@ -53,8 +50,8 @@ class ReportList extends Component {
           <div class="card mx-auto rounded-3 border-0 shadow my-3">
             <div class="card-body">
               <h5 class="card-title">Total Leaves in given Period by Department Report</h5>
-              <p class="card-text mb-0">With supporting text below as a natural lead-in to additional content.</p>
-              <div class="text-right">
+              <p class="card-text mb-0">Total number of leaves that the employees have taken in the given period in each department.</p>
+              <div align="right">
                 <button id="2" class="btn btn-primary" onClick={this.gotoCreateReport} >Create Report</button>
               </div>
             </div>
@@ -62,8 +59,8 @@ class ReportList extends Component {
           <div class="card mx-auto rounded-3 border-0 shadow my-3">
             <div class="card-body">
               <h5 class="card-title">Grouped Employee Counts Report</h5>
-              <p class="card-text mb-0">Employee count reports grouped by job title, department, pay grade etc.</p>
-              <div class="text-right">
+              <p class="card-text mb-0">Employee count reports grouped by job title, department, pay grade etc. Shows the number of employees in each category in the selected grouping.</p>
+              <div align="right">
                 <button id="3" class="btn btn-primary" onClick={this.gotoCreateReport} >Create Report</button>
               </div>
             </div>
@@ -71,8 +68,8 @@ class ReportList extends Component {
           <div class="card mx-auto rounded-3 border-0 shadow my-3">
             <div class="card-body">
               <h5 class="card-title">Average Salary by Department Report</h5>
-              <p class="card-text mb-0">Average employee salary and number of employees of each Department Report</p>
-              <div class="text-right">
+              <p class="card-text mb-0">Report containing the average employee salary and the number of employees in each department.</p>
+              <div align="right">
                 <button id="4" class="btn btn-primary" onClick={this.gotoCreateReport} >Create Report</button>
               </div>
             </div>
@@ -80,16 +77,14 @@ class ReportList extends Component {
           <div class="card mx-auto rounded-3 border-0 shadow my-3">
             <div class="card-body">
               <h5 class="card-title">Employee and Supervisor Report</h5>
-              <p class="card-text mb-0">Employees and their respective Supervisors and optional details Report.</p>
-              <div class="text-right">
+              <p class="card-text mb-0">Report containing employees and their respective supervisors along with optional details of your choice.</p>
+              <div align="right">
                 <button id="5" class="btn btn-primary" onClick={this.gotoCreateReport} >Create Report</button>
               </div>
             </div>
           </div>
         
         </div>
-
-        <Link to="/"><button className="btn btn-outline-primary my" >Back Home</button></Link>
 
       </React.Fragment>
     );

@@ -87,7 +87,7 @@ export function ViewPaygrades() {
         </div>
       </div>
     </div>
-    ))};
+    ))}
 
 </div>
 </div>

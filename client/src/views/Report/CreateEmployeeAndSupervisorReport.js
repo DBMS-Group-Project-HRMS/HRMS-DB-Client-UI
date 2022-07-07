@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
-import { useNavigate, Link } from "react-router-dom";
-// import Navbar from "../../navbar/navbar";
+import { useNavigate } from "react-router-dom";
 
 export function CreateEmployeeAndSupervisorReport() {
   const [parameterList, setParameterList] = useState([]);
@@ -78,16 +77,17 @@ export function CreateEmployeeAndSupervisorReport() {
 
   return (
     <div className="createReport">
-
-      {/* <Navbar/> */}
+      <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
+        {alertMessage}
+      </div>
       
-      <div className="Container-fluid shadow ">
+      <div className="Container-fluid shadow background-Report">
         <h1 class="text-center mt-3 mb-0">Create Employee And Supervisor Report</h1>
 
         <form method="post" className="create-employee-and-supervisor-report-form" onSubmit={handleSubmit}>
 
           <div className="form-group mb-3">
-            <label className="label" class="h3">Select Report Parameters</label>
+            <label className="label h5">Select Report Parameters</label>
             <ul className="parameter-list w-25 pl-5 m-0">
               {parameterList.map((name, index) => {
                 return (
@@ -119,9 +119,6 @@ export function CreateEmployeeAndSupervisorReport() {
         </form>
 
       </div>
-
-    <Link to="/reports"><button className="btn btn-outline-primary my" >Back</button></Link>
-    <Link to="/"><button className="btn btn-outline-primary my" >Back Home</button></Link>
 
     </div>
   );

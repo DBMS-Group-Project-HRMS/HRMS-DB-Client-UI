@@ -61,10 +61,10 @@ export function AddTitle() {
       {alertMessage}
   </div>
 
-  <form onSubmit={handleSubmit}>
+  <form class="p-3" onSubmit={handleSubmit}>
 
-    <div className="form-group mb-3 mx-3">
-      <label className="label" >Job Title</label>
+    <div className="form-group mb-3 mx-0">
+      <label className="label px-0" >Job Title</label>
       <input name="title" type="text" className="form-control" onChange={handleChange} required/>
     </div>
 
