@@ -9,7 +9,7 @@ const COLUMNS = [
   { Header: "Employee Type", accessor: "Employee type" },
   { Header: "Employee Status", accessor: "Employee Status" },
   { Header: "Paygrade", accessor: "Paygrade" },
-  { Header: "Employee Matrial Status", accessor: "Employee Matrial Status" },
+  { Header: "Employee Marital Status", accessor: "Employee Marital Status" },
   { Header: "Employee Count", accessor: "Employee Count" },
 ];
 
