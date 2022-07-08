@@ -11,7 +11,7 @@ const COLUMNS = [
 
 export function AverageSalarybyDepartmentReport() {
   const [currentUsername, setCurrentUsername] = useState("");
-  const [averageSalartList, setAverageSalartList] = useState([]);
+  const [averageSalaryList, setAverageSalaryList] = useState([]);
   const [alertMessage, setAlertMessage] = useState("");
   const [show, setShow] = useState(false);
   const [alertType, setAlertType] = useState("");
@@ -56,7 +56,7 @@ export function AverageSalarybyDepartmentReport() {
     let token = sessionStorage.getItem("token");
     Axios.get("http://localhost:3001/report/create_average_salary_of_departments_report", { headers:{Authorization : `Bearer ${token}`} })
       .then( (response)=>{
-        setAverageSalartList(response.data.data);
+        setAverageSalaryList(response.data.data);
       })
       .catch((err) => {
         setAlertType("alert alert-danger");
@@ -93,7 +93,7 @@ export function AverageSalarybyDepartmentReport() {
   } = useTable(
     {
       columns: COLUMNS,
-      data: averageSalartList,
+      data: averageSalaryList,
     },
     useRowSelect,
     useGlobalFilter,

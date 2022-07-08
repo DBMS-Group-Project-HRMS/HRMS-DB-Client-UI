@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
-import { useNavigate, Link } from "react-router-dom";
-// import Navbar from "../../navbar/navbar";
+import { useNavigate } from "react-router-dom";
+import "./report.css";
 
 export function CreateGroupedEmployeesReport() {
   const [parameterList, setParameterList] = useState([]);
   const [parameter, setParameter] = useState("");
   const [formValues, setformValues] = useState({});
-  const [errmsg, setErr] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
   const [show, setShow] = useState(false);
   const [alertType, setAlertType] = useState("");
@@ -62,21 +61,18 @@ export function CreateGroupedEmployeesReport() {
 
   return (
     <div className="createReport">
-
-      {/* <Navbar/> */}
+      <div style={{ visibility: show ? "visible" : "hidden" }} className={alertType} role="alert">
+        {alertMessage}
+      </div>
       
-      <div className="Container-fluid shadow ">
+      <div className="Container-fluid shadow background-Report">
         <h1 class="text-center mt-3 mb-0">Create Group Employees Report</h1>
 
         <form method="post" className="create-employee-details-report-form" onSubmit={handleSubmit}>
 
-          <div className="error">
-            <p className="text-danger mt-3">{errmsg}</p>
-          </div>
-
           <div className="form-group mb-3">
-            <label className="label" class="h3">Select Employee Grouping Parameter</label>
-            <select className="custom-select custom-select-lg mb-3 ml-4 w-25" name="department" id="department" value={formValues.department} onChange={handleParameterChange} required>
+            <label className="label h5">Select Employee Grouping Parameter</label>
+            <select className="custom-select custom-select-lgw-15 mx-3" name="parameter" id="parameter" value={formValues.parameter} onChange={handleParameterChange} required>
               <option disabled selected value="" >Select Grouping Parameter</option>
               {parameterList.map((parameter) => <option key={parameter.COLUMN_NAME} value={parameter.COLUMN_NAME}>{parameter.COLUMN_NAME}</option>)}
             </select>
@@ -90,9 +86,6 @@ export function CreateGroupedEmployeesReport() {
         
         </form>
       </div>
-
-    <Link to="/reports"><button className="btn btn-outline-primary my" >Back</button></Link>
-    <Link to="/"><button className="btn btn-outline-primary my" >Back Home</button></Link>
 
     </div>
   );
