@@ -25,10 +25,12 @@ export function SetSupervisor(props){
     const Supervisor_list = props.supList;
     const users_supList=[];
     const [searchedVal, setSearchedVal] = useState("");
+    var supervisor_allocate = false;
 
     for(let x=0;x<Supervisor_list.length;x++){
       if(Supervisor_list[x].Emp_Id==uID){
         users_supList.push(Supervisor_list[x].Sup_Id);
+        supervisor_allocate=true;
       }
     }
 
@@ -70,7 +72,35 @@ export function SetSupervisor(props){
         });
     };
 
-    return(
+    if(supervisor_allocate){
+      return(
+        <div>
+
+            <button className="btn btn-one" data-bs-toggle="modal" data-bs-target={`#supervisorSet${uID}`}>{Emfirstname} {Emlastname}</button>
+
+            <div className="modal fade" id={`supervisorSet${uID}`} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog modal-dialog-scrollable">
+                <div className="modal-content">
+                    <div className="modal-header">
+                      <div class="alert alert-primary d-flex align-items-center" role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img" aria-label="Warning:">
+                          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                        </svg>
+                        <div>
+                        A supervisor has been already allocated for {Emfirstname} {Emlastname}.
+                        </div>
+                      </div>
+                    </div>
+                    <div className="modal-body">
+                    <button className="btn btn-sm centerr btn-warning" data-bs-dismiss="modal">OK</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+      );
+    }else{
+      return(
         <div>
             <button className="btn btn-one" data-bs-toggle="modal" data-bs-target={`#supervisorSet${uID}`}>{Emfirstname} {Emlastname}</button>
 
@@ -124,6 +154,6 @@ export function SetSupervisor(props){
                 </div>
             </div>
         </div>
-
     );
+    }
 }
