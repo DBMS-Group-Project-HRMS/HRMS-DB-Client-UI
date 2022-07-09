@@ -91,7 +91,7 @@ export function Supervisor(){
           break;
       }
     });
-  }, []);
+  });
 
     return (
     <div className="container col-md-5">
