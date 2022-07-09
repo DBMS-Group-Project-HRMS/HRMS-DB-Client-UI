@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Axios from 'axios';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { EditUser } from "./EditUser";
 import './ViewUser.css'
 import { CheckIf } from "./buttonComponent";
@@ -12,6 +12,7 @@ export function ViewUser() {
     const [alertMessage, setAlertMessage] = useState("");
     const [show, setShow] = useState(false);
     const [alertType, setAlertType] = useState("");
+    const [SupervisorList, setSupervisorList] = useState([]);
 
 
     useEffect(() => {
@@ -44,7 +45,49 @@ export function ViewUser() {
             break;
         }
       });
-  }, [user_id]);
+    }, [user_id]);
+
+    useEffect(() => {
+      let token = sessionStorage.getItem("token");
+        Axios.get("http://localhost:3001/manager/get_supervisor_list", { headers:{Authorization : `Bearer ${token}`}})
+      .then((userList) => {
+        setSupervisorList(userList.data.data);
+      })
+      .catch((err) => {
+        setAlertMessage("");
+        setAlertType("alert alert-danger");
+        switch (err.response.request.status) {
+          case 400:          
+            setAlertMessage(err.response.data.message);
+            setShow (true);
+            break;
+          case 500:
+            setAlertMessage("Server Error!");
+            setShow (true);
+            break;
+          case 501:
+            setAlertMessage("Server Error!");
+            setShow (true);
+            break;
+          case 502:
+            setAlertMessage("Server Error!");
+            setShow (true);
+            break;
+          default:
+            break;
+        }
+      });
+    },[]);
+
+    console.log(SupervisorList)
+
+    // SupervisorList.map(function(allocation){
+    //   if(allocation.Emp_Id==4){
+    //     setSupervisor(allocation.Sup_Id);
+    //   }
+    // });
+
+    // console.log("supervisor: ",supervisor)
 
     
     return (

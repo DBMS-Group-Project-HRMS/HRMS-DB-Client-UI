@@ -20,7 +20,7 @@ function Header() {
         } else {
             setURL('/');
         }
-    });
+    },[sessionStorage.getItem("paygrade")]);
 
     return(
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
