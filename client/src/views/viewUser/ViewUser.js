@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Axios from 'axios';
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import { EditUser } from "./EditUser";
 import './ViewUser.css'
 import { CheckIf } from "./buttonComponent";
@@ -12,7 +12,7 @@ export function ViewUser() {
     const [alertMessage, setAlertMessage] = useState("");
     const [show, setShow] = useState(false);
     const [alertType, setAlertType] = useState("");
-    const [SupervisorList, setSupervisorList] = useState([]);
+    const [supervisorDetails, setSupervisor] = useState({});
 
 
     useEffect(() => {
@@ -49,9 +49,9 @@ export function ViewUser() {
 
     useEffect(() => {
       let token = sessionStorage.getItem("token");
-        Axios.get("http://localhost:3001/manager/get_supervisor_list", { headers:{Authorization : `Bearer ${token}`}})
-      .then((userList) => {
-        setSupervisorList(userList.data.data);
+        Axios.get("http://localhost:3001/manager/get_supervisor/" + user_id, { headers:{Authorization : `Bearer ${token}`}})
+      .then((supervisor) => {
+        setSupervisor(supervisor.data.data[0]);
       })
       .catch((err) => {
         setAlertMessage("");
@@ -77,9 +77,8 @@ export function ViewUser() {
             break;
         }
       });
-    },[]);
+    },[user_id]);
 
-    console.log(SupervisorList)
 
     // SupervisorList.map(function(allocation){
     //   if(allocation.Emp_Id==4){
@@ -132,6 +131,10 @@ export function ViewUser() {
                   <label className="fonts">Name: {userDetails.name}</label><br/>
                   <label className="fonts">Relation: {userDetails.relationship}</label><br/>
                   <label className="fonts">Contact Number: {userDetails.phone_number}</label><br/>
+
+                  <hr></hr>
+                  <h6> Supervisor </h6>
+                  <Link to={`/manager/view_user/${supervisorDetails.user_Id}`}>{supervisorDetails.firstname} {supervisorDetails.lastname}</Link>
                 </div>
                 <br/><br/>
                 <CheckIf/>
