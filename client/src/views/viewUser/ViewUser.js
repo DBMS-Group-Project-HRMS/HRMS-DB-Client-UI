@@ -141,7 +141,7 @@ export function ViewUser() {
                   { isSupervisorSet
                     ? <div>
                         <h6> Supervisor </h6>
-                        { userDetails.paygrade === "level 1"
+                        { sessionStorage.getItem("paygrade") === "level 1" || sessionStorage.getItem("paygrade") === "level 2"
                           ? <p>{supervisorDetails.firstname} {supervisorDetails.lastname}</p>
                           : <Link to={`/manager/view_user/${supervisorDetails.user_Id}`}>{supervisorDetails.firstname} {supervisorDetails.lastname}</Link>
                         }

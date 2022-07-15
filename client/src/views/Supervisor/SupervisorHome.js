@@ -10,6 +10,7 @@ class SupervisorHome extends Component {
 
   constructor(props) {
     super(props);
+    this.user_id = sessionStorage.getItem('userId');
 
     this.toggleModal = this.toggleModal.bind(this);
 
@@ -42,6 +43,13 @@ class SupervisorHome extends Component {
         <div className="Container-fluid shadow background-supervisor">
         <h1 className="text-center mt-3 mb-0">Supervisor Home</h1>
           <br></br>
+
+          <div class="center">
+            <div class="btn-group-vertical">
+              <Link to={'/user/apply_leave'} className="mb-3"><Button outline color="dark" className="shadow-sm col-6">Apply Leave</Button></Link>
+              <Link to={`/manager/view_user/${this.user_id}`} className="mb-3"><Button outline color="dark" className="shadow-sm col-6">View Profile</Button></Link>
+            </div>            
+          </div>
 
           <SupervisorHomeTable/>
         </div>

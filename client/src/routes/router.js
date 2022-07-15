@@ -46,9 +46,9 @@ export function Router(){
           <Route path="/hr/view_employees" element={<LevelAuthRoute levels={['level 4']}> <HRViewEmployeeList /> </LevelAuthRoute>} />
           <Route path="/hr/view_paygrades" element={<LevelAuthRoute levels={['level 4']}> <ViewPaygrades /> </LevelAuthRoute>} />
           <Route path="/hr/view_jobTitles" element={<LevelAuthRoute levels={['level 4']}> <VieJobTitles /> </LevelAuthRoute>} />
-          <Route path="/manager/view_user/:user_id"element={<LevelAuthRoute levels={['level 4', 'level 3', 'level 1']}> <ViewUser /> </LevelAuthRoute>}/>
+          <Route path="/manager/view_user/:user_id"element={<LevelAuthRoute levels={['level 4', 'level 3', 'level 2', 'level 1']}> <ViewUser /> </LevelAuthRoute>}/>
           <Route path="/manager/view_employees" element={<LevelAuthRoute levels={['level 3']}> <ManagerViewEmployeeList /> </LevelAuthRoute>} />
-          <Route path="/user/apply_leave" element={<LevelAuthRoute levels={['level 1']}> <ApplyLeave /> </LevelAuthRoute>}/>
+          <Route path="/user/apply_leave" element={<LevelAuthRoute levels={['level 1', 'level 2']}> <ApplyLeave /> </LevelAuthRoute>}/>
           <Route path="/user/view_profile" element={<LevelAuthRoute levels={['level 1', 'level 2', 'level 3', 'level 4']}> <ViewProfile /> </LevelAuthRoute>}/>
           <Route path="/reports" element={<LevelAuthRoute levels={['level 3']}> <ReportListWithRouter /> </LevelAuthRoute>}/>
           <Route path="/reports/createEmployeeByDepartmentReport" element={<LevelAuthRoute levels={['level 3']}> <CreateEmployeeByDepartmentReport /> </LevelAuthRoute>}/>
