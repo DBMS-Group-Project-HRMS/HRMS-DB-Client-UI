@@ -19,8 +19,10 @@ import { AverageSalarybyDepartmentReport } from "../views/Report/AverageSalaryby
 import { EmployeeAndSupervisorReport } from "../views/Report/EmployeeAndSupervisorReport";
 import { GroupedEmployeesReport } from "../views/Report/GroupedEmployeeCountReport";
 import SupervisorHome from "../views/Supervisor/SupervisorHome";
+import HRViewEmployeeList from "../views/HRManager/ViewEmployeeList";
 import HRHome from "../views/HRManager/HRHome";
 import ManagerHome from "../views/manager/ManagerHome";
+import ManagerViewEmployeeList from "../views/manager/ViewEmployeeList";
 import ReportList, {ReportListWithRouter} from "../views/Report/ReportList";
 import EmployeeHome from "../views/Employee/EmployeeHome";
 import {LevelAuthRoute} from "../auth/LevelAuthRoute";
@@ -41,13 +43,13 @@ export function Router(){
           <Route path="/hrHome" element={<LevelAuthRoute levels={['level 4']}> <HRHome /> </LevelAuthRoute>} />
           <Route path="/managerHome" element={<LevelAuthRoute levels={['level 3']}> <ManagerHome /> </LevelAuthRoute>}/>
           <Route path="/employeeHome" element={<LevelAuthRoute levels={['level 1']}> <EmployeeHome /> </LevelAuthRoute>} />
+          <Route path="/hr/view_employees" element={<LevelAuthRoute levels={['level 4']}> <HRViewEmployeeList /> </LevelAuthRoute>} />
           <Route path="/hr/view_paygrades" element={<LevelAuthRoute levels={['level 4']}> <ViewPaygrades /> </LevelAuthRoute>} />
           <Route path="/hr/view_jobTitles" element={<LevelAuthRoute levels={['level 4']}> <VieJobTitles /> </LevelAuthRoute>} />
           <Route path="/manager/view_user/:user_id"element={<LevelAuthRoute levels={['level 4', 'level 3', 'level 1']}> <ViewUser /> </LevelAuthRoute>}/>
-          <Route path="/manager/view_users_list" element={<LevelAuthRoute levels={['level 4', 'level 3']}> <ViewUsersList /> </LevelAuthRoute>} />
+          <Route path="/manager/view_employees" element={<LevelAuthRoute levels={['level 3']}> <ManagerViewEmployeeList /> </LevelAuthRoute>} />
           <Route path="/user/apply_leave" element={<LevelAuthRoute levels={['level 1']}> <ApplyLeave /> </LevelAuthRoute>}/>
           <Route path="/user/view_profile" element={<LevelAuthRoute levels={['level 1', 'level 2', 'level 3', 'level 4']}> <ViewProfile /> </LevelAuthRoute>}/>
-          
           <Route path="/reports" element={<LevelAuthRoute levels={['level 3']}> <ReportListWithRouter /> </LevelAuthRoute>}/>
           <Route path="/reports/createEmployeeByDepartmentReport" element={<LevelAuthRoute levels={['level 3']}> <CreateEmployeeByDepartmentReport /> </LevelAuthRoute>}/>
           <Route path="/reports/createLeavesInPeriodByDepartmentReport" element={<LevelAuthRoute levels={['level 3']}> <CreateLeavesInPeriodByDepartmentReport /> </LevelAuthRoute>}/>

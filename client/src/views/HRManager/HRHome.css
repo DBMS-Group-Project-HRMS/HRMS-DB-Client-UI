@@ -20,6 +20,9 @@
     cursor: pointer;
   }
 
+  .center {
+    text-align: center;
+  }
 
   .background-HR {
     

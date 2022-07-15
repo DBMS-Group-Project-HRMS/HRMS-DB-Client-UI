@@ -12,6 +12,7 @@ export function ViewUser() {
     const [alertMessage, setAlertMessage] = useState("");
     const [show, setShow] = useState(false);
     const [alertType, setAlertType] = useState("");
+    const [isSupervisorSet, setisSupervisorSet] = useState(false);
     const [supervisorDetails, setSupervisor] = useState({});
 
 
@@ -51,7 +52,10 @@ export function ViewUser() {
       let token = sessionStorage.getItem("token");
         Axios.get("http://localhost:3001/manager/get_supervisor/" + user_id, { headers:{Authorization : `Bearer ${token}`}})
       .then((supervisor) => {
-        setSupervisor(supervisor.data.data[0]);
+        if (supervisor.data.data.length !== 0){
+          setSupervisor(supervisor.data.data[0]);
+          setisSupervisorSet(true);
+        }
       })
       .catch((err) => {
         setAlertMessage("");
@@ -133,8 +137,19 @@ export function ViewUser() {
                   <label className="fonts">Contact Number: {userDetails.phone_number}</label><br/>
 
                   <hr></hr>
-                  <h6> Supervisor </h6>
-                  <Link to={`/manager/view_user/${supervisorDetails.user_Id}`}>{supervisorDetails.firstname} {supervisorDetails.lastname}</Link>
+                  
+                  { isSupervisorSet
+                    ? <div>
+                        <h6> Supervisor </h6>
+                        { userDetails.paygrade === "level 1"
+                          ? <p>{supervisorDetails.firstname} {supervisorDetails.lastname}</p>
+                          : <Link to={`/manager/view_user/${supervisorDetails.user_Id}`}>{supervisorDetails.firstname} {supervisorDetails.lastname}</Link>
+                        }
+                        
+                      </div>
+                    : <h6>No Supervisor Allocated</h6>
+                  }
+
                 </div>
                 <br/><br/>
                 <CheckIf/>

@@ -1,9 +1,7 @@
-import { Button, Modal, ModalHeader, ModalBody} from "reactstrap";
+import { Modal, ModalHeader, ModalBody} from "reactstrap";
 import "./HRHome.css";
 import React, { Component } from "react";
-import HRHomeTable from "./HRHomeTable";
 import { Link } from "react-router-dom";
-import { EditPaygrade } from "./EditPaygrade";
 
 class HRHome extends Component {
   constructor(props) {
@@ -37,13 +35,19 @@ class HRHome extends Component {
     return (
       <React.Fragment>
         <div className="Container-fluid shadow background-HR">
-        <h1 className="text-center mt-3 mb-0">HR Manager Home</h1>
-          <br></br>
-          <Link to="/register"><button className="btn btn-outline-primary my" >User Register</button></Link>
-          <Link to="/hr/view_paygrades"><button className="btn btn-outline-primary mx-3" >View Paygrades</button></Link>
-          <Link to="/hr/view_jobTitles"><button className="btn btn-outline-primary mx-3" >View Job Titles</button></Link>
-          <Link to="/supervisorAllocation"><button className="btn btn-outline-primary mx-3" >Supervisor Allocation</button></Link>
-          <HRHomeTable/>
+          <h1 className="text-center mt-3 mb-0">HR Manager Home</h1>
+          <br/>
+
+          <div class="center">
+            <div class="btn-group-vertical">
+              <Link to="/register" className="mb-3"><button className="btn btn-outline-primary" >User Register</button></Link>
+              <Link to="/hr/view_paygrades" className="mb-3"><button className="btn btn-outline-primary" >View Paygrades</button></Link>
+              <Link to="/hr/view_jobTitles" className="mb-3"><button className="btn btn-outline-primary" >View Job Titles</button></Link>
+              <Link to="/supervisorAllocation" className="mb-3"><button className="btn btn-outline-primary" >Supervisor Allocation</button></Link>
+              <Link to="/hr/view_employees" className="mb-3"><button className="btn btn-outline-primary" >Employee List</button></Link>            
+            </div>            
+          </div>
+
         </div>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>

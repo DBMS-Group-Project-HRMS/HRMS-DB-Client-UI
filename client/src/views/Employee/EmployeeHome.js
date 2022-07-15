@@ -40,29 +40,11 @@ class EmployeeHome extends Component {
           <h1 className="text-center mt-3 mb-0">Employee Home</h1>
           <br></br>
 
-
-          <div className="row">
-            <div className="row">
-              <Link to={'/user/apply_leave'}>
-                <Button 
-                outline color="dark" 
-                className="shadow-sm col-6"
-                >
-                    Apply Leave
-                </Button>
-              </Link>
-            </div>
-            <br/><br/><br/>
-                 
-            <div className="row">
-              <Link to={`/manager/view_user/${this.user_id}`}>
-                <Button outline color="dark" className="shadow-sm col-6">
-                  View Profile
-                </Button>
-              </Link>
-              <br></br>
-              <br></br>
-            </div>
+          <div class="center">
+            <div class="btn-group-vertical">
+            <Link to={'/user/apply_leave'} className="mb-3"><Button outline color="dark" className="shadow-sm col-6">Apply Leave</Button></Link>
+            <Link to={`/manager/view_user/${this.user_id}`} className="mb-3"><Button outline color="dark" className="shadow-sm col-6">View Profile</Button></Link>
+            </div>            
           </div>
 
           <EmployeeHomeTable/>
