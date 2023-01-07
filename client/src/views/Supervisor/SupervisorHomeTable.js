@@ -49,7 +49,7 @@ export default function SupervisorHomeTable() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-      Axios.get("http://localhost:3001/supervisor/get_leave_requests", { headers:{Authorization : `Bearer ${token}`} })
+      Axios.get("https://hrms-client-server.onrender.com/supervisor/get_leave_requests", { headers:{Authorization : `Bearer ${token}`} })
     .then((leaves) => {
       const filteredLeaveList = leaves.data.data.filter((e)=>{return e.status == 'pending'});
       setLeaves(filteredLeaveList);

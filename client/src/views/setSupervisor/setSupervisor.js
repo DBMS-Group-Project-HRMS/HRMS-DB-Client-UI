@@ -42,7 +42,7 @@ export function SetSupervisor(props){
         const supervisorDetails = {Sup_ID:Supervisor_ID,Emp_ID:Employee_ID};
         console.log("assigned empId,SupId: ",Employee_ID,Supervisor_ID);
         let token = sessionStorage.getItem("token");
-        Axios.post('http://localhost:3001/hr/setSupervisor', supervisorDetails, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+        Axios.post('https://hrms-client-server.onrender.com/hr/setSupervisor', supervisorDetails, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
           //setAlertType("alert alert-success");
           //setAlertMessage(response.data.message);
         })

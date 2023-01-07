@@ -22,7 +22,7 @@ export function AverageSalarybyDepartmentReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.get("http://localhost:3001/report/getCurrentUserName/"+ user_id , { headers:{Authorization : `Bearer ${token}`} })
+    Axios.get("https://hrms-client-server.onrender.com/report/getCurrentUserName/"+ user_id , { headers:{Authorization : `Bearer ${token}`} })
     .then((currentUser) => {
       setCurrentUsername(currentUser.data.data[0].firstname+" "+currentUser.data.data[0].lastname);
     })
@@ -54,7 +54,7 @@ export function AverageSalarybyDepartmentReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.get("http://localhost:3001/report/create_average_salary_of_departments_report", { headers:{Authorization : `Bearer ${token}`} })
+    Axios.get("https://hrms-client-server.onrender.com/report/create_average_salary_of_departments_report", { headers:{Authorization : `Bearer ${token}`} })
       .then( (response)=>{
         setAverageSalaryList(response.data.data);
       })

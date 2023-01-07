@@ -18,7 +18,8 @@ export function ViewUser() {
 
     useEffect(() => {
       let token = sessionStorage.getItem("token");
-        Axios.get("http://localhost:3001/manager/view_user/" + user_id, { headers:{Authorization : `Bearer ${token}`}})
+        Axios
+        .get("https://hrms-client-server.onrender.com/manager/view_user/" + user_id, { headers:{Authorization : `Bearer ${token}`}})
       .then((getUserDetails) => {
         setUserDetails(getUserDetails.data.data);
       })
@@ -50,7 +51,7 @@ export function ViewUser() {
 
     useEffect(() => {
       let token = sessionStorage.getItem("token");
-        Axios.get("http://localhost:3001/manager/get_supervisor/" + user_id, { headers:{Authorization : `Bearer ${token}`}})
+        Axios.get("https://hrms-client-server.onrender.com/manager/get_supervisor/" + user_id, { headers:{Authorization : `Bearer ${token}`}})
       .then((supervisor) => {
         if (supervisor.data.data.length !== 0){
           setSupervisor(supervisor.data.data[0]);

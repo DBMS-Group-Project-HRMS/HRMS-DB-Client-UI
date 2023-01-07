@@ -49,7 +49,7 @@ export default function EmployeeHomeTable() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-      Axios.get(`http://localhost:3001/user/get_leaves/${user_id}`, { headers:{Authorization : `Bearer ${token}`} })
+      Axios.get(`https://hrms-client-server.onrender.com/user/get_leaves/${user_id}`, { headers:{Authorization : `Bearer ${token}`} })
     .then((leaves) => {
       setLeaves(leaves.data.data);
     })

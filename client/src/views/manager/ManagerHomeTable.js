@@ -49,7 +49,7 @@ export default function ManagerHomeTable() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-      Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`} })
+      Axios.get("https://hrms-client-server.onrender.com/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`} })
     .then((userList) => {
       const filteredUsersList = userList.data.data.filter((e)=>{return e.type != 'HR Manager' && e.type != 'Admin'});
       setUserDetails(filteredUsersList);

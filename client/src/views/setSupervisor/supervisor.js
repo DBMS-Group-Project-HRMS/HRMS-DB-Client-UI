@@ -30,7 +30,7 @@ export function Supervisor(){
 
     useEffect(() => {
       let token = sessionStorage.getItem("token");
-        Axios.get("http://localhost:3001/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`}})
+        Axios.get("https://hrms-client-server.onrender.com/manager/get_users_list", { headers:{Authorization : `Bearer ${token}`}})
       .then((userList) => {
         setUserDetails(userList.data.data);
         setfilteredList(userList.data.data.filter(function(e){ return e.type != "Admin" && e.type != "HR Manager" && e.type != "Manager" }));
@@ -63,7 +63,7 @@ export function Supervisor(){
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-      Axios.get("http://localhost:3001/manager/get_supervisor_list", { headers:{Authorization : `Bearer ${token}`}})
+      Axios.get("https://hrms-client-server.onrender.com/manager/get_supervisor_list", { headers:{Authorization : `Bearer ${token}`}})
     .then((userList) => {
       setSupervisorList(userList.data.data);
     })

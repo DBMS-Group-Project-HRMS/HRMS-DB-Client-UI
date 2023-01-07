@@ -23,7 +23,7 @@ export function EditUser(props) {
   const [EsSelect, setEsSelect] = useState([]);
 
   useEffect( ()=> {
-    Axios.get("http://localhost:3001/getHRMSdetails").then((response)=>{
+    Axios.get("https://hrms-client-server.onrender.com/getHRMSdetails").then((response)=>{
       //setUserslist(response.data);
       const selectDetails = response.data;
       setDepSelect([...selectDetails[0]]);
@@ -51,7 +51,7 @@ export function EditUser(props) {
     if (isSubmit) {
         setData(formValues);
         let token = sessionStorage.getItem("token");
-        Axios.post('http://localhost:3001/manager/edit_user/' + formValues.id, data, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+        Axios.post('https://hrms-client-server.onrender.com/manager/edit_user/' + formValues.id, data, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
             setAlertType("alert alert-success");
             setAlertMessage(response.data.message);
             setShow(true);

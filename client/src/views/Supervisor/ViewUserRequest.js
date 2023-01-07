@@ -18,7 +18,7 @@ export function ViewUserRequest(props) {
 
   useEffect( ()=> {
     let token = sessionStorage.getItem("token");
-    Axios.get(`http://localhost:3001/supervisor/getLeaveData/${leave_id}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
+    Axios.get(`https://hrms-client-server.onrender.com/supervisor/getLeaveData/${leave_id}`,{ headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
         setformValues(response.data.data[0]);
     });
   },[]);
@@ -49,7 +49,7 @@ export function ViewUserRequest(props) {
   useEffect(() => {
     let token = sessionStorage.getItem("token");
     if (isAccept) {
-        Axios.post(`http://localhost:3001/supervisor/accept_leave/${formValues.id}`, [], { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+        Axios.post(`https://hrms-client-server.onrender.com/supervisor/accept_leave/${formValues.id}`, [], { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
             setAlertType("alert alert-success");
             setAlertMessage(response.data.message);
             setShow(true);
@@ -80,7 +80,7 @@ export function ViewUserRequest(props) {
             })
     } else if (isAccept === false) {
         
-        Axios.post(`http://localhost:3001/supervisor/reject_leave/${formValues.id}`, [], { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+        Axios.post(`https://hrms-client-server.onrender.com/supervisor/reject_leave/${formValues.id}`, [], { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
             setAlertType("alert alert-success");
             setAlertMessage(response.data.message);
             setShow(true);

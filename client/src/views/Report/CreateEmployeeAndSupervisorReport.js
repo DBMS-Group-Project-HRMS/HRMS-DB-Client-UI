@@ -14,7 +14,7 @@ export function CreateEmployeeAndSupervisorReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.get("http://localhost:3001/report/get_employee_and_supervisor_report_parameters", { headers:{Authorization : `Bearer ${token}`} })
+    Axios.get("https://hrms-client-server.onrender.com/report/get_employee_and_supervisor_report_parameters", { headers:{Authorization : `Bearer ${token}`} })
     .then((resParameterList) => {
       setParameterList(resParameterList.data.data);
     })

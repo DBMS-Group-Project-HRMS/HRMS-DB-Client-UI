@@ -24,7 +24,7 @@ export function Register() {
   const [EsSelect, setEsSelect] = useState([]);
 
   useEffect( ()=> {
-    Axios.get("http://localhost:3001/getHRMSdetails").then((response)=>{
+    Axios.get("https://hrms-client-server.onrender.com/getHRMSdetails").then((response)=>{
       //setUserslist(response.data);
       const selectDetails = response.data;
       setDepSelect([...selectDetails[0]]);
@@ -49,7 +49,7 @@ export function Register() {
     if (isSubmit) {
       console.log("registering a user");
       let token = sessionStorage.getItem("token");
-      Axios.post('http://localhost:3001/hr/register', formValues, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+      Axios.post('https://hrms-client-server.onrender.com/hr/register', formValues, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
           setAlertType("alert alert-success");
           setAlertMessage(response.data.message);
           setShow(true);

@@ -4,6 +4,7 @@ import "./ViewPaygrades.css"
 
 export function EditPaygrade(props) {
   const paygrade = props.paygrade;
+  const myname = props.myname;
 
   const [formValues, setformValues] = useState({});
   const [alertType, setAlertType] = useState("");
@@ -13,6 +14,8 @@ export function EditPaygrade(props) {
 
   useEffect( ()=> {
     setformValues(paygrade)
+    console.log("in model:",paygrade)
+
   }, [paygrade]);
 
   const handleChange = (e) => {
@@ -28,7 +31,7 @@ export function EditPaygrade(props) {
   useEffect(() => {
     if (isSubmit) {
         let token = sessionStorage.getItem("token");
-        Axios.post('http://localhost:3001/hr/edit_paygrade/', formValues, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+        Axios.post('https://hrms-client-server.onrender.com/hr/edit_paygrade/', formValues, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
             setAlertType("alert alert-success");
             setAlertMessage(response.data.message);
             setShow(true);

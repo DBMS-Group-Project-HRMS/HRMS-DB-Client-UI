@@ -34,7 +34,7 @@ export function EmployeeAndSupervisorReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.get("http://localhost:3001/report/getCurrentUserName/"+ user_id , { headers:{Authorization : `Bearer ${token}`} })
+    Axios.get("https://hrms-client-server.onrender.com/report/getCurrentUserName/"+ user_id , { headers:{Authorization : `Bearer ${token}`} })
     .then((currentUser) => {
       setCurrentUsername(currentUser.data.data[0].firstname+" "+currentUser.data.data[0].lastname);
     })
@@ -66,7 +66,7 @@ export function EmployeeAndSupervisorReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.post("http://localhost:3001/report/create_employee_and_supervisor_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
+    Axios.post("https://hrms-client-server.onrender.com/report/create_employee_and_supervisor_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
       .then( (response)=>{
         setParameterList(response.data.data[0])
         setEmployeeList(response.data.data[1]);

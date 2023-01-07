@@ -12,7 +12,7 @@ export function VieJobTitles() {
 
   useEffect( ()=> {
     let token = sessionStorage.getItem("token");
-    Axios.get("http://localhost:3001/hr/getJobTitles", { headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
+    Axios.get("https://hrms-client-server.onrender.com/hr/getJobTitles", { headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
       const details = response.data;
       setjobTitles(details);
     }).catch((err) => {

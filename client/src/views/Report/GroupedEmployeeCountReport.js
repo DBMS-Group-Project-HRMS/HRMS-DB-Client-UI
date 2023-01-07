@@ -35,7 +35,7 @@ export function GroupedEmployeesReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.get("http://localhost:3001/report/getCurrentUserName/"+ user_id , { headers:{Authorization : `Bearer ${token}`} })
+    Axios.get("https://hrms-client-server.onrender.com/report/getCurrentUserName/"+ user_id , { headers:{Authorization : `Bearer ${token}`} })
     .then((currentUser) => {
       setCurrentUsername(currentUser.data.data[0].firstname+" "+currentUser.data.data[0].lastname);
     })
@@ -67,7 +67,7 @@ export function GroupedEmployeesReport() {
 
   useEffect(() => {
     let token = sessionStorage.getItem("token");
-    Axios.post("http://localhost:3001/report/create_grouped_employee_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
+    Axios.post("https://hrms-client-server.onrender.com/report/create_grouped_employee_report", formValues, { headers:{Authorization : `Bearer ${token}`} })
       .then( (response)=>{
         setEmployeeCountList(response.data.data)
       })

@@ -7,6 +7,9 @@ import { login } from "./loginUtils";
 import { Link } from "react-router-dom";
 
 
+
+//Password - password
+
 export function Login() {
 
   const [username, setUserName] = useState("");
@@ -58,6 +61,7 @@ export function Login() {
         switch (err.request.status) {
           case 400:
             setAlertMessage("Incorrect username or password");
+            console.log(err.response.data);
             setShow(true);
             break;
           case 401:

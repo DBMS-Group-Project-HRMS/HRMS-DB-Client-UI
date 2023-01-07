@@ -9,7 +9,7 @@ export const login = ({ username, password }) =>
         password: password,
     };
 
-    const url = "http://localhost:3001/user/login";
+    const url = "https://hrms-client-server.onrender.com/user/login";
     //axios.defaults.withCredentials = true;
     axios
         .post(url, data)

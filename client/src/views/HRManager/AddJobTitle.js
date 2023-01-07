@@ -21,7 +21,7 @@ export function AddTitle() {
   useEffect(() => {
     if (isSubmit) {
         let token = sessionStorage.getItem("token");
-        Axios.post('http://localhost:3001/hr/add_title/', formValues, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
+        Axios.post('https://hrms-client-server.onrender.com/hr/add_title/', formValues, { headers:{Authorization : `Bearer ${token}`}}).then( (response)=>{
             setAlertType("alert alert-success");
             setAlertMessage(response.data.message);
             setShow(true);

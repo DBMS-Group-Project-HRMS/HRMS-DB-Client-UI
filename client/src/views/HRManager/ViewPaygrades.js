@@ -10,9 +10,13 @@ export function ViewPaygrades() {
 
   const [paygradeDetails, setPayGradeDetails] = useState([]);
 
+  useEffect(()=>{
+    console.log("paygradeDetails",paygradeDetails);
+  },[paygradeDetails])
+
   useEffect( ()=> {
     let token = sessionStorage.getItem("token");
-    Axios.get("http://localhost:3001/hr/getPayGrades", { headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
+    Axios.get("https://hrms-client-server.onrender.com/hr/getPayGrades", { headers:{Authorization : `Bearer ${token}`}}).then((response)=>{
       const details = response.data;
       setPayGradeDetails(details);
     }).catch((err) => {
@@ -80,7 +84,7 @@ export function ViewPaygrades() {
             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div className="modal-body">
-            <EditPaygrade paygrade={paygrade}/>
+            <EditPaygrade paygrade={paygrade} />
           </div>
           <div className="modal-footer">
           </div>

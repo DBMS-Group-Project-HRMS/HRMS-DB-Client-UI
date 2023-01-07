@@ -22,7 +22,7 @@ export function ApplyLeave() {
     }
 
     useEffect( ()=> {
-      Axios.get("http://localhost:3001/getleavetypes").then((response)=>{
+      Axios.get("https://hrms-client-server.onrender.com/getleavetypes").then((response)=>{
         //setUserslist(response.data);
         const selectDetails = response.data;
         setLeaveTypes([...selectDetails[0]]);
@@ -32,7 +32,7 @@ export function ApplyLeave() {
     useEffect(() => {
         if (isSubmit) {
           let token = sessionStorage.getItem("token");
-          Axios.post('http://localhost:3001/user/apply_leave', 
+          Axios.post('https://hrms-client-server.onrender.com/user/apply_leave', 
           formValues, { headers:{Authorization : `Bearer ${token}`}}
           ).then( (response)=>{
               setAlertType("alert alert-success");
