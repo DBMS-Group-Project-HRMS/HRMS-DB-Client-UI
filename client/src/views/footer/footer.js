@@ -40,8 +40,7 @@ export default function Footer() {
                 <i className='fas fa-gem me-3'></i>Jupyter
               </h6>
               <p>
-                Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit.
+              Welcome to our Human Resource Management System (HRMS) website. As a leading provider of HR technology solutions, we are committed to helping organizations of all sizes streamline and optimize their HR processes. Our HRMS is a comprehensive platform that brings together all of your HR functions into one easy-to-use system.
               </p>
             </div>
 
